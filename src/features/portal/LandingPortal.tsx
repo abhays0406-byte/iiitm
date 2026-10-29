@@ -17,8 +17,8 @@ export function LandingPortal({ onSelectRole }: LandingPortalProps) {
   };
 
   return (
-    <div className="portal-gate" style={{ maxWidth: 860, margin: '40px auto', padding: '0 20px' }}>
-      <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 24, marginBottom: 28 }}>
+    <main className="portal-gate" style={{ maxWidth: 860, margin: '40px auto', padding: '0 20px' }}>
+      <header style={{ borderBottom: '1px solid var(--border)', paddingBottom: 24, marginBottom: 28 }}>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
           <span style={{
             display: 'inline-flex',
@@ -44,7 +44,7 @@ export function LandingPortal({ onSelectRole }: LandingPortalProps) {
         <p style={{ color: 'var(--ink-2)', fontSize: 14, maxWidth: 640 }}>
           Clinical note extraction, appointment interval calculation, and defaulter tracking for district hospital outpatient departments.
         </p>
-      </div>
+      </header>
 
       <div style={{
         background: 'var(--surface)',
@@ -127,10 +127,10 @@ export function LandingPortal({ onSelectRole }: LandingPortalProps) {
         </div>
       </div>
 
-      <div style={{ marginTop: 32, paddingTop: 16, borderTop: '1px solid var(--border)', fontSize: 12, color: 'var(--ink-3)', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
+      <footer style={{ marginTop: 32, paddingTop: 16, borderTop: '1px solid var(--border)', fontSize: 12, color: 'var(--ink-3)', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
         <span>District Hospital Health Governance System</span>
         <span>Simulated clinical environment · Append-only audit logging</span>
-      </div>
-    </div>
+      </footer>
+    </main>
   );
 }
