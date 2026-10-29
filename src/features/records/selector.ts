@@ -1,7 +1,6 @@
 import type { Visit, Checkin, Patient } from '@/domain/types';
 import { reconcile, buildQueue } from '@/engine/reconcile';
-import { sharedContact } from '@/domain/selectors';
-import { makeDate } from '@/store/clock';
+import { sharedContact, isOverdue, dueDate } from '@/domain/selectors';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -59,6 +58,44 @@ export function buildSafeRows(
     });
   }
   return rows;
+}
+
+/** Safe view of an approved visit that is not due yet. Same exclusions as SafeRow (RULES.md rule 6). */
+export interface UpcomingRow {
+  visitId: string;
+  patientId: string;
+  token: string;
+  name: string;
+  contact: string;
+  dueDate: string;
+  daysUntilDue: number;
+  priority: 'High' | 'Routine';
+  unreachable: boolean;
+}
+
+/** Approved follow-ups whose due date has not passed, soonest first. They move to the overdue list once late. */
+export function buildUpcomingRows(visits: Visit[], patients: Patient[], checkins: Checkin[], now: Date): UpcomingRow[] {
+  const byPatient = new Map<string, Patient>();
+  for (const p of patients) byPatient.set(p.id, p);
+  const rows: UpcomingRow[] = [];
+  for (const v of visits) {
+    if (v.status !== 'Approved' || isOverdue(v, checkins, now)) continue;
+    const due = dueDate(v);
+    const patient = byPatient.get(v.patient_id);
+    if (!due || !patient || due < now) continue;
+    rows.push({
+      visitId: v.id,
+      patientId: patient.id,
+      token: v.token,
+      name: patient.name,
+      contact: patient.phone,
+      dueDate: fmtDate(due),
+      daysUntilDue: Math.round((due.getTime() - now.getTime()) / 86400000),
+      priority: v.doctor_priority === 'High' ? 'High' : 'Routine',
+      unreachable: patient.unreachable_flag,
+    });
+  }
+  return rows.sort((a, b) => a.daysUntilDue - b.daysUntilDue || a.token.localeCompare(b.token));
 }
 
 export function neutralMessage(token: string): string {

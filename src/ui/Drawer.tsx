@@ -1,20 +1,36 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { Icon } from './Icon';
+import { gsap, useGSAP, motionAllowed } from './motion';
 
-export function Drawer({ open, onClose, children }: { open: boolean; onClose: () => void; children: React.ReactNode }) {
+export function Drawer({ open, onClose, title, children, width }: { open: boolean; onClose: () => void; title?: React.ReactNode; children: React.ReactNode; width?: number }) {
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open, onClose]);
+
+  useGSAP(() => {
+    if (!open || !motionAllowed() || !panelRef.current || !overlayRef.current) return;
+    gsap.from(overlayRef.current, { autoAlpha: 0, duration: 0.2, ease: 'power1.out' });
+    gsap.from(panelRef.current, { x: 32, autoAlpha: 0, duration: 0.28, ease: 'power2.out' });
+  }, { dependencies: [open] });
+
   if (!open) return null;
   return (
     <>
-      <div style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(26,26,26,0.2)' }} onClick={onClose} />
-      <div style={{ position: 'fixed', right: 0, top: 0, height: '100%', width: 380, background: 'var(--bg)', borderLeft: '1px solid var(--border)', zIndex: 50, boxShadow: '0 4px 24px rgba(0,0,0,0.08)', display: 'flex', flexDirection: 'column' }} onClick={(e) => e.stopPropagation()}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', padding: '10px 16px', borderBottom: '1px solid var(--border)' }}>
-          <button type="button" onClick={onClose} aria-label="Close drawer"
-            style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: 4, color: 'var(--ink-3)', background: 'none', border: 'none', cursor: 'pointer' }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
+      <div ref={overlayRef} className="overlay" onClick={onClose} />
+      <div ref={panelRef} className="drawer" role="dialog" aria-modal="true" style={width ? { width } : undefined} onClick={(e) => e.stopPropagation()}>
+        <div className="drawer-head">
+          <div className="drawer-title">{title}</div>
+          <button type="button" className="icon-btn" onClick={onClose} aria-label="Close drawer">
+            <Icon name="x" size={16} />
           </button>
         </div>
-        <div style={{ padding: 16, overflowY: 'auto', flex: 1 }}>{children}</div>
+        <div className="drawer-body">{children}</div>
       </div>
     </>
   );

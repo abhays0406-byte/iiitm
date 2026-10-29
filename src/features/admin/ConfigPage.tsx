@@ -1,15 +1,16 @@
 import { useState } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 import { useConfigStore } from '@/config/store';
 import { Button } from '@/ui/Button';
 import { Chip } from '@/ui/Chip';
+import { Banner } from '@/ui/Banner';
+import { PageHeader } from '@/ui/PageHeader';
 import { Table, TableHead, TableRow, TableCell, TableBody } from '@/ui/Table';
 
-const inputStyle: React.CSSProperties = { border: '1px solid var(--border)', borderRadius: 4, padding: '4px 8px', fontSize: 13 };
-const sectionStyle: React.CSSProperties = { border: '1px solid var(--border)', borderRadius: 4, padding: 12, marginBottom: 16 };
-const labelStyle: React.CSSProperties = { fontSize: 12, fontWeight: 600, color: 'var(--ink-3)', marginBottom: 8, display: 'block' };
+const DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 export function ConfigPage() {
-  const cfg = useConfigStore((s) => ({
+  const cfg = useConfigStore(useShallow((s) => ({
     reasonCategories: s.reasonCategories,
     timePhrasePatterns: s.timePhrasePatterns,
     defaultPriority: s.defaultPriority,
@@ -21,7 +22,7 @@ export function ConfigPage() {
     setDefaultPriority: s.setDefaultPriority,
     setMonthDays: s.setMonthDays,
     reset: s.reset,
-  }));
+  })));
 
   const [newCat, setNewCat] = useState('');
   const [newPattern, setNewPattern] = useState('');
@@ -49,90 +50,117 @@ export function ConfigPage() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden' }}>
-      <div style={{ borderBottom: '1px solid var(--border)', background: 'var(--surface)', padding: '10px 16px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-        <h2 style={{ margin: 0, fontSize: 18, fontWeight: 600, color: 'var(--ink)' }}>Config (Admin)</h2>
-        <Chip variant="neutral">Editable without code changes</Chip>
-      </div>
+    <div className="page">
+      <PageHeader
+        eyebrow="Admin"
+        title="Configuration"
+        subtitle="Tune what the extractor understands and how the clinic works. Changes apply immediately, without code changes."
+      />
 
-      <div style={{ flex: 1, overflow: 'auto', padding: 16 }}>
-        <div style={sectionStyle}>
-          <span style={labelStyle}>Reason categories</span>
-          <div style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
-            <input value={newCat} onChange={(e) => setNewCat(e.target.value)} placeholder="e.g. Vaccination" style={{ ...inputStyle, flex: 1 }} />
-            <Button variant="primary" onClick={addCat}>Add category</Button>
-          </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
-            {cfg.reasonCategories.map((c) => <Chip key={c} variant="neutral">{c}</Chip>)}
-          </div>
-        </div>
+      <div className="page-body">
+        <div className="stack" style={{ maxWidth: 1000 }}>
+          {msg && <Banner variant="ok">{msg}</Banner>}
 
-        <div style={sectionStyle}>
-          <span style={labelStyle}>Time-phrase patterns</span>
-          <div style={{ display: 'flex', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
-            <input value={newPattern} onChange={(e) => setNewPattern(e.target.value)} placeholder="regex pattern" style={{ ...inputStyle, flex: 1, minWidth: 120 }} />
-            <select value={newKind} onChange={(e) => setNewKind(e.target.value as 'fixed' | 'multiplier' | 'vague_quantity')} style={inputStyle}>
-              <option value="fixed">fixed days</option>
-              <option value="multiplier">number × unit</option>
-              <option value="vague_quantity">vague quantity</option>
-            </select>
-            <input value={newDays} onChange={(e) => setNewDays(e.target.value)} placeholder="days/unit" style={{ ...inputStyle, width: 72 }} />
-            <Button variant="primary" onClick={addPattern}>Add pattern</Button>
-          </div>
-          <div style={{ maxHeight: 260, overflow: 'auto', border: '1px solid var(--border)', borderRadius: 4 }}>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Pattern</TableCell><TableCell>Kind</TableCell><TableCell>Days/unit</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {cfg.timePhrasePatterns.map((p, i) => (
-                  <TableRow key={i}>
-                    <TableCell><span style={{ fontFamily: 'var(--mono)', fontSize: 11 }}>{p.pattern}</span></TableCell>
-                    <TableCell><span style={{ fontSize: 11, color: 'var(--ink-3)' }}>{p.kind}</span></TableCell>
-                    <TableCell><span style={{ fontSize: 11, color: 'var(--ink-3)', fontFamily: 'var(--mono)' }}>{(p as { days?: number; unitDays?: number }).days ?? (p as { days?: number; unitDays?: number }).unitDays ?? '—'}</span></TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </div>
-
-        <div style={sectionStyle}>
-          <span style={labelStyle}>Clinic settings</span>
-          <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
-            <div>
-              <div style={{ fontSize: 12, color: 'var(--ink-3)', marginBottom: 4 }}>Default priority</div>
-              <select value={cfg.defaultPriority} onChange={(e) => cfg.setDefaultPriority(e.target.value as 'Routine' | 'High')} style={inputStyle}>
-                <option value="Routine">Routine</option>
-                <option value="High">High</option>
-              </select>
+          <section className="card">
+            <div className="card-header">
+              <div>
+                <div className="card-title">Reason categories</div>
+                <div className="card-sub">Labels the extractor can attach to a note</div>
+              </div>
+              <Chip variant="neutral">{cfg.reasonCategories.length}</Chip>
             </div>
-            <div>
-              <div style={{ fontSize: 12, color: 'var(--ink-3)', marginBottom: 4 }}>Month length (days)</div>
-              <input type="number" value={cfg.monthDays} onChange={(e) => cfg.setMonthDays(Number(e.target.value) || 30)} style={{ ...inputStyle, width: 80 }} />
-            </div>
-            <div>
-              <div style={{ fontSize: 12, color: 'var(--ink-3)', marginBottom: 4 }}>Working days</div>
-              <div style={{ display: 'flex', gap: 4 }}>
-                {[1,2,3,4,5,6,0].map((d) => {
-                  const name = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d];
-                  const active = cfg.workingDays.includes(d);
-                  return (
-                    <button key={d} type="button"
-                      onClick={() => cfg.setWorkingDays(active ? cfg.workingDays.filter((x) => x !== d) : [...cfg.workingDays, d].sort((a, b) => a - b))}
-                      style={{ borderRadius: 4, border: '1px solid', padding: '2px 6px', fontSize: 11, cursor: 'pointer', borderColor: active ? 'var(--accent)' : 'var(--border)', background: active ? 'var(--accent)' : 'transparent', color: active ? '#fff' : 'var(--ink-3)' }}>
-                      {name}
-                    </button>
-                  );
-                })}
+            <div className="card-body">
+              <div className="toolbar" style={{ marginBottom: 14 }}>
+                <input value={newCat} onChange={(e) => setNewCat(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') addCat(); }}
+                  placeholder="e.g. Vaccination" aria-label="New reason category" style={{ flex: 1, height: 36 }} />
+                <Button variant="primary" icon="plus" onClick={addCat}>Add category</Button>
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                {cfg.reasonCategories.map((c) => <Chip key={c} variant="accent">{c}</Chip>)}
               </div>
             </div>
-          </div>
-        </div>
+          </section>
 
-        {msg && <div style={{ fontSize: 12, color: 'var(--ink)' }}>{msg}</div>}
+          <section className="card card-flush">
+            <div className="card-header">
+              <div>
+                <div className="card-title">Time-phrase patterns</div>
+                <div className="card-sub">Regular expressions that turn words like "next week" into days</div>
+              </div>
+              <Chip variant="neutral">{cfg.timePhrasePatterns.length}</Chip>
+            </div>
+            <div className="card-body" style={{ borderBottom: '1px solid var(--border)' }}>
+              <div className="toolbar">
+                <input value={newPattern} onChange={(e) => setNewPattern(e.target.value)} placeholder="Regex pattern, e.g. \bdo hafte\b"
+                  aria-label="New pattern" style={{ flex: 1, minWidth: 180, height: 36, fontFamily: 'var(--mono)' }} />
+                <select value={newKind} onChange={(e) => setNewKind(e.target.value as 'fixed' | 'multiplier' | 'vague_quantity')} aria-label="Pattern kind" style={{ height: 36 }}>
+                  <option value="fixed">fixed days</option>
+                  <option value="multiplier">number × unit</option>
+                  <option value="vague_quantity">vague quantity</option>
+                </select>
+                <input value={newDays} onChange={(e) => setNewDays(e.target.value)} placeholder="Days" aria-label="Days or unit days" style={{ width: 80, height: 36 }} />
+                <Button variant="primary" icon="plus" onClick={addPattern}>Add pattern</Button>
+              </div>
+            </div>
+            <div style={{ maxHeight: 320, overflow: 'auto' }}>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Pattern</TableCell><TableCell>Kind</TableCell><TableCell style={{ textAlign: 'right' }}>Days / unit</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {cfg.timePhrasePatterns.map((p, i) => (
+                    <TableRow key={i}>
+                      <TableCell className="mono" style={{ fontSize: 12 }}>{p.pattern}</TableCell>
+                      <TableCell><Chip variant={p.kind === 'fixed' ? 'outline' : p.kind === 'multiplier' ? 'accent' : 'hold'}>{p.kind}</Chip></TableCell>
+                      <TableCell className="mono" style={{ textAlign: 'right' }}>{(p as { days?: number; unitDays?: number }).days ?? (p as { days?: number; unitDays?: number }).unitDays ?? '—'}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </section>
+
+          <section className="card">
+            <div className="card-header">
+              <div>
+                <div className="card-title">Clinic settings</div>
+                <div className="card-sub">Used when the nurse picks or checks a due date</div>
+              </div>
+            </div>
+            <div className="card-body">
+              <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'flex-start' }}>
+                <div>
+                  <label className="field-label" htmlFor="default-priority">Default priority</label>
+                  <select id="default-priority" value={cfg.defaultPriority} onChange={(e) => cfg.setDefaultPriority(e.target.value as 'Routine' | 'High')} style={{ height: 36, minWidth: 140 }}>
+                    <option value="Routine">Routine</option>
+                    <option value="High">High</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="field-label" htmlFor="month-days">Month length (days)</label>
+                  <input id="month-days" type="number" value={cfg.monthDays} onChange={(e) => cfg.setMonthDays(Number(e.target.value) || 30)} style={{ width: 100, height: 36, fontFamily: 'var(--mono)' }} />
+                </div>
+                <div>
+                  <span className="field-label">Working days</span>
+                  <div className="day-toggles">
+                    {[1, 2, 3, 4, 5, 6, 0].map((d) => {
+                      const active = cfg.workingDays.includes(d);
+                      return (
+                        <button key={d} type="button" aria-pressed={active} className={active ? 'on' : undefined}
+                          onClick={() => cfg.setWorkingDays(active ? cfg.workingDays.filter((x) => x !== d) : [...cfg.workingDays, d].sort((a, b) => a - b))}>
+                          {DAY_NAMES[d]}
+                        </button>
+                      );
+                    })}
+                  </div>
+                  {!cfg.workingDays.includes(0) && <div className="hint" style={{ marginTop: 6 }}>Sunday. OPD closed</div>}
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   );

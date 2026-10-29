@@ -1,11 +1,8 @@
 import React from 'react';
 import { Kbd } from '@/ui/Kbd';
+import { Icon } from '@/ui/Icon';
 
-const VARIANT_STYLES: Record<string, React.CSSProperties> = {
-  primary: { background: 'var(--ink)', color: '#fff', borderColor: 'var(--ink)' },
-  quiet: { background: 'transparent', color: 'var(--ink)', borderColor: 'var(--border)' },
-  'danger-quiet': { background: 'transparent', color: 'var(--high)', borderColor: 'var(--high)' },
-};
+type Variant = 'primary' | 'quiet' | 'danger-quiet' | 'danger' | 'ghost';
 
 export function Button({
   variant = 'primary',
@@ -14,33 +11,32 @@ export function Button({
   children,
   disabled,
   kbd,
+  icon,
   style,
+  className,
   ...rest
 }: {
-  variant?: 'primary' | 'quiet' | 'danger-quiet';
-  size?: 'default' | 'large';
+  variant?: Variant;
+  size?: 'small' | 'default' | 'large';
   onClick?: () => void;
   children: React.ReactNode;
   disabled?: boolean;
   kbd?: string;
+  /** Icon name from the shared set, shown before the label. */
+  icon?: string;
   style?: React.CSSProperties;
 } & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'style'>) {
+  const sizeClass = size === 'large' ? ' btn-lg' : size === 'small' ? ' btn-sm' : '';
   return (
     <button
-      style={{
-        display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-        borderRadius: 4, border: '1px solid', fontWeight: 500, cursor: disabled ? 'not-allowed' : 'pointer',
-        opacity: disabled ? 0.5 : 1, outline: 'none',
-        height: size === 'large' ? 64 : 36,
-        padding: size === 'large' ? '0 24px' : '0 12px',
-        fontSize: size === 'large' ? 16 : 13,
-        ...VARIANT_STYLES[variant],
-        ...style,
-      }}
+      type="button"
+      className={`btn btn-${variant}${sizeClass}${className ? ` ${className}` : ''}`}
+      style={style}
       disabled={disabled}
       onClick={onClick}
       {...rest}
     >
+      {icon && <Icon name={icon} size={size === 'large' ? 18 : 15} />}
       {children}
       {kbd && <Kbd>{kbd}</Kbd>}
     </button>

@@ -1,11 +1,13 @@
 import React from 'react';
+import { Icon } from './Icon';
 
-export function EmptyState({ title, description, action }: { title: string; description?: string; action?: React.ReactNode }) {
+export function EmptyState({ title, description, action, icon = 'inbox' }: { title: string; description?: string; action?: React.ReactNode; icon?: string }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '80px 0', textAlign: 'center' }}>
-      <h2 style={{ fontSize: 18, fontWeight: 600, color: 'var(--ink)', marginBottom: 8 }}>{title}</h2>
-      {description && <p style={{ fontSize: 13, color: 'var(--ink-2)', marginBottom: 24, maxWidth: 280 }}>{description}</p>}
-      {action}
+    <div className="empty">
+      <div className="empty-icon"><Icon name={icon} size={22} /></div>
+      <h2 className="empty-title">{title}</h2>
+      {description && <p className="empty-desc">{description}</p>}
+      {action && <div style={{ marginTop: 16 }}>{action}</div>}
     </div>
   );
 }

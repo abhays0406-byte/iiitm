@@ -1,45 +1,49 @@
-import { useState } from 'react';
 import { useClockStore } from '@/store/clock';
+import { useOfflineStore } from '@/store/offline';
 import { Icon } from '@/ui/Icon';
+import { fmtDate } from '@/features/records/selector';
+import { ROLES, STAFF_BY_ROLE, type Role } from '@/features/shell/roles';
 
-type Role = 'Doctor' | 'Nurse' | 'Records Desk' | 'ASHA' | 'Admin';
-
-const ROLES: Role[] = ['Doctor', 'Nurse', 'Records Desk', 'ASHA', 'Admin'];
-
-export function TopBar({ role, onChange }: { role: Role; onChange: (r: Role) => void }) {
-  const { now } = useClockStore();
-
-  const demoDate = now.toLocaleDateString('en-IN', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-  });
+export function TopBar({ role, onChange, onMenu }: { role: Role; onChange: (r: Role) => void; onMenu?: () => void }) {
+  const now = useClockStore((s) => s.now);
+  const online = useOfflineStore((s) => s.online);
+  const queued = useOfflineStore((s) => s.outbox.length);
 
   return (
-    <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, borderBottom: '1px solid var(--border)', background: 'var(--bg)', padding: '10px 16px', flexShrink: 0 }}>
-      <span style={{ fontWeight: 600, color: 'var(--ink)' }}>Follow-Up Assistant</span>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginLeft: 'auto' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, border: '1px solid var(--border)', borderRadius: 4, padding: '2px 10px' }}>
-          <span style={{ fontSize: 12, color: 'var(--ink-3)' }}>Viewing as</span>
+    <header className="topbar">
+      {/* Only shown on narrow screens, where the sidebar is hidden. */}
+      <button type="button" className="icon-btn menu-btn" onClick={onMenu} aria-label="Open menu">
+        <Icon name="menu" size={20} />
+      </button>
+      <div className="topbar-context">
+        <Icon name="home" size={15} />
+        <strong>District Hospital</strong>
+        <span>· OPD follow-ups</span>
+      </div>
+      <div className="topbar-right">
+        <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span className="role-chip" aria-hidden="true">
+            <span className="avatar">{STAFF_BY_ROLE[role].name.replace(/^(Dr|Sr)\.\s*/, '').split(' ').map((w) => w[0]).slice(0, 2).join('')}</span>
+            {STAFF_BY_ROLE[role].name}
+          </span>
           <select
+            className="role-select"
             value={role}
             onChange={(e) => onChange(e.target.value as Role)}
-            style={{ border: 'none', background: 'transparent', fontSize: 12, fontWeight: 500, cursor: 'pointer' }}
-            aria-label="Role switcher"
+            style={{ fontWeight: 600 }}
+            aria-label="Switch role"
+            title={`Today: ${fmtDate(now)}`}
           >
             {ROLES.map((r) => (
               <option key={r} value={r}>{r}</option>
             ))}
           </select>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--ink-2)' }}>
-          <span style={{ fontWeight: 500 }}>Demo date</span>
-          <span style={{ fontFamily: 'var(--mono)', color: 'var(--ink)' }}>{demoDate}</span>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: 'var(--ink-2)' }}>
-          <Icon name="wifi" size={12} />
-          <span>Online</span>
-        </div>
+        </label>
+        {online ? (
+          <span className="status-pill ok" title="Online"><Icon name="wifi" size={13} /><span className="pill-label">Online</span></span>
+        ) : (
+          <span className="status-pill warn" title={`Offline, ${queued} changes queued`}><Icon name="wifiOff" size={13} /><span className="pill-label">Offline, {queued} changes queued</span></span>
+        )}
       </div>
     </header>
   );

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Icon } from './Icon';
 
 interface DatePickerProps {
   open: boolean;
@@ -21,43 +22,43 @@ export function DatePicker({ open, onClose, selected, onSelect, workingDays }: D
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
   return (
-    <div style={{ position: 'fixed', inset: 0, zIndex: 60, background: 'rgba(26,26,26,0.2)' }} onClick={onClose}>
-      <div style={{ position: 'fixed', right: 0, top: 0, height: '100%', width: 300, background: 'var(--bg)', borderLeft: '1px solid var(--border)', zIndex: 60, boxShadow: '0 4px 24px rgba(0,0,0,0.12)', display: 'flex', flexDirection: 'column' }} onClick={(e) => e.stopPropagation()}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border)', padding: '10px 16px' }}>
-          <button type="button" onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ink-3)', display: 'flex' }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
+    <>
+      <div className="overlay" style={{ zIndex: 60 }} onClick={onClose} />
+      <div className="drawer" role="dialog" aria-modal="true" aria-label="Pick a due date" style={{ width: 340, zIndex: 61 }} onClick={(e) => e.stopPropagation()}>
+        <div className="drawer-head">
+          <div className="drawer-title">Pick a due date</div>
+          <button type="button" className="icon-btn" onClick={onClose} aria-label="Close date picker">
+            <Icon name="x" size={16} />
           </button>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <button type="button" onClick={() => setFocusDate(new Date(year, month - 1, 1))} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ink-3)' }} aria-label="Previous month">‹</button>
-            <span style={{ fontWeight: 600, fontSize: 13, color: 'var(--ink)' }}>{MONTHS[month]} {year}</span>
-            <button type="button" onClick={() => setFocusDate(new Date(year, month + 1, 1))} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ink-3)' }} aria-label="Next month">›</button>
+        </div>
+        <div className="drawer-body">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+            <button type="button" className="icon-btn" onClick={() => setFocusDate(new Date(year, month - 1, 1))} aria-label="Previous month">
+              <Icon name="chevronLeft" size={16} />
+            </button>
+            <span style={{ fontWeight: 600, fontSize: 14 }}>{MONTHS[month]} {year}</span>
+            <button type="button" className="icon-btn" onClick={() => setFocusDate(new Date(year, month + 1, 1))} aria-label="Next month">
+              <Icon name="chevronRight" size={16} />
+            </button>
           </div>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', padding: '8px 16px', borderBottom: '1px solid var(--border)' }}>
-          {DAYS.map((d) => <div key={d} style={{ textAlign: 'center', fontSize: 11, color: 'var(--ink-2)' }}>{d}</div>)}
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', padding: '4px 8px 16px' }}>
-          {Array.from({ length: firstDay }).map((_, i) => <div key={i} />)}
-          {Array.from({ length: daysInMonth }).map((_, i) => {
-            const d = new Date(year, month, i + 1);
-            const isSel = selected && d.toDateString() === selected.toDateString();
-            const working = workingDays.includes(d.getDay());
-            return (
-              <button key={i} type="button" onClick={() => { onSelect(d); onClose(); }} disabled={!working}
-                style={{ height: 32, borderRadius: 4, fontSize: 12, border: 'none', cursor: working ? 'pointer' : 'default', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  background: isSel ? 'var(--accent)' : 'transparent',
-                  color: isSel ? '#fff' : working ? 'var(--ink)' : 'var(--ink-3)' }}>
-                {i + 1}
-              </button>
-            );
-          })}
-        </div>
-        <div style={{ marginTop: 'auto', borderTop: '1px solid var(--border)', padding: '12px 16px', fontSize: 11, color: 'var(--ink-3)' }}>
-          Non-working days are greyed and cannot be selected.
+          <div className="cal-grid">
+            {DAYS.map((d) => <div key={d} className="cal-dow">{d}</div>)}
+            {Array.from({ length: firstDay }).map((_, i) => <div key={`pad-${i}`} />)}
+            {Array.from({ length: daysInMonth }).map((_, i) => {
+              const d = new Date(year, month, i + 1);
+              const isSel = selected && d.toDateString() === selected.toDateString();
+              const working = workingDays.includes(d.getDay());
+              return (
+                <button key={i} type="button" onClick={() => { onSelect(d); onClose(); }} disabled={!working}
+                  className={`cal-day${isSel ? ' selected' : ''}`}>
+                  {i + 1}
+                </button>
+              );
+            })}
+          </div>
+          <p className="hint" style={{ marginTop: 16 }}>Non-working days are greyed and cannot be selected.</p>
         </div>
       </div>
-    </div>
+    </>
   );
 }

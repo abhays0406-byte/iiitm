@@ -1,32 +1,45 @@
 @layer tokens {
   :root {
-    --radius: 6px;
+    --radius: 8px;
     --touch: 44px;
     --border-width: 1px;
 
+    /* Warm paper neutrals with a calm clinical green. */
     --bg: #ffffff;
-    --surface: #faf9f7;
+    --canvas: #f4f3ee;
+    --surface: #f9f8f4;
+    --surface-2: #efede6;
     --paper: #fdfbf5;
-    --ink: #1a1a1a;
-    --ink-2: #5c5c5c;
-    --ink-3: #8a8a8a;
-    --border: #b9b9b9;
-    --border-strong: #8a8a8a;
-    --border-width: 1px;
-    --border-focus: #4a4a4a;
+    --ink: #1d2420;
+    --ink-2: #4f5650;
+    --ink-3: #737a73;
+    --border: #e3e0d6;
+    --border-strong: #8f8a7d;
     --border-focus: #4a4a4a;
 
-    --accent: #0066cc;
-    --accent-bg: #eef4fb;
-    --high: #b00020;
-    --high-bg: #fdecea;
-    --hold: #e8a000;
-    --hold-bg: #fdf3e3;
-    --hold-ink: #8a6d00;
-    --mark: #fff9c4;
+    --accent: #2d6a4f;
+    --accent-strong: #1f4f3a;
+    --accent-bg: #e7f0ea;
+    --high: #b03a2e;
+    --high-bg: #fbece9;
+    --hold: #c98a1b;
+    --hold-bg: #fbf3e2;
+    --hold-ink: #845a10;
+    --mark: #fbf0b8;
 
-    --ok: #1f7a33;
+    --ok: #2e7d4f;
+    --ok-bg: #e6f2ea;
     --warn: #b36b00;
+
+    --nav-bg: #1e2f27;
+    --nav-hover: #283d33;
+    --nav-active: #31493d;
+    --nav-ink: #c3cfc7;
+    --nav-ink-strong: #ffffff;
+
+    --shadow-sm: 0 1px 2px rgba(40, 45, 35, 0.04);
+    --shadow-md: 0 2px 10px rgba(40, 45, 35, 0.06);
+    --shadow-lg: 0 10px 30px rgba(40, 45, 35, 0.12);
 
     --sans: "IBM Plex Sans", system-ui, "Noto Sans Devanagari", sans-serif;
     --serif: "IBM Plex Serif", system-ui, "Noto Sans Devanagari", serif;
@@ -129,50 +142,11 @@
     color: var(--ink-3);
   }
 
-  .segmented-control {
-    display: flex;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    margin-top: 16px;
-  }
-  .segmented-control button {
-    flex: 1;
-    min-height: 64px;
-    border: none;
-    border-right: 1px solid var(--border);
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.12s ease-out;
-  }
-  .segmented-control button:last-child {
-    border-right: none;
-  }
-  .segmented-control button.active {
-    background: var(--surface);
-  }
-  .segmented-control button.high {
-    color: var(--high);
-    border-left: 4px solid var(--high);
-    padding-left: calc(16px - 4px);
-  }
-
-  .saved-confirm {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--ok);
-    margin-top: 12px;
-  }
-
-  .extractor-line {
-    font-size: 13px;
-    color: var(--ink-2);
-    margin-top: 10px;
-    min-height: 20px;
+  .paper-slip:focus-visible {
+    outline: none;
+    border-color: var(--accent);
+    border-left-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-bg);
   }
 
   .role-switcher-select {
@@ -182,6 +156,45 @@
     font: inherit;
     color: inherit;
     cursor: pointer;
+  }
+
+  /* Visible focus on every control (DESIGN.md: 2px accent, 2px offset). */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  input:not([type="checkbox"], [type="radio"], [type="range"]),
+  select {
+    height: 32px;
+    padding: 0 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-size: 13px;
+    transition: border-color 120ms ease-out;
+  }
+  input::placeholder {
+    color: var(--ink-3);
+  }
+  input:not([type="checkbox"], [type="radio"], [type="range"]):hover,
+  select:hover {
+    border-color: var(--ink-2);
+  }
+  input:focus-visible,
+  select:focus-visible {
+    outline-offset: 0;
+    border-color: var(--accent);
+  }
+  select {
+    appearance: none;
+    /* Inline padding on page selects must not cover the chevron. */
+    padding-right: 28px !important;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16' fill='none' stroke='%235c5c5c' stroke-width='1.5'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 9px center;
   }
 
   @media print {

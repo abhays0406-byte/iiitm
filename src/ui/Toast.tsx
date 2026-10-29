@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { Icon } from './Icon';
+import { gsap, useGSAP, motionAllowed } from './motion';
 
 interface ToastProps {
   open: boolean;
@@ -6,24 +8,31 @@ interface ToastProps {
   onClose?: () => void;
   onUndo?: () => void;
   onDismiss?: () => void;
+  /** Floating toasts pin themselves to the bottom of the screen; stacked ones sit in a parent container. */
+  floating?: boolean;
 }
 
-export function Toast({ open, message, onClose, onUndo, onDismiss }: ToastProps) {
+export function Toast({ open, message, onClose, onUndo, onDismiss, floating = true }: ToastProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!open || !ref.current || !motionAllowed()) return;
+    gsap.from(ref.current, floating
+      ? { y: 10, autoAlpha: 0, duration: 0.25, ease: 'power2.out' }
+      : { x: 16, autoAlpha: 0, duration: 0.25, ease: 'power2.out' });
+  }, { dependencies: [open, message] });
+
   if (!open) return null;
   const handleClose = onDismiss ?? onClose ?? (() => {});
   return (
-    <div style={{ position: 'fixed', bottom: 16, right: 16, zIndex: 50, display: 'flex', alignItems: 'center', gap: 12, borderRadius: 4, border: '1px solid var(--border)', background: 'var(--bg)', padding: '10px 16px', boxShadow: '0 4px 24px rgba(0,0,0,0.12)' }}>
-      <span style={{ fontSize: 13 }}>{message}</span>
+    <div ref={ref} role="status" className={`toast${floating ? ' toast-floating' : ''}`}>
+      <Icon name="checkCircle" size={16} className="toast-icon" />
+      <span className="toast-msg">{message}</span>
       {onUndo && (
-        <button type="button" onClick={onUndo} style={{ fontSize: 12, fontWeight: 600, color: 'var(--accent)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-          Undo
-        </button>
+        <button type="button" className="toast-undo" onClick={onUndo}>Undo</button>
       )}
-      <button type="button" onClick={handleClose} aria-label="Dismiss"
-        style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 24, height: 24, borderRadius: 4, color: 'var(--ink-3)', background: 'none', border: 'none', cursor: 'pointer' }}>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
+      <button type="button" className="icon-btn" onClick={handleClose} aria-label="Dismiss">
+        <Icon name="x" size={14} />
       </button>
     </div>
   );

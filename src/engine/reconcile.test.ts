@@ -17,7 +17,8 @@ function visit(overrides: any) {
     approved_by: 'Doctor',
     approved_at: NOW,
     interval_days: 7,
-    target_date: NOW,
+    // No target date: the due date falls back to approved_date + interval_days.
+    target_date: null,
     reason_category: null,
     source_phrase: null,
     needs_review: false,
@@ -34,12 +35,12 @@ describe('P6 reconcile', () => {
   it('AT-04: High priority ranks before Routine regardless of days overdue', () => {
     const a = visit({
       id: 'A', patient_id: 'PA', token: 'OPD-0100', doctor_priority: 'Routine',
-      approved_date: makeDate(2026, 9, 31), // 12 days before 12 Nov (Oct has 31 days -> Oct 31)
+      approved_date: makeDate(2026, 9, 31), // due 7 Nov -> 5 days overdue on 12 Nov
       interval_days: 7,
     });
     const b = visit({
       id: 'B', patient_id: 'PB', token: 'OPD-0101', doctor_priority: 'High',
-      approved_date: makeDate(2026, 10, 10), // 2 days before 12 Nov
+      approved_date: makeDate(2026, 10, 3), // due 10 Nov -> 2 days overdue
       interval_days: 7,
     });
     const defaulters = reconcile([a, b], [], NOW);
@@ -51,23 +52,25 @@ describe('P6 reconcile', () => {
   });
 
   it('stability: equal priority and days -> token ascending tie-break', () => {
-    const t1 = visit({ id: 'T1', patient_id: 'P1', token: 'OPD-0200', doctor_priority: 'High', approved_date: makeDate(2026, 10, 10), interval_days: 7 });
-    const t2 = visit({ id: 'T2', patient_id: 'P2', token: 'OPD-0100', doctor_priority: 'High', approved_date: makeDate(2026, 10, 10), interval_days: 7 });
+    const t1 = visit({ id: 'T1', patient_id: 'P1', token: 'OPD-0200', doctor_priority: 'High', approved_date: makeDate(2026, 10, 3), interval_days: 7 });
+    const t2 = visit({ id: 'T2', patient_id: 'P2', token: 'OPD-0100', doctor_priority: 'High', approved_date: makeDate(2026, 10, 3), interval_days: 7 });
     const queue = buildQueue(reconcile([t1, t2], [], NOW));
     expect(queue[0].visit.token).toBe('OPD-0100');
     expect(queue[1].visit.token).toBe('OPD-0200');
   });
 
   it('check-in on or before window end clears overdue status', () => {
-    const v = visit({ id: 'C', patient_id: 'PC', approved_date: makeDate(2026, 10, 5), interval_days: 7 });
-    const checkin = { id: 'CHK', patient_id: 'PC', visit_id: 'C', checkin_date: makeDate(2026, 10, 10), mode: 'OPD' as const, simulated: true, created_at: NOW };
+    // Due 7 Nov; checked in on 6 Nov.
+    const v = visit({ id: 'C', patient_id: 'PC', approved_date: makeDate(2026, 9, 31), interval_days: 7 });
+    const checkin = { id: 'CHK', patient_id: 'PC', visit_id: 'C', checkin_date: makeDate(2026, 10, 6), mode: 'OPD' as const, simulated: true, created_at: NOW };
     const defaulters = reconcile([v], [checkin], NOW);
     expect(defaulters).toHaveLength(0);
   });
 
   it('check-in after window end does not clear overdue', () => {
-    const v = visit({ id: 'C2', patient_id: 'PC2', approved_date: makeDate(2026, 10, 5), interval_days: 7 });
-    const checkin = { id: 'CHK2', patient_id: 'PC2', visit_id: 'C2', checkin_date: makeDate(2026, 10, 20), mode: 'OPD' as const, simulated: true, created_at: NOW };
+    // Due 7 Nov; checked in late on 10 Nov.
+    const v = visit({ id: 'C2', patient_id: 'PC2', approved_date: makeDate(2026, 9, 31), interval_days: 7 });
+    const checkin = { id: 'CHK2', patient_id: 'PC2', visit_id: 'C2', checkin_date: makeDate(2026, 10, 10), mode: 'OPD' as const, simulated: true, created_at: NOW };
     const defaulters = reconcile([v], [checkin], NOW);
     expect(defaulters).toHaveLength(1);
   });

@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 import { useDomainStore } from '@/domain/store';
 import { useClockStore } from '@/store/clock';
 import { useOfflineStore } from '@/store/offline';
@@ -6,7 +7,9 @@ import { reconcile, buildQueue } from '@/engine/reconcile';
 import { Button } from '@/ui/Button';
 import { Chip } from '@/ui/Chip';
 import { Drawer } from '@/ui/Drawer';
-import { makeDate } from '@/store/clock';
+import { Icon } from '@/ui/Icon';
+import { makeDate, daysFrom, SIMULATED_NOW } from '@/store/clock';
+import { fmtDate } from '@/features/records/selector';
 import { toast, setToast } from './useDemoToast';
 import { useDemoToastStore } from './useDemoToast';
 
@@ -25,8 +28,8 @@ const RAMESH_STEPS = [
 
 const TABS: Tab[] = ['clock', 'checkins', 'ramesh', 'load', 'twists', 'reset'];
 const TAB_LABEL: Record<Tab, string> = {
-  clock: 'Clock', checkins: 'Check-ins', ramesh: "Ramesh's journey",
-  load: 'Load test', twists: 'Twists', reset: 'Reset',
+  clock: 'Date', checkins: 'Check-ins', ramesh: 'Walkthrough',
+  load: 'Load test', twists: 'Scenarios', reset: 'Reset data',
 };
 const TWISTS: Array<[string, string]> = [
   ['hindi', 'Notes now arrive in Hindi only'],
@@ -38,27 +41,27 @@ const TWISTS: Array<[string, string]> = [
 ];
 
 const s = {
-  row: { display: 'flex', gap: 8 } as React.CSSProperties,
-  col: { display: 'flex', flexDirection: 'column' as const, gap: 8 },
-  xs: { fontSize: 12, color: 'var(--ink-3)' } as React.CSSProperties,
-  card: { background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 4, padding: 12 } as React.CSSProperties,
+  row: { display: 'flex', gap: 8, flexWrap: 'wrap' } as React.CSSProperties,
+  col: { display: 'flex', flexDirection: 'column' as const, gap: 10 },
+  xs: { fontSize: 12, color: 'var(--ink-3)', margin: 0 } as React.CSSProperties,
+  card: { background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 6, padding: 14 } as React.CSSProperties,
 };
 
-export function DemoDirector() {
+/** Clinic tools drawer: move the app date, run scenarios, reset data. Opened from the sidebar or Ctrl+D. */
+export function DemoDirector({ open, onClose, onToggle }: { open: boolean; onClose: () => void; onToggle: () => void }) {
   const store = useDomainStore.getState();
   const resetDemo = useDomainStore((st) => st.resetDemo);
-  const clock = useClockStore((st) => ({ now: st.now, advanceDays: st.advanceDays, setNow: st.setNow }));
-  const { online, setOnline, outbox } = useOfflineStore((st) => ({ online: st.online, setOnline: st.setOnline, outbox: st.outbox }));
+  const clock = useClockStore(useShallow((st) => ({ now: st.now, advanceDays: st.advanceDays, setNow: st.setNow })));
+  const { online, setOnline, outbox } = useOfflineStore(useShallow((st) => ({ online: st.online, setOnline: st.setOnline, outbox: st.outbox })));
   const now = clock.now;
 
   useEffect(() => {
     setToast((message, ms = 3000) => { useDemoToastStore.getState().show(message, ms); });
-    const onKey = (e: KeyboardEvent) => { if (e.ctrlKey && e.key === 'd') { e.preventDefault(); setOpen((o) => !o); } };
+    const onKey = (e: KeyboardEvent) => { if (e.ctrlKey && e.key === 'd') { e.preventDefault(); onToggle(); } };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, []);
+  }, [onToggle]);
 
-  const [open, setOpen] = useState(false);
   const [tab, setTab] = useState<Tab>('clock');
   const [rameshStep, setRameshStep] = useState(0);
   const [rameshStarted, setRameshStarted] = useState(false);
@@ -90,7 +93,7 @@ export function DemoDirector() {
         checkedIn += 1;
       }
     }
-    toast(`Simulated check-ins: ${checkedIn} of ${dueVisits.length} patients checked in`, 3000);
+    toast(`Check-ins recorded: ${checkedIn} of ${dueVisits.length} patients due came in`, 3000);
   }, [store, now]);
 
   const runLoadTest = useCallback(() => {
@@ -101,7 +104,7 @@ export function DemoDirector() {
       visits.push({
         id: `LT-${i}`, patient_id: `LT-P-${i}`, token: `OPD-${9000 + i}`,
         visit_date: now, note_text: null, doctor_priority: 'Routine', status: 'Approved',
-        approved_date: makeDate(2026, 9, 20), approved_by: 'Doctor', approved_at: now,
+        approved_date: daysFrom(now, -23), approved_by: 'Doctor', approved_at: now,
         interval_days: 14, target_date: null, reason_category: null, source_phrase: null,
         needs_review: false, review_reason: null, rejection_reason: null,
         simulated: true, created_at: now, updated_at: now,
@@ -127,39 +130,24 @@ export function DemoDirector() {
 
   const resetAll = useCallback(() => {
     resetDemo();
-    clock.setNow(makeDate(2026, 10, 12));
+    clock.setNow(SIMULATED_NOW);
     setOnline(true);
     setRameshStarted(false); setRameshStep(0); setLoadMs(null);
     setHindiLoaded(false); setVaccinationAdded(false);
-    toast('Demo data, clock and config reset to seed.', 3000);
+    toast('Records, date and settings restored.', 3000);
   }, [resetDemo, clock, setOnline]);
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        style={{ position: 'fixed', bottom: 16, right: 16, zIndex: 100, border: '1px solid var(--border)', background: 'var(--surface)', padding: '6px 12px', fontSize: 12, fontWeight: 500, color: 'var(--ink-2)', borderRadius: 4, cursor: 'pointer' }}
-        aria-label="Open Demo Director"
-      >
-        Demo
-      </button>
-
-      <Drawer open={open} onClose={() => setOpen(false)}>
-        <div style={{ padding: 16 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
-            <span style={{ fontSize: 11, fontWeight: 600, color: 'var(--hold)' }}>Simulated</span>
-            <h3 style={{ margin: 0, fontSize: 14, fontWeight: 600, color: 'var(--ink)' }}>Demo Director</h3>
-            <span style={{ marginLeft: 'auto', fontSize: 10, color: 'var(--ink-3)' }}>Ctrl+D to hide</span>
-          </div>
-
-          <div style={{ display: 'flex', gap: 4, marginBottom: 16, borderBottom: '1px solid var(--border)', paddingBottom: 8 }}>
+      <Drawer open={open} onClose={onClose} width={420} title={
+        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <Icon name="settings" size={16} />Clinic tools <Chip variant="hold">Training</Chip>
+        </span>
+      }>
+        <div>
+          <div className="segmented" style={{ display: 'flex', flexWrap: 'wrap', marginBottom: 18 }}>
             {TABS.map((t) => (
-              <button key={t} type="button" onClick={() => setTab(t)}
-                style={{ fontSize: 11, padding: '3px 8px', borderRadius: 4, border: '1px solid', cursor: 'pointer',
-                  borderColor: tab === t ? 'var(--accent)' : 'transparent',
-                  background: tab === t ? 'var(--accent)' : 'transparent',
-                  color: tab === t ? '#fff' : 'var(--ink-3)' }}>
+              <button key={t} type="button" onClick={() => setTab(t)} className={tab === t ? 'active' : undefined}>
                 {TAB_LABEL[t]}
               </button>
             ))}
@@ -167,14 +155,15 @@ export function DemoDirector() {
 
           {tab === 'clock' && (
             <div style={s.col}>
-              <div style={s.xs}>Simulated clock: {now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
+              <div style={s.xs}>App date: <strong style={{ color: 'var(--ink)' }}>{fmtDate(now)}</strong>{now.getTime() === SIMULATED_NOW.getTime() ? ' (today)' : ` (today is ${fmtDate(SIMULATED_NOW)})`}</div>
               <div style={s.row}>
                 <Button variant="quiet" onClick={() => advanceAndToast(1)}>Advance 1 day</Button>
                 <Button variant="quiet" onClick={() => advanceAndToast(7)}>Advance 7 days</Button>
+                <Button variant="ghost" onClick={() => clock.setNow(SIMULATED_NOW)} disabled={now.getTime() === SIMULATED_NOW.getTime()}>Back to today</Button>
               </div>
               <div>
                 <label style={{ ...s.xs, display: 'block', marginBottom: 4 }}>Set date</label>
-                <input type="date" style={{ border: '1px solid var(--border)', borderRadius: 4, padding: '4px 8px', fontSize: 13, width: '100%' }} onChange={(e) => clock.setNow(new Date(e.target.value))} />
+                <input type="date" style={{ border: '1px solid var(--border)', borderRadius: 4, padding: '4px 8px', fontSize: 13, width: '100%' }} onChange={(e) => { const [y, m, d] = e.target.value.split('-').map(Number); if (y && m && d) clock.setNow(makeDate(y, m - 1, d)); }} />
               </div>
               <p style={s.xs}>Advancing the clock runs the nightly reconciliation.</p>
             </div>
@@ -236,7 +225,7 @@ export function DemoDirector() {
           {tab === 'reset' && (
             <div style={s.col}>
               <Button variant="danger-quiet" onClick={resetAll}>Reset demo data</Button>
-              <p style={s.xs}>Restores the seed, clock (12 Nov 2026) and config.</p>
+              <p style={s.xs}>Restores the starting records, sets the date back to today and resets settings.</p>
             </div>
           )}
         </div>

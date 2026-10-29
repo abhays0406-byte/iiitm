@@ -14,10 +14,10 @@ export function DemoToasts() {
   }, []);
 
   return (
-    <div style={{ position: 'fixed', top: 16, right: 16, zIndex: 200, display: 'flex', flexDirection: 'column', gap: 8, pointerEvents: 'none' }}>
+    <div style={{ position: 'fixed', top: 68, right: 12, zIndex: 200, display: 'flex', flexDirection: 'column', gap: 8, pointerEvents: 'none' }}>
       {toasts.map((t) => (
-        <div key={t.id} style={{ pointerEvents: 'auto', width: 340 }}>
-          <Toast open message={t.message} onClose={() => dismiss(t.id)} />
+        <div key={t.id} style={{ pointerEvents: 'auto', width: 'min(360px, calc(100vw - 24px))' }}>
+          <Toast open floating={false} message={t.message} onClose={() => dismiss(t.id)} />
         </div>
       ))}
     </div>

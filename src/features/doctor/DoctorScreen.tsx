@@ -1,10 +1,20 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { useInRouterContext, useNavigate } from 'react-router-dom';
 import { useDomainStore } from '@/domain/store';
+import { readSlipFile, formatBytes, SLIP_ACCEPT, type SlipFile } from '@/lib/slip';
 import { useClockStore } from '@/store/clock';
 import { extract } from '@/extractor/extract';
 import { suggestPriority } from '@/config/priorityReference';
 import { Kbd } from '@/ui/Kbd';
 import { Chip } from '@/ui/Chip';
+import { Icon } from '@/ui/Icon';
+import { Button } from '@/ui/Button';
+import { PageHeader } from '@/ui/PageHeader';
+import { Stat } from '@/ui/Stat';
+import { NewPatientDrawer } from '@/features/patients/NewPatientDrawer';
+import { toast } from '@/features/demo/useDemoToast';
+import { reconcile } from '@/engine/reconcile';
+import { useGSAP, motionAllowed, enter } from '@/ui/motion';
 
 type Priority = 'Routine' | 'High';
 
@@ -13,20 +23,46 @@ function fmtDate(d: Date): string {
   return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
 }
 
+/** Where a saved note went, so the confirmation can say so and link to it. */
+interface Saved { priority: Priority; needsReview: boolean; withSlip: boolean }
+
+/** Button to the queue that received the note. Rendered only inside a router. */
+function OpenQueueButton({ to, label }: { to: string; label: string }) {
+  const navigate = useNavigate();
+  return (
+    <Button variant="ghost" size="small" onClick={() => navigate(to)} style={{ marginLeft: 'auto' }}>
+      {label} <Icon name="chevronRight" size={13} />
+    </Button>
+  );
+}
+
 export function DoctorScreen() {
   const patients = useDomainStore((s) => s.patients);
   const visits = useDomainStore((s) => s.visits);
+  const checkins = useDomainStore((s) => s.checkins);
+  const audit = useDomainStore((s) => s.audit);
   const addVisit = useDomainStore((s) => s.addVisit);
+  const attachSlip = useDomainStore((s) => s.attachSlip);
   const now = useClockStore((s) => s.now);
+  const inRouter = useInRouterContext();
 
   const [note, setNote] = useState('');
-  const [confirm, setConfirm] = useState(false);
+  const [confirm, setConfirm] = useState<Saved | null>(null);
+  const [slip, setSlip] = useState<SlipFile | null>(null);
+  const [slipError, setSlipError] = useState('');
+  const [slipBusy, setSlipBusy] = useState(false);
+  const [dragOver, setDragOver] = useState(false);
   const [passive, setPassive] = useState<{ intervalDays: number | null; reasonCategory: string } | null>(null);
   const [suggestion, setSuggestion] = useState<{ suggested: Priority; matchedKeyword: string; basis: string } | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const confirmRef = useRef<HTMLDivElement>(null);
+  const patientRef = useRef<HTMLDivElement>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [patientIdx, setPatientIdx] = useState(0);
-  const patient = patients[patientIdx] ?? patients[0];
+  // Track the patient by id: a newly registered patient is appended, and the list can change in another tab.
+  const [patientId, setPatientId] = useState<string | null>(null);
+  const patient = patients.find((p) => p.id === patientId) ?? patients[0];
+  const [registerOpen, setRegisterOpen] = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
 
   useEffect(() => {
     textareaRef.current?.focus();
@@ -41,19 +77,40 @@ export function DoctorScreen() {
 
   const onNoteChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setNote(e.target.value);
-    setConfirm(false);
+    setConfirm(null);
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => runPassive(e.target.value), 600);
   };
 
+  const takeSlipFile = async (file: File | undefined) => {
+    if (!file) return;
+    setSlipError('');
+    setSlipBusy(true);
+    try {
+      setSlip(await readSlipFile(file));
+      setConfirm(null);
+    } catch (err) {
+      setSlipError(err instanceof Error ? err.message : 'Could not attach this file.');
+    } finally {
+      setSlipBusy(false);
+    }
+  };
+
+  const onDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragOver(false);
+    void takeSlipFile(e.dataTransfer.files[0]);
+  };
+
   const saveVisit = useCallback((p: Priority) => {
-    if (!note.trim()) return;
+    // A slip on its own is enough: with no typed note the visit goes to Needs Review for the nurse.
+    if (!note.trim() && !slip) return;
     const extraction = extract(note, now);
-    addVisit({
+    const visitId = addVisit({
       patient_id: patient.id,
       token: patient.token,
       visit_date: new Date(now),
-      note_text: note,
+      note_text: note.trim() ? note : null,
       doctor_priority: p,
       status: extraction.needsReview ? 'Needs Review' : 'Staged',
       approved_date: null,
@@ -67,98 +124,321 @@ export function DoctorScreen() {
       needs_review: extraction.needsReview,
       review_reason: extraction.reviewReason,
     });
+    if (slip) attachSlip(visitId, slip);
     setNote('');
     setPassive(null);
     setSuggestion(null);
-    setConfirm(true);
-    setTimeout(() => setConfirm(false), 2500);
-  }, [note, now, patient, addVisit]);
+    setSlip(null);
+    setSlipError('');
+    setConfirm({ priority: p, needsReview: extraction.needsReview, withSlip: !!slip });
+  }, [note, slip, now, patient, addVisit, attachSlip]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.ctrlKey && e.shiftKey && e.key === 'Enter') { e.preventDefault(); saveVisit('High'); return; }
     if (e.ctrlKey && e.key === 'Enter') { e.preventDefault(); saveVisit('Routine'); }
   };
 
-  const nextPatient = () => { setPatientIdx((i) => (i + 1) % patients.length); setConfirm(false); };
+  const choosePatient = (id: string) => { setPatientId(id); setConfirm(null); setSlip(null); setSlipError(''); };
+  const nextPatient = () => {
+    const i = patients.findIndex((p) => p.id === patient?.id);
+    choosePatient(patients[(i + 1) % patients.length].id);
+  };
+  const registeredIds = new Set(audit.filter((a) => a.action === 'register_patient').map((a) => a.entity_id));
   const visitsToday = visits.filter((v) => v.patient_id === patient?.id && v.visit_date.toDateString() === now.toDateString()).length;
-  const empty = !note.trim();
+  const empty = !note.trim() && !slip;
   const lastVisit = visits.filter((v) => v.patient_id === patient?.id).sort((a, b) => b.visit_date.getTime() - a.visit_date.getTime())[1];
 
+  // Dashboard figures for the doctor's day. "Today's notes" are the ones written in the app
+  // (they carry a 'create' audit entry), not the seeded demo backlog.
+  const pending = (v: typeof visits[0]) => v.status === 'Staged' || v.status === 'Needs Review';
+  const today = now.toDateString();
+  const writtenIds = new Set(audit.filter((a) => a.action === 'create').map((a) => a.entity_id));
+  const notesToday = visits.filter((v) => writtenIds.has(v.id) && v.visit_date.toDateString() === today);
+  const withNurse = visits.filter((v) => (v.doctor_priority ?? 'Routine') === 'Routine' && pending(v)).length;
+  const myQueue = visits.filter((v) => v.doctor_priority === 'High' && pending(v));
+  const overdue = reconcile(visits, checkins, now).length;
+  const nameOf = (id: string) => patients.find((p) => p.id === id)?.name ?? id;
+
+  // The confirmation and the patient card fade in quietly when they change.
+  useGSAP(() => {
+    if (!confirm || !motionAllowed()) return;
+    enter(confirmRef.current, { y: -4, autoAlpha: 0, duration: 0.25, ease: 'power2.out' });
+  }, { dependencies: [confirm] });
+  useGSAP(() => {
+    if (!motionAllowed()) return;
+    enter(patientRef.current, { autoAlpha: 0, duration: 0.25, ease: 'power2.out' });
+  }, { dependencies: [patient?.id], revertOnUpdate: true });
+
+  const initials = (patient?.name ?? '?').split(' ').map((w) => w[0]).slice(0, 2).join('').toUpperCase();
+
   return (
-    <div style={{ display: 'flex', height: '100%', overflow: 'hidden' }}>
-      {/* Left strip */}
-      <aside style={{ width: 220, flexShrink: 0, borderRight: '1px solid var(--border)', padding: 16, background: 'var(--paper)', display: 'flex', flexDirection: 'column', gap: 4 }}>
-        <div style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink-2)', marginBottom: 2 }}>{patient?.token}</div>
-        <div style={{ fontSize: 16, fontWeight: 600, color: 'var(--ink)' }}>{patient?.name}</div>
-        <div style={{ fontSize: 13, color: 'var(--ink-2)' }}>{patient?.age} / {patient?.sex}</div>
-        <div style={{ fontSize: 12, color: 'var(--ink-2)', marginTop: 8 }}>Last visit: {lastVisit ? fmtDate(lastVisit.visit_date) : '—'}</div>
-        <div style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink-2)', marginTop: 4 }}>Visits today: {visitsToday}</div>
-      </aside>
+    <div className="page">
+      <PageHeader
+        eyebrow="Doctor · OPD"
+        title="Today's consultation"
+        subtitle="Write the follow-up note in English, Hinglish or Hindi, then tag the priority. The nurse confirms every date."
+      />
+      <div className="page-body">
+        <div className="stat-grid" style={{ marginBottom: 16 }}>
+          <Stat icon="pen" value={notesToday.length} label="Notes today" sub={notesToday.length ? `${notesToday.filter((v) => v.doctor_priority === 'High').length} tagged High` : 'None written yet'} />
+          <Stat icon="checkSquare" tone="ok" value={withNurse} label="Waiting with the nurse" sub="Routine, not yet approved" />
+          <Stat icon="inbox" tone="high" value={myQueue.length} label="In your High queue" sub={myQueue.length ? 'Needs your approval' : 'All clear'} />
+          <Stat icon="alertCircle" tone="hold" value={overdue} label="Overdue patients" sub="Being followed up by Records" />
+        </div>
+        <div className="doctor-layout">
+          {/* Note and priority come first in the DOM so the priority buttons are the first controls. */}
+          <div className="stack">
+            <section className="card composer">
+              <div className="composer-head">
+                <div>
+                  <div className="card-title">Follow-up note</div>
+                  <div className="card-sub">For {patient?.name} · <span style={{ fontFamily: 'var(--mono)' }}>{patient?.token}</span></div>
+                </div>
+                {/* A label, not a button: it opens the file picker and keeps the priority buttons first. */}
+                <label className={`btn btn-quiet btn-sm slip-picker${slipBusy ? ' busy' : ''}`}>
+                  <Icon name="download" size={14} style={{ transform: 'rotate(180deg)' }} />
+                  {slip ? 'Replace paper slip' : 'Attach paper slip'}
+                  <input
+                    type="file"
+                    accept={SLIP_ACCEPT}
+                    className="visually-hidden"
+                    onChange={(e) => { void takeSlipFile(e.target.files?.[0]); e.target.value = ''; }}
+                  />
+                </label>
+              </div>
 
-      {/* Main */}
-      <main style={{ flex: 1, minWidth: 0, padding: 24, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 12 }}>
-        <textarea
-          ref={textareaRef}
-          className="paper-slip"
-          placeholder="Write the follow-up note…"
-          value={note}
-          onChange={onNoteChange}
-          onKeyDown={handleKeyDown}
-          aria-label="Visit note"
-        />
+              <div
+                className={`slip-drop${dragOver ? ' over' : ''}`}
+                onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+                onDragLeave={() => setDragOver(false)}
+                onDrop={onDrop}
+              >
+                <textarea
+                  ref={textareaRef}
+                  className="paper-slip composer-slip"
+                  placeholder='Write the follow-up note… e.g. "Come back after 2 weeks for dressing change". Or drop a photo of the paper slip here.'
+                  value={note}
+                  onChange={onNoteChange}
+                  onKeyDown={handleKeyDown}
+                  aria-label="Visit note"
+                />
+                {dragOver && <div className="slip-drop-hint"><Icon name="fileText" size={20} />Drop the slip photo or PDF to attach it</div>}
+              </div>
 
-        {/* Passive extractor line */}
-        {passive && (
-          <div style={{ fontSize: 13, color: 'var(--ink-2)', minHeight: 20 }}>
-            AI read: {passive.intervalDays} days · {passive.reasonCategory}
-            {suggestion && (
-              <span style={{ marginLeft: 12 }}>
-                <Chip variant="neutral" title={suggestion.basis}>
-                  Suggested: {suggestion.suggested}
-                </Chip>
-                <span style={{ marginLeft: 6, fontSize: 12, color: 'var(--ink-2)' }}>Suggested from reference table. Your tap decides.</span>
-              </span>
+              {(slip || slipError || slipBusy) && (
+                <div className="slip-row">
+                  {slipBusy && <span className="hint">Preparing the slip…</span>}
+                  {slipError && <span className="slip-error"><Icon name="alertCircle" size={14} />{slipError}</span>}
+                  {slip && !slipBusy && (
+                    <>
+                      {slip.type.startsWith('image/')
+                        ? <img className="slip-thumb" src={slip.data_url} alt="Attached paper slip" />
+                        : <span className="slip-thumb pdf"><Icon name="fileText" size={18} />PDF</span>}
+                      <span style={{ minWidth: 0 }}>
+                        <span className="slip-name">{slip.name}</span>
+                        <span className="hint">{formatBytes(slip.size)} · goes to the nurse with this note</span>
+                      </span>
+                      <button type="button" className="icon-btn" style={{ marginLeft: 'auto' }} onClick={() => setSlip(null)} aria-label="Remove paper slip">
+                        <Icon name="x" size={15} />
+                      </button>
+                    </>
+                  )}
+                </div>
+              )}
+
+              <div className="ai-line">
+                <span className="ai-badge"><Icon name="sparkle" size={12} />AI</span>
+                {passive ? (
+                  <>
+                    <span>Read:</span>
+                    <Chip variant="accent"><span style={{ fontFamily: 'var(--mono)' }}>{passive.intervalDays} days</span></Chip>
+                    <Chip variant="accent">{passive.reasonCategory}</Chip>
+                    {suggestion && (
+                      <>
+                        <Chip variant={suggestion.suggested === 'High' ? 'high' : 'neutral'} title={suggestion.basis}>
+                          Suggested: {suggestion.suggested}
+                        </Chip>
+                        <span className="hint">From the reference table. Your tap decides.</span>
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <span className="hint">Reads the time window as you type. It only proposes; it never decides.</span>
+                )}
+              </div>
+
+              <div className="composer-foot">
+                <div className="composer-foot-label">
+                  <span>Tag priority to save</span>
+                  {empty && <span className="hint">Write a note or attach the paper slip first</span>}
+                </div>
+                <div className="priority-options">
+                  <button
+                    type="button"
+                    className="priority-option"
+                    onClick={() => saveVisit('Routine')}
+                    disabled={empty}
+                    title={empty ? 'Write a note first' : undefined}
+                    aria-disabled={empty}
+                  >
+                    <span className="po-dot" />
+                    <span>
+                      <span className="po-title">Routine</span>
+                      <span className="po-sub">Goes to the nurse queue</span>
+                    </span>
+                    <span className="po-keys"><Kbd>Ctrl</Kbd><Kbd>Enter</Kbd></span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`priority-option high${suggestion?.suggested === 'High' ? ' suggested' : ''}`}
+                    onClick={() => saveVisit('High')}
+                    disabled={empty}
+                    title={empty ? 'Write a note first' : undefined}
+                    aria-disabled={empty}
+                  >
+                    <span className="po-dot" />
+                    <span>
+                      <span className="po-title">High priority</span>
+                      <span className="po-sub">Goes to the doctor queue</span>
+                    </span>
+                    <span className="po-keys"><Kbd>Ctrl</Kbd><Kbd>Shift</Kbd><Kbd>Enter</Kbd></span>
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            {confirm && (
+              <div ref={confirmRef} className="saved-confirm banner banner-ok" style={{ alignItems: 'center' }}>
+                <Icon name="checkCircle" size={16} />
+                <div style={{ flex: 1 }}>
+                  <strong>{confirm.priority === 'High' ? 'Saved. Sent to the doctor queue.' : 'Saved. Sent to nurse.'}</strong>
+                  <div style={{ fontSize: 12, marginTop: 2 }}>
+                    {confirm.needsReview
+                      ? 'It is in the Needs review tab: no clear time window, so the approver sets the date.'
+                      : 'It is in the Staged tab, waiting for approval.'}
+                    {confirm.withSlip && ' Paper slip attached.'}
+                  </div>
+                </div>
+                {inRouter && (
+                  <OpenQueueButton
+                    to={confirm.priority === 'High' ? '/queue' : '/nurse'}
+                    label={confirm.priority === 'High' ? 'Open doctor queue' : 'Open nurse queue'}
+                  />
+                )}
+              </div>
             )}
           </div>
-        )}
 
-        {confirm && (
-          <div className="saved-confirm">Saved. Sent for approval.</div>
-        )}
+          <aside className="stack">
+            <section className="card patient-card">
+              <div className="patient-picker">
+                <label className="visually-hidden" htmlFor="patient-select">Current patient</label>
+                <select id="patient-select" value={patient?.id ?? ''} onChange={(e) => choosePatient(e.target.value)}>
+                  {[...patients].reverse().map((p) => (
+                    <option key={p.id} value={p.id}>{p.token} · {p.name}{registeredIds.has(p.id) ? ' (new)' : ''}</option>
+                  ))}
+                </select>
+                <Button variant="primary" size="small" icon="plus" onClick={() => setRegisterOpen(true)}>New patient</Button>
+              </div>
+              <div ref={patientRef}>
+                <div className="patient-head">
+                  <div className="avatar">{initials}</div>
+                  <div style={{ minWidth: 0 }}>
+                    <div className="patient-name">{patient?.name}</div>
+                    <div className="patient-token">{patient?.token}</div>
+                    <div className="patient-token">{patient?.phone ? `+91 ${patient.phone}` : 'No working phone'}</div>
+                  </div>
+                  <span style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    {registeredIds.has(patient?.id ?? '')
+                      ? <Chip variant="accent">New</Chip>
+                      : <Chip variant="ok">In OPD</Chip>}
+                    <button type="button" className="icon-btn" onClick={() => setEditOpen(true)} aria-label="Edit patient details" title="Edit patient details">
+                      <Icon name="pen" size={15} />
+                    </button>
+                  </span>
+                </div>
+                <div className="patient-stats">
+                  <div>
+                    <span className="ps-label">Age / sex</span>
+                    <span className="ps-value">{patient?.age} / {patient?.sex}</span>
+                  </div>
+                  <div>
+                    <span className="ps-label">Last visit</span>
+                    <span className="ps-value mono">{lastVisit ? fmtDate(lastVisit.visit_date) : '—'}</span>
+                  </div>
+                  <div>
+                    <span className="ps-label">Notes today</span>
+                    <span className="ps-value mono">{visitsToday}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="patient-foot">
+                <Button variant="quiet" onClick={nextPatient} style={{ width: '100%' }}>
+                  Next patient <Icon name="chevronRight" size={15} />
+                </Button>
+              </div>
+            </section>
 
-        {/* Segmented control */}
-        <div className="segmented-control" style={{ marginTop: 4 }}>
-          <button
-            type="button"
-            onClick={() => saveVisit('Routine')}
-            disabled={empty}
-            title={empty ? 'Write a note first' : undefined}
-            aria-disabled={empty}
-          >
-            Routine <Kbd>Ctrl</Kbd><Kbd>Enter</Kbd>
-          </button>
-          <button
-            type="button"
-            className="high"
-            onClick={() => saveVisit('High')}
-            disabled={empty}
-            title={empty ? 'Write a note first' : undefined}
-            aria-disabled={empty}
-            style={suggestion?.suggested === 'High' ? { outline: '2px solid var(--high)', outlineOffset: -2 } : undefined}
-          >
-            High priority <Kbd>Ctrl</Kbd><Kbd>Shift</Kbd><Kbd>Enter</Kbd>
-          </button>
+            <section className="card card-flush">
+              <div className="card-header">
+                <div className="card-title" style={{ fontSize: 13 }}>Today's notes</div>
+                <Chip variant="neutral">{notesToday.length}</Chip>
+              </div>
+              {notesToday.length === 0 ? (
+                <div className="hint" style={{ padding: '16px 18px' }}>Notes you save today appear here with where they are.</div>
+              ) : (
+                [...notesToday].reverse().slice(0, 6).map((v) => {
+                  const where = v.status === 'Approved' ? { text: 'Approved', variant: 'ok' }
+                    : v.status === 'Rejected' ? { text: 'Rejected', variant: 'high' }
+                    : v.doctor_priority === 'High' ? { text: 'In your queue', variant: 'high' }
+                    : { text: v.status === 'Needs Review' ? 'Nurse: set date' : 'With nurse', variant: v.status === 'Needs Review' ? 'hold' : 'accent' };
+                  return (
+                    <div key={v.id} className="mini-row">
+                      <span className={`qi-dot${v.doctor_priority === 'High' ? ' high' : ''}`} aria-hidden="true" />
+                      <span style={{ minWidth: 0, flex: 1 }}>
+                        <span className="mini-name">{nameOf(v.patient_id)}</span>
+                        <span className="mini-sub">{v.token}{v.source_phrase ? ` · “${v.source_phrase}”` : ''}</span>
+                      </span>
+                      <Chip variant={where.variant}>{where.text}</Chip>
+                    </div>
+                  );
+                })
+              )}
+            </section>
+
+            <section className="card">
+              <div className="card-body" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                <div className="card-title" style={{ fontSize: 13, display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <Icon name="activity" size={14} />Keyboard shortcuts
+                </div>
+                <div className="shortcut-row"><span>Save as Routine</span><span><Kbd>Ctrl</Kbd> <Kbd>Enter</Kbd></span></div>
+                <div className="shortcut-row"><span>Save as High</span><span><Kbd>Ctrl</Kbd> <Kbd>Shift</Kbd> <Kbd>Enter</Kbd></span></div>
+              </div>
+            </section>
+          </aside>
         </div>
-        <div style={{ marginTop: 8 }}>
-          <button
-            type="button"
-            onClick={nextPatient}
-            style={{ padding: '6px 12px', fontSize: 12, border: '1px solid var(--border)', borderRadius: 6, background: 'transparent', cursor: 'pointer', color: 'var(--ink-2)' }}
-          >
-            Next patient
-          </button>
-        </div>
-      </main>
+      </div>
+
+      <NewPatientDrawer
+        open={registerOpen}
+        onClose={() => setRegisterOpen(false)}
+        onCreated={(p) => {
+          setRegisterOpen(false);
+          choosePatient(p.id);
+          toast(`Registered ${p.name} as ${p.token}. You can write their note now.`, 4000);
+          textareaRef.current?.focus();
+        }}
+      />
+
+      {patient && (
+        <NewPatientDrawer
+          key={`edit-${patient.id}-${patient.updated_at.getTime()}`}
+          patient={patient}
+          open={editOpen}
+          onClose={() => setEditOpen(false)}
+          onCreated={(p) => { setEditOpen(false); toast(`Saved changes to ${p.name} (${p.token}).`, 3000); }}
+        />
+      )}
     </div>
   );
 }

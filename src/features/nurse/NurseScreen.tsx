@@ -1,14 +1,21 @@
-import { useState, useCallback, useMemo, useRef, useEffect } from 'react';
+import { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import { useDomainStore } from '@/domain/store';
 import { useClockStore } from '@/store/clock';
 import { VirtualList } from '@/ui/VirtualList';
 import { DatePicker } from '@/ui/DatePicker';
 import { Kbd } from '@/ui/Kbd';
-import { Chip } from '@/ui/Chip';
+import { Chip, PriorityBadge } from '@/ui/Chip';
 import { Banner } from '@/ui/Banner';
 import { EmptyState } from '@/ui/EmptyState';
 import { Toast } from '@/ui/Toast';
+import { Button } from '@/ui/Button';
+import { Drawer } from '@/ui/Drawer';
+import { Icon } from '@/ui/Icon';
+import { PageHeader } from '@/ui/PageHeader';
+import { Stat } from '@/ui/Stat';
+import { gsap, useGSAP, motionAllowed, enter } from '@/ui/motion';
 import { neutralDateMessage, neutralMessage, messageContainsForbidden } from '@/features/records/selector';
+import { formatBytes, openSlipInNewTab } from '@/lib/slip';
 
 type Tab = 'needs-review' | 'staged' | 'done';
 
@@ -46,29 +53,58 @@ export function ApprovalScreen({ role }: Props) {
   const editVisitDate = useDomainStore((s) => s.editVisitDate);
   const rejectVisit = useDomainStore((s) => s.rejectVisit);
   const recordOutreach = useDomainStore((s) => s.recordOutreach);
-  const actor = useDomainStore((s) => s.actor);
+  const audit = useDomainStore((s) => s.audit);
+  const slips = useDomainStore((s) => s.slips);
   const now = useClockStore((s) => s.now);
 
-  const [tab, setTab] = useState<Tab>('staged');
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  // Role enforcement: nurse sees only Routine, doctor sees only High
+  const allowedPriority = role === 'Nurse' ? 'Routine' : 'High';
+
+  // Visits written in the app (not seed data) carry a 'create' audit entry; they show as New until opened.
+  const createdIds = useMemo(() => new Set(audit.filter((a) => a.action === 'create').map((a) => a.entity_id)), [audit]);
+  const [openedIds, setOpenedIds] = useState<Set<string>>(() => new Set());
+  const isNew = (id: string) => createdIds.has(id) && !openedIds.has(id);
+
+  // Open on the tab holding the newest note from the doctor, so it is the first thing the approver sees.
+  const [tab, setTab] = useState<Tab>(() => {
+    const newest = [...visits].reverse().find((v) => createdIds.has(v.id) && (v.doctor_priority ?? 'Routine') === allowedPriority);
+    return newest?.status === 'Needs Review' ? 'needs-review' : 'staged';
+  });
+  const [selectedId, setSelectedIdRaw] = useState<string | null>(null);
+  const setSelectedId = useCallback((id: string | null) => {
+    setSelectedIdRaw(id);
+    if (id) setOpenedIds((s) => (s.has(id) ? s : new Set(s).add(id)));
+  }, []);
   const [dateOpen, setDateOpen] = useState(false);
   const [rejectOpen, setRejectOpen] = useState(false);
   const [rejectReason, setRejectReason] = useState('');
   const [undoToast, setUndoToast] = useState<{ visitId: string; timer: ReturnType<typeof setTimeout> } | null>(null);
   const [manualDate, setManualDate] = useState('');
+  const detailRef = useRef<HTMLElement>(null);
+  const [slipZoom, setSlipZoom] = useState(false);
 
-  // Role enforcement: nurse sees only Routine, doctor sees only High
-  const allowedPriority = role === 'Nurse' ? 'Routine' : 'High';
-
+  // Newest first: a note the doctor just saved lands at the top of its tab.
   const queue = useMemo(() => {
     const base = visits.filter((v) => {
       const p = v.doctor_priority ?? 'Routine';
       return p === allowedPriority;
     });
-    if (tab === 'needs-review') return base.filter((v) => v.status === 'Needs Review');
-    if (tab === 'staged') return base.filter((v) => v.status === 'Staged');
-    return base.filter((v) => v.status === 'Approved' || v.status === 'Rejected');
+    const inTab = tab === 'needs-review'
+      ? base.filter((v) => v.status === 'Needs Review')
+      : tab === 'staged'
+        ? base.filter((v) => v.status === 'Staged')
+        : base.filter((v) => v.status === 'Approved' || v.status === 'Rejected');
+    return inTab.reverse();
   }, [visits, tab, allowedPriority]);
+
+  const newByTab = useMemo(() => {
+    const fresh = visits.filter((v) => (v.doctor_priority ?? 'Routine') === allowedPriority && createdIds.has(v.id) && !openedIds.has(v.id));
+    return {
+      'needs-review': fresh.filter((v) => v.status === 'Needs Review').length,
+      staged: fresh.filter((v) => v.status === 'Staged').length,
+      done: 0,
+    } as Record<Tab, number>;
+  }, [visits, allowedPriority, createdIds, openedIds]);
 
   const tabCounts = useMemo(() => {
     const base = visits.filter((v) => (v.doctor_priority ?? 'Routine') === allowedPriority);
@@ -81,7 +117,7 @@ export function ApprovalScreen({ role }: Props) {
 
   const selected = visits.find((v) => v.id === selectedId) ?? null;
   const selectedPatient = selected ? patients.find((p) => p.id === selected.patient_id) : null;
-  const reviewedToday = visits.filter((v) => (v.status === 'Approved' || v.status === 'Rejected') && v.updated_at?.toDateString() === now.toDateString()).length;
+  const reviewedToday = visits.filter((v) => (v.doctor_priority ?? 'Routine') === allowedPriority && (v.status === 'Approved' || v.status === 'Rejected') && v.updated_at?.toDateString() === now.toDateString()).length;
   const totalQueue = visits.filter((v) => (v.doctor_priority ?? 'Routine') === allowedPriority && v.status !== 'Rejected').length;
 
   const needsReview = selected?.needs_review ?? false;
@@ -105,7 +141,7 @@ export function ApprovalScreen({ role }: Props) {
     if (e.key === 'a' || e.key === 'A') { e.preventDefault(); if (!noDate && selected) doApprove(); }
     if (e.key === 'e' || e.key === 'E') { e.preventDefault(); if (selected) setDateOpen(true); }
     if (e.key === 'r' || e.key === 'R') { e.preventDefault(); if (selected) setRejectOpen(true); }
-  }, [queue, selectedId, noDate, selected]);
+  }, [queue, selectedId, noDate, selected, setSelectedId]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -153,7 +189,7 @@ export function ApprovalScreen({ role }: Props) {
     if (undoToast) clearTimeout(undoToast.timer);
     const timer = setTimeout(() => setUndoToast(null), 6000);
     setUndoToast({ visitId: selected.id, timer });
-  }, [selected, noDate, manualDate, approveVisit, editVisitDate, recordOutreach, allowedPriority, queue, now, undoToast]);
+  }, [selected, noDate, manualDate, approveVisit, editVisitDate, recordOutreach, allowedPriority, queue, now, undoToast, setSelectedId]);
 
   const doUndo = useCallback(() => {
     if (!undoToast) return;
@@ -161,7 +197,7 @@ export function ApprovalScreen({ role }: Props) {
     clearTimeout(undoToast.timer);
     setUndoToast(null);
     setSelectedId(undoToast.visitId);
-  }, [undoToast, undoApproval]);
+  }, [undoToast, undoApproval, setSelectedId]);
 
   const doReject = useCallback(() => {
     if (!selected || !rejectReason) return;
@@ -171,201 +207,264 @@ export function ApprovalScreen({ role }: Props) {
     const idx = queue.findIndex((v) => v.id === selected.id);
     const next = queue[idx + 1] ?? queue[idx - 1] ?? null;
     setSelectedId(next?.id ?? null);
-  }, [selected, rejectReason, rejectVisit, queue]);
+  }, [selected, rejectReason, rejectVisit, queue, setSelectedId]);
 
   const renderQueueItem = (v: typeof visits[0]) => {
     const isSel = selectedId === v.id;
+    const name = patients.find((p) => p.id === v.patient_id)?.name;
     return (
       <button
         key={v.id}
         type="button"
         onClick={() => setSelectedId(v.id)}
-        style={{
-          display: 'flex', alignItems: 'flex-start', gap: 8, padding: '8px 10px',
-          border: isSel ? '1px solid var(--accent)' : '1px solid transparent',
-          borderRadius: 6, background: isSel ? 'color-mix(in srgb, var(--accent) 8%, transparent)' : 'transparent',
-          cursor: 'pointer', textAlign: 'left', width: '100%', marginBottom: 2,
-        }}
+        className={`queue-item${isSel ? ' selected' : ''}`}
       >
-        <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-2)', flexShrink: 0, paddingTop: 2 }}>{v.token}</span>
+        <span className={`qi-dot${v.doctor_priority === 'High' ? ' high' : ''}`} aria-hidden="true" />
         <span style={{ flex: 1, minWidth: 0 }}>
-          <span style={{ fontSize: 13, color: v.needs_review ? 'var(--hold)' : 'var(--ink)', display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-            {v.source_phrase ?? 'No clear time window'}
+          <span className="qi-top">
+            <span className="qi-token">{v.token}</span>
+            {name && <span className="qi-name">{name}</span>}
+            {isNew(v.id) && <span className="new-pill">NEW</span>}
           </span>
-          <span style={{ fontSize: 11, color: 'var(--ink-2)' }}>{relTime(v.visit_date, now)}</span>
+          <span className={`qi-phrase${v.needs_review ? ' hold' : ''}`}>
+            {slips[v.id] && <Icon name="fileText" size={11} style={{ verticalAlign: '-1px', marginRight: 4 }} />}
+            {v.source_phrase ? `“${v.source_phrase}”` : 'No clear time window'}
+          </span>
         </span>
-        <span style={{ width: 6, height: 6, borderRadius: '50%', background: v.doctor_priority === 'High' ? 'var(--high)' : 'var(--ink-2)', flexShrink: 0, marginTop: 6 }} />
+        <span className="qi-time">{createdIds.has(v.id) ? 'Just now' : relTime(v.visit_date, now)}</span>
       </button>
     );
   };
 
-  return (
-    <div style={{ display: 'flex', height: '100%', overflow: 'hidden', flexDirection: 'column' }}>
-      {/* Header */}
-      <div style={{ borderBottom: '1px solid var(--border)', background: 'var(--paper)', padding: '10px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
-        <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--ink)' }}>{role === 'Nurse' ? 'Nurse queue — Routine' : 'Doctor queue — High priority'}</span>
-        <span style={{ fontSize: 12, fontFamily: 'var(--mono)', color: 'var(--ink-2)' }}>{fmtDate(now)}</span>
-      </div>
+  // Picking a card fades its details in.
+  useGSAP(() => {
+    if (!motionAllowed() || !selectedId) return;
+    const q = gsap.utils.selector(detailRef);
+    enter(q('.card-header, .detail-scroll'), { autoAlpha: 0, y: 4, duration: 0.25, ease: 'power2.out' });
+  }, { scope: detailRef, dependencies: [selectedId], revertOnUpdate: true });
 
-      <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
-        {/* LEFT pane */}
-        <div style={{ width: 300, flexShrink: 0, borderRight: '1px solid var(--border)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-          {/* Tabs */}
-          <div style={{ display: 'flex', borderBottom: '1px solid var(--border)', padding: '6px 8px', gap: 4 }}>
-            {(['needs-review', 'staged', 'done'] as Tab[]).map((t) => {
-              const label = t === 'needs-review' ? 'Needs review' : t === 'staged' ? 'Staged' : 'Done today';
-              const count = tabCounts[t === 'needs-review' ? 'needs' : t === 'staged' ? 'staged' : 'done'];
-              return (
-                <button key={t} type="button" onClick={() => { setTab(t); setSelectedId(null); }}
-                  style={{ padding: '4px 8px', fontSize: 12, border: '1px solid', borderRadius: 6, cursor: 'pointer',
-                    borderColor: tab === t ? 'var(--accent)' : 'var(--border)',
-                    background: tab === t ? 'color-mix(in srgb, var(--accent) 8%, transparent)' : 'transparent',
-                    color: tab === t ? 'var(--accent)' : 'var(--ink-2)', fontWeight: tab === t ? 600 : 400 }}>
-                  {label} <span style={{ fontFamily: 'var(--mono)' }}>{count}</span>
-                </button>
-              );
-            })}
-          </div>
-          {/* Progress */}
-          <div style={{ padding: '6px 10px', borderBottom: '1px solid var(--border)', fontSize: 11, color: 'var(--ink-2)' }}>
-            <span style={{ fontFamily: 'var(--mono)' }}>{reviewedToday}</span> of <span style={{ fontFamily: 'var(--mono)' }}>{totalQueue}</span> reviewed today
-            <div style={{ height: 2, background: 'var(--border)', borderRadius: 1, marginTop: 4 }}>
-              <div style={{ height: '100%', background: 'var(--accent)', borderRadius: 1, width: totalQueue ? `${(reviewedToday / totalQueue) * 100}%` : '0%', transition: 'width 120ms ease-out' }} />
-            </div>
-          </div>
-          {/* List */}
-          <div style={{ flex: 1, overflowY: 'auto', padding: '6px 8px' }}>
-            {queue.length === 0
-              ? <EmptyState title="No items" description={`No ${tab.replace('-', ' ')} items in this queue.`} />
-              : <VirtualList items={queue} itemHeight={56} renderItem={renderQueueItem} />
-            }
+  const TABS: { id: Tab; label: string; count: number }[] = [
+    { id: 'needs-review', label: 'Needs review', count: tabCounts.needs },
+    { id: 'staged', label: 'Staged', count: tabCounts.staged },
+    { id: 'done', label: 'Done', count: tabCounts.done },
+  ];
+  const progress = totalQueue ? Math.min(100, (reviewedToday / totalQueue) * 100) : 0;
+  const notePhrase = selected?.source_phrase ?? null;
+  const noteText = selected?.note_text ?? '';
+  const phraseAt = notePhrase ? noteText.toLowerCase().indexOf(notePhrase.toLowerCase()) : -1;
+
+  return (
+    <div className="page">
+      <PageHeader
+        eyebrow={role === 'Nurse' ? 'Nurse · Validation' : 'Doctor · Approval'}
+        title={role === 'Nurse' ? 'Routine follow-ups' : 'High-priority follow-ups'}
+        subtitle="Check what the AI read from each note, then approve, edit the date, or reject. Nothing is sent without your click."
+      />
+
+      <div className="page-body" style={{ display: 'flex', flexDirection: 'column', gap: 14, overflow: 'hidden' }}>
+        <div className={`stat-grid compact queue-stats${selected ? ' with-selection' : ''}`}>
+          <Stat icon="sparkle" value={newByTab['needs-review'] + newByTab.staged} label="New from the doctor" sub="Marked NEW in the list" />
+          <Stat icon="alertTriangle" tone="hold" value={tabCounts.needs} label="Needs review" sub="Date must be set by you" />
+          <Stat icon="inbox" value={tabCounts.staged} label="Staged" sub="AI read a time window" />
+          <div className="card stat">
+            <div className="stat-top ok"><Icon name="checkCircle" size={15} /><span className="stat-label">Reviewed today</span></div>
+            <div className="stat-value">{reviewedToday}<span className="stat-of"> / {totalQueue}</span></div>
+            <div className="meter" style={{ marginTop: 2 }}><span style={{ width: `${progress}%` }} /></div>
           </div>
         </div>
-
-        {/* RIGHT pane */}
-        <main style={{ flex: 1, minWidth: 0, overflowY: 'auto', padding: 20 }}>
-          {selected ? (
-            <div style={{ maxWidth: 560 }}>
-              {/* Missing priority flag */}
-              {!selected.doctor_priority && (
-                <div style={{ fontSize: 12, color: 'var(--hold)', marginBottom: 8 }}>Priority not tagged. Defaulting to Routine.</div>
-              )}
-
-              {/* Needs review banner */}
-              {needsReview && (
-                <Banner variant="warn">No clear time window in this note.</Banner>
-              )}
-
-              {/* Paper slip */}
-              <div style={{ position: 'relative', marginBottom: 12 }}>
-                <textarea readOnly className="paper-slip" value={selected.note_text ?? ''} aria-label="Source note"
-                  style={{ minHeight: 140 }} />
-                {selected.source_phrase && (
-                  <div style={{ position: 'absolute', bottom: 8, left: 20, right: 8, background: 'var(--mark)', padding: '2px 6px', fontSize: 11, borderRadius: 4, color: 'var(--ink)', fontFamily: 'var(--serif)' }}>
-                    "{selected.source_phrase}"
-                  </div>
-                )}
-              </div>
-
-              {/* Needs-review date input */}
-              {needsReview && !selected.target_date && (
-                <div style={{ marginBottom: 12, padding: 12, border: '1px solid var(--hold)', borderRadius: 6, background: 'color-mix(in srgb, var(--hold) 8%, transparent)' }}>
-                  <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: 'var(--hold)', marginBottom: 6 }}>
-                    Due date — approver must set
-                  </label>
-                  {selected.interval_days != null && (
-                    <div style={{ fontSize: 12, color: 'var(--ink-2)', marginBottom: 6 }}>
-                      Candidate interval: {selected.interval_days} days
-                      <button type="button" onClick={() => {
-                        const d = new Date(selected.visit_date.getTime() + selected.interval_days! * 86400000);
-                        setManualDate(d.toISOString().slice(0, 10));
-                      }} style={{ marginLeft: 8, fontSize: 11, color: 'var(--accent)', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}>
-                        Accept
-                      </button>
-                    </div>
-                  )}
-                  <input type="date" value={manualDate}
-                    onChange={(e) => setManualDate(e.target.value)}
-                    style={{ border: '1px solid var(--border)', borderRadius: 6, padding: '4px 8px', fontSize: 13, width: '100%' }} />
-                  <div style={{ fontSize: 11, color: 'var(--ink-2)', marginTop: 4 }}>The AI never fills this date.</div>
-                </div>
-              )}
-
-              {/* Field rows */}
-              <div style={{ border: '1px solid var(--border)', borderRadius: 6, overflow: 'hidden', marginBottom: 16 }}>
-                {[
-                  { label: 'Interval', value: selected.interval_days != null ? `${selected.interval_days} days` : '—', chip: 'AI proposed' },
-                  { label: 'Reason', value: selected.reason_category ?? '—', chip: 'AI proposed' },
-                  { label: 'Due date', value: fmtDate(selected.target_date), chip: 'AI proposed' },
-                  { label: 'Priority', value: selected.doctor_priority ?? 'Routine (default)', chip: 'Doctor tagged' },
-                ].map(({ label, value, chip }) => (
-                  <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '8px 12px', borderBottom: '1px solid var(--border)', fontSize: 13 }}>
-                    <span style={{ width: 80, fontSize: 12, color: 'var(--ink-2)', flexShrink: 0 }}>{label}</span>
-                    <span style={{ flex: 1, color: 'var(--ink)', fontFamily: label === 'Due date' || label === 'Interval' ? 'var(--mono)' : undefined }}>{value}</span>
-                    <Chip variant="neutral" style={{ fontSize: 10 }}>{chip}</Chip>
-                  </div>
+        {/* On phones only one pane shows: the list, or the selected card's details. */}
+        <div className={`queue-layout${selected ? ' has-selection' : ''}`}>
+          {/* LEFT pane */}
+          <section className="card queue-pane">
+            <div style={{ padding: 10, borderBottom: '1px solid var(--border)' }}>
+              <div className="segmented" style={{ width: '100%' }}>
+                {TABS.map((t) => (
+                  <button key={t.id} type="button" className={tab === t.id ? 'active' : undefined} style={{ flex: 1, justifyContent: 'center' }}
+                    onClick={() => { setTab(t.id); setSelectedId(null); }}>
+                    {newByTab[t.id] > 0 && <span className="new-dot" title={`${newByTab[t.id]} new from the doctor`} />}
+                    {t.label} <span className="count">{t.count}</span>
+                  </button>
                 ))}
               </div>
+            </div>
+            <div style={{ flex: 1, minHeight: 0, overflow: 'hidden', padding: 6 }}>
+              {queue.length === 0
+                ? <EmptyState icon="checkCircle" title="Nothing here" description={`No ${tab.replace('-', ' ')} items in this queue.`} />
+                : <VirtualList items={queue} itemHeight={64} renderItem={renderQueueItem} />
+              }
+            </div>
+            <div className="queue-foot">
+              <span><Kbd>J</Kbd> <Kbd>K</Kbd> move</span>
+              <span><Kbd>A</Kbd> approve</span>
+              <span><Kbd>E</Kbd> edit</span>
+              <span><Kbd>R</Kbd> reject</span>
+            </div>
+          </section>
 
-              {/* Action bar */}
-              <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                <button type="button" onClick={() => setRejectOpen(true)}
-                  style={{ padding: '6px 12px', fontSize: 12, border: '1px solid var(--border)', borderRadius: 6, background: 'transparent', cursor: 'pointer', color: 'var(--ink-2)' }}>
-                  Reject to audit <Kbd>R</Kbd>
-                </button>
-                <button type="button" onClick={() => setDateOpen(true)}
-                  style={{ padding: '6px 12px', fontSize: 12, border: '1px solid var(--border)', borderRadius: 6, background: 'transparent', cursor: 'pointer', color: 'var(--ink-2)' }}>
-                  Edit date <Kbd>E</Kbd>
-                </button>
-                <button type="button" onClick={doApprove} disabled={noDate}
-                  title={noDate ? 'Set a due date first' : undefined}
-                  style={{ padding: '6px 16px', fontSize: 12, border: '1px solid var(--ink)', borderRadius: 6, background: noDate ? 'var(--border)' : 'var(--ink)', color: noDate ? 'var(--ink-2)' : '#fff', cursor: noDate ? 'not-allowed' : 'pointer', fontWeight: 600 }}>
-                  Approve <Kbd>A</Kbd>
-                </button>
-              </div>
+          {/* RIGHT pane */}
+          <section ref={detailRef} className="card detail-pane">
+            {selected ? (
+              <>
+                <div className="card-header detail-head">
+                  <button type="button" className="btn btn-ghost btn-sm back-btn" onClick={() => setSelectedId(null)}>
+                    <Icon name="chevronLeft" size={15} />Queue
+                  </button>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0 }}>
+                    <div className="avatar" style={{ width: 38, height: 38, fontSize: 13 }}>
+                      {(selectedPatient?.name ?? '?').split(' ').map((w) => w[0]).slice(0, 2).join('').toUpperCase()}
+                    </div>
+                    <div style={{ minWidth: 0 }}>
+                      <div className="card-title" style={{ fontSize: 15 }}>{selectedPatient?.name ?? 'Unknown patient'}</div>
+                      <div className="card-sub" style={{ fontFamily: 'var(--mono)' }}>{selected.token} · seen {fmtDate(selected.visit_date)}</div>
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', gap: 6 }}>
+                    <PriorityBadge priority={selected.doctor_priority ?? 'Routine'} missing={!selected.doctor_priority} />
+                    <Chip variant={selected.status === 'Needs Review' ? 'hold' : selected.status === 'Approved' ? 'ok' : selected.status === 'Rejected' ? 'high' : 'accent'}>{selected.status}</Chip>
+                  </div>
+                </div>
 
-              {/* Date picker popover */}
-              {dateOpen && (
-                <DatePicker open onClose={() => setDateOpen(false)}
-                  selected={selected.target_date}
-                  onSelect={(d) => { editVisitDate(selected.id, d); setDateOpen(false); }}
-                  workingDays={[1,2,3,4,5,6]} />
-              )}
+                <div className="detail-scroll">
+                  <div className="stack" style={{ gap: 14, maxWidth: 640 }}>
+                    {!selected.doctor_priority && (
+                      <Banner variant="warn">Priority not tagged. Defaulting to Routine.</Banner>
+                    )}
+                    {needsReview && (
+                      <Banner variant="warn">No clear time window in this note.</Banner>
+                    )}
 
-              {/* Reject drawer */}
-              {rejectOpen && (
-                <div style={{ position: 'fixed', inset: 0, zIndex: 60, background: 'rgba(31,35,40,.2)' }} onClick={() => setRejectOpen(false)}>
-                  <div style={{ position: 'fixed', right: 0, top: 0, height: '100%', width: 280, background: 'var(--bg)', borderLeft: '1px solid var(--border)', padding: 20, display: 'flex', flexDirection: 'column', gap: 12, boxShadow: '0 4px 16px rgba(0,0,0,.08)' }} onClick={(e) => e.stopPropagation()}>
-                    <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--ink)' }}>Reject to audit</div>
-                    <label style={{ fontSize: 12, color: 'var(--ink-2)' }}>Reason</label>
-                    <select value={rejectReason} onChange={(e) => setRejectReason(e.target.value)}
-                      style={{ border: '1px solid var(--border)', borderRadius: 6, padding: '6px 8px', fontSize: 13 }}>
-                      <option value="">Select a reason</option>
-                      {REJECT_REASONS.map((r) => <option key={r} value={r}>{r}</option>)}
-                    </select>
-                    <div style={{ display: 'flex', gap: 8 }}>
-                      <button type="button" onClick={() => setRejectOpen(false)}
-                        style={{ flex: 1, padding: '6px 0', fontSize: 12, border: '1px solid var(--border)', borderRadius: 6, background: 'transparent', cursor: 'pointer' }}>
-                        Cancel
-                      </button>
-                      <button type="button" onClick={doReject} disabled={!rejectReason}
-                        style={{ flex: 1, padding: '6px 0', fontSize: 12, border: '1px solid var(--high)', borderRadius: 6, background: 'var(--high)', color: '#fff', cursor: rejectReason ? 'pointer' : 'not-allowed' }}>
-                        Reject
-                      </button>
+                    <div>
+                      <div className="field-label">Doctor's note</div>
+                      <div className="paper-slip" role="document" aria-label="Source note" style={{ minHeight: 0 }}>
+                        {phraseAt >= 0 && notePhrase ? (
+                          <>
+                            {noteText.slice(0, phraseAt)}
+                            <mark className="phrase-mark">{noteText.slice(phraseAt, phraseAt + notePhrase.length)}</mark>
+                            {noteText.slice(phraseAt + notePhrase.length)}
+                          </>
+                        ) : (noteText || (slips[selected.id] ? 'No typed note. Read the paper slip below.' : '—'))}
+                      </div>
+                      {notePhrase && phraseAt < 0 && (
+                        <div className="hint" style={{ marginTop: 6 }}>AI read: <mark className="phrase-mark">{notePhrase}</mark></div>
+                      )}
+                    </div>
+
+                    {slips[selected.id] && (() => {
+                      const s = slips[selected.id];
+                      const isImage = s.type.startsWith('image/');
+                      return (
+                        <div>
+                          <div className="field-label">Paper slip from the doctor</div>
+                          <div className="slip-view">
+                            {isImage
+                              ? <img src={s.data_url} alt={`Paper slip for ${selected.token}`} onClick={() => setSlipZoom(true)} />
+                              : <span className="slip-thumb pdf" style={{ width: 64, height: 64 }}><Icon name="fileText" size={22} />PDF</span>}
+                            <div style={{ minWidth: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                              <span className="slip-name">{s.name}</span>
+                              <span className="hint">{formatBytes(s.size)} · attached {fmtDate(s.attached_at)}</span>
+                              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                                {isImage && <Button variant="quiet" size="small" icon="search" onClick={() => setSlipZoom(true)}>View larger</Button>}
+                                <Button variant="ghost" size="small" icon="fileText" onClick={() => openSlipInNewTab(s.data_url)}>Open in new tab</Button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })()}
+
+                    {needsReview && !selected.target_date && (
+                      <div className="set-date-box">
+                        <label className="field-label" style={{ color: 'var(--hold-ink)', fontWeight: 600 }} htmlFor="manual-date">
+                          Due date (approver must set)
+                        </label>
+                        {selected.interval_days != null && (
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: 'var(--ink-2)', marginBottom: 8 }}>
+                            Candidate interval: <span style={{ fontFamily: 'var(--mono)' }}>{selected.interval_days} days</span>
+                            <Button variant="ghost" size="small" onClick={() => {
+                              const d = new Date(selected.visit_date.getTime() + selected.interval_days! * 86400000);
+                              setManualDate(d.toISOString().slice(0, 10));
+                            }}>Use this</Button>
+                          </div>
+                        )}
+                        <input id="manual-date" type="date" value={manualDate}
+                          onChange={(e) => setManualDate(e.target.value)}
+                          style={{ width: '100%', maxWidth: 240 }} />
+                        <div className="hint" style={{ marginTop: 6 }}>The AI never fills this date.</div>
+                      </div>
+                    )}
+
+                    <div>
+                      <div className="field-label">What the AI proposed</div>
+                      <div className="card" style={{ padding: '0 16px', boxShadow: 'none' }}>
+                        <dl className="def-list">
+                          {[
+                            { label: 'Interval', value: selected.interval_days != null ? `${selected.interval_days} days` : '—', chip: 'AI proposed', mono: true },
+                            { label: 'Reason', value: selected.reason_category ?? '—', chip: 'AI proposed', mono: false },
+                            { label: 'Due date', value: fmtDate(selected.target_date), chip: 'AI proposed', mono: true },
+                            { label: 'Priority', value: selected.doctor_priority ?? 'Routine (default)', chip: 'Doctor tagged', mono: false },
+                          ].map(({ label, value, chip, mono }) => (
+                            <div key={label}>
+                              <dt>{label}</dt>
+                              <dd style={mono ? { fontFamily: 'var(--mono)', fontSize: 13 } : undefined}>{value}</dd>
+                              <span className="def-tag"><Chip variant={chip === 'Doctor tagged' ? 'outline' : 'accent'}>{chip === 'AI proposed' && <Icon name="sparkle" size={11} />}{chip}</Chip></span>
+                            </div>
+                          ))}
+                        </dl>
+                      </div>
                     </div>
                   </div>
                 </div>
-              )}
-            </div>
-          ) : (
-            <EmptyState title="No card selected" description="Pick a visit from the queue on the left to review it." />
-          )}
-        </main>
+
+                <div className="action-bar">
+                  <Button variant="danger-quiet" icon="x" kbd="R" onClick={() => setRejectOpen(true)}>Reject to audit</Button>
+                  <Button variant="quiet" icon="calendar" kbd="E" onClick={() => setDateOpen(true)}>Edit date</Button>
+                  <Button variant="primary" icon="check" kbd="A" onClick={doApprove} disabled={noDate}
+                    title={noDate ? 'Set a due date first' : undefined} style={{ marginLeft: 'auto', minWidth: 140 }}>
+                    Approve
+                  </Button>
+                </div>
+
+                {dateOpen && (
+                  <DatePicker open onClose={() => setDateOpen(false)}
+                    selected={selected.target_date}
+                    onSelect={(d) => { editVisitDate(selected.id, d); setDateOpen(false); }}
+                    workingDays={[1,2,3,4,5,6]} />
+                )}
+
+                <Drawer open={slipZoom && !!slips[selected.id]} onClose={() => setSlipZoom(false)} title={`Paper slip · ${selected.token}`} width={760}>
+                  <div>
+                    {slips[selected.id] && <img className="slip-full" src={slips[selected.id].data_url} alt={`Paper slip for ${selected.token}`} />}
+                  </div>
+                </Drawer>
+
+                <Drawer open={rejectOpen} onClose={() => setRejectOpen(false)} title="Reject to audit" width={360}>
+                  <div className="stack" style={{ gap: 14 }}>
+                    <p style={{ margin: 0, fontSize: 13, color: 'var(--ink-2)' }}>
+                      The visit leaves the queue and the reason is written to the audit log.
+                    </p>
+                    <div>
+                      <label className="field-label" htmlFor="reject-reason">Reason</label>
+                      <select id="reject-reason" value={rejectReason} onChange={(e) => setRejectReason(e.target.value)} style={{ width: '100%', height: 36 }}>
+                        <option value="">Select a reason</option>
+                        {REJECT_REASONS.map((r) => <option key={r} value={r}>{r}</option>)}
+                      </select>
+                    </div>
+                    <div style={{ display: 'flex', gap: 8 }}>
+                      <Button variant="quiet" onClick={() => setRejectOpen(false)} style={{ flex: 1 }}>Cancel</Button>
+                      <Button variant="danger" onClick={doReject} disabled={!rejectReason} style={{ flex: 1 }}>Reject</Button>
+                    </div>
+                  </div>
+                </Drawer>
+              </>
+            ) : (
+              <EmptyState icon="fileText" title="No card selected" description="Pick a visit from the queue on the left to review it, or press J." />
+            )}
+          </section>
+        </div>
       </div>
 
-      {/* Undo toast */}
       {undoToast && (
-        <Toast message="Follow-up approved. Patient notified (simulated)." onUndo={doUndo} onDismiss={() => { clearTimeout(undoToast.timer); setUndoToast(null); }} />
+        <Toast open message="Follow-up approved. Patient notified (simulated)." onUndo={doUndo} onDismiss={() => { clearTimeout(undoToast.timer); setUndoToast(null); }} />
       )}
     </div>
   );

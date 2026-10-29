@@ -15,8 +15,11 @@ function getStore() {
   return useDomainStore.getState();
 }
 
-function findPatient(name: string) {
-  return seed.patients.find((p) => p.name === name)!;
+// Seed patients A-F, C2, D2 have synthetic names; tests find them by their fixed token.
+const TOKEN = { A: 'OPD-0501', B: 'OPD-0502', C: 'OPD-0503', D: 'OPD-0504', E: 'OPD-0505', F: 'OPD-0506', C2: 'OPD-0507', D2: 'OPD-0508' } as const;
+
+function findPatient(key: keyof typeof TOKEN) {
+  return seed.patients.find((p) => p.token === TOKEN[key])!;
 }
 
 describe('P2 domain model', () => {
@@ -33,7 +36,7 @@ describe('P2 domain model', () => {
     const all = seed.patients;
     const shared = all.filter((p) => sharedContact(p, all));
     expect(shared.map((p) => p.id).sort()).toEqual(
-      [findPatient('Patient C').id, findPatient('Patient C2').id, findPatient('Patient D').id, findPatient('Patient D2').id].sort()
+      [findPatient('C').id, findPatient('C2').id, findPatient('D').id, findPatient('D2').id].sort()
     );
     expect(shared.length).toBe(4);
   });
@@ -53,21 +56,20 @@ describe('P2 domain model', () => {
 
   it('isOverdue / daysOverdue for A-F', () => {
     const now = SIMULATED_NOW;
-    const byName: Record<string, any> = {};
-    for (const p of seed.patients) byName[p.name] = p;
     const visitsByPatient = new Map<string, any>();
     for (const v of seed.visits) visitsByPatient.set(v.patient_id, v);
 
-    const cases: Array<[string, boolean, number | null]> = [
-      ['Patient A', true, 12],
-      ['Patient B', true, 2],
-      ['Patient C', true, 7],
-      ['Patient D', true, 5],
-      ['Patient E', true, 9],
-      ['Patient F', false, null],
+    // Days overdue count from each visit's due date.
+    const cases: Array<[keyof typeof TOKEN, boolean, number | null]> = [
+      ['A', true, 12],
+      ['B', true, 2],
+      ['C', true, 7],
+      ['D', true, 5],
+      ['E', true, 9],
+      ['F', false, null],
     ];
-    for (const [name, expectedOverdue, expectedDays] of cases) {
-      const p = byName[name];
+    for (const [key, expectedOverdue, expectedDays] of cases) {
+      const p = findPatient(key);
       const v = visitsByPatient.get(p.id)!;
       expect(isOverdue(v, seed.checkins, now)).toBe(expectedOverdue);
       expect(daysOverdue(v, seed.checkins, now)).toBe(expectedDays);
@@ -90,8 +92,10 @@ describe('P2 domain model', () => {
       expect(entry.before).toBeDefined();
       expect(entry.after).toBeDefined();
       expect(entry.timestamp).toBeInstanceOf(Date);
-      expect(entry.actor).toBe('Demo User');
-      expect(entry.role).toBe('Doctor');
+      // The signed-in staff member and their role are recorded on every entry.
+      expect(entry.actor).toBe(after.actor);
+      expect(entry.actor).toBeTruthy();
+      expect(entry.role).toBe(after.role);
     }
   });
 

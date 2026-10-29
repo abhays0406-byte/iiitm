@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useMemo } from 'react';
+import { useState, useRef, useMemo, useLayoutEffect } from 'react';
 
 interface VirtualListProps<T> {
   items: T[];
@@ -7,15 +7,26 @@ interface VirtualListProps<T> {
   className?: string;
 }
 
+/** Fills its parent's height and renders only the rows in view. */
 export function VirtualList<T>({ items, itemHeight, renderItem, className }: VirtualListProps<T>) {
   const [scrollTop, setScrollTop] = useState(0);
+  const [viewHeight, setViewHeight] = useState(600);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
+  useLayoutEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
+    const measure = () => { if (el.clientHeight > 0) setViewHeight(el.clientHeight); };
+    measure();
+    if (typeof ResizeObserver === 'undefined') return;
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   const totalHeight = items.length * itemHeight;
-  const viewHeight = 300;
   const startIndex = Math.max(0, Math.floor(scrollTop / itemHeight));
   const endIndex = Math.min(items.length, Math.ceil((scrollTop + viewHeight) / itemHeight) + 1);
-  const offset = startIndex * itemHeight;
 
   const visible = useMemo(
     () => items.slice(startIndex, endIndex).map((item, i) => ({ item, index: startIndex + i })),
@@ -29,18 +40,16 @@ export function VirtualList<T>({ items, itemHeight, renderItem, className }: Vir
   return (
     <div
       className={className}
-      style={{ position: 'relative', height: viewHeight, overflow: 'auto' }}
+      style={{ position: 'relative', height: '100%', overflow: 'auto' }}
       onScroll={onScroll}
       ref={wrapperRef}
     >
       <div style={{ height: totalHeight, position: 'relative' }}>
-        <div style={{ height: offset }} />
         {visible.map(({ item, index }) => (
-          <div key={index} style={{ position: 'absolute', top: index * itemHeight, height: itemHeight }}>
+          <div key={index} style={{ position: 'absolute', top: index * itemHeight, left: 0, right: 0, height: itemHeight }}>
             {renderItem(item, index)}
           </div>
         ))}
-        <div style={{ height: totalHeight - offset - visible.length * itemHeight }} />
       </div>
     </div>
   );

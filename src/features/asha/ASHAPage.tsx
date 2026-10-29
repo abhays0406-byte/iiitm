@@ -1,25 +1,23 @@
 import { useMemo } from 'react';
 import { useDomainStore } from '@/domain/store';
-import { useClockStore } from '@/store/clock';
 import { fmtDate } from '@/features/records/selector';
 import { Table, TableHead, TableRow, TableCell, TableBody } from '@/ui/Table';
 import { Button } from '@/ui/Button';
-import { Kbd } from '@/ui/Kbd';
+import { Banner } from '@/ui/Banner';
+import { Chip } from '@/ui/Chip';
+import { PageHeader } from '@/ui/PageHeader';
+import { Stat } from '@/ui/Stat';
 
 const OUTCOME_TAGS = [
   'Resolved', 'Went elsewhere', 'Too far',
   'Cost or leave issue', 'Number wrong or off', 'Could not reach',
 ] as const;
 
-const pageStyle: React.CSSProperties = { display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden' };
-const headerStyle: React.CSSProperties = { borderBottom: '1px solid var(--border)', background: 'var(--surface)', padding: '10px 16px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 };
-
 export function ASHAPage() {
   const patients = useDomainStore((s) => s.patients);
   const visits = useDomainStore((s) => s.visits);
   const outreach = useDomainStore((s) => s.outreach);
   const setOutcomeTag = useDomainStore((s) => s.setOutcomeTag);
-  const now = useClockStore((s) => s.now);
 
   const unreachable = patients.filter((p) => p.unreachable_flag);
 
@@ -50,52 +48,68 @@ export function ASHAPage() {
   };
 
   return (
-    <div style={pageStyle}>
-      <div style={headerStyle}>
-        <h2 style={{ margin: 0, fontSize: 18, fontWeight: 600, color: 'var(--ink)' }}>ASHA list</h2>
-        <div style={{ fontSize: 12, color: 'var(--ink-3)', fontFamily: 'var(--mono)' }}>{now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
-      </div>
+    <div className="page asha-print">
+      <PageHeader
+        eyebrow="ASHA · Field visits"
+        title="Unreachable patients"
+        subtitle="Patients with no working phone. Visit them at home and record a logistics outcome."
+        actions={
+          <>
+            <Button variant="quiet" icon="printer" kbd="P" onClick={() => window.print()}>Print</Button>
+            <Button variant="primary" icon="download" kbd="E" onClick={exportCSV}>Export CSV</Button>
+          </>
+        }
+      />
 
-      <div style={{ flex: 1, overflow: 'auto', padding: 16 }}>
-        <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
-          <Button variant="primary" onClick={exportCSV}><Kbd>E</Kbd> Export CSV</Button>
-          <Button variant="quiet" onClick={() => window.print()}><Kbd>P</Kbd> Print</Button>
-        </div>
-
-        <div style={{ border: '1px solid var(--border)', borderRadius: 4, overflow: 'hidden' }}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell>Area / ward</TableCell>
-                <TableCell>Last due date</TableCell>
-                <TableCell>Outcome tag</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map(({ patient, outcome, due }) => (
-                <TableRow key={patient.id}>
-                  <TableCell><span style={{ fontSize: 13, color: 'var(--ink)' }}>{patient.name}</span></TableCell>
-                  <TableCell><span style={{ fontSize: 13, color: 'var(--ink-2)', fontFamily: 'var(--mono)' }}>{patient.ward || '—'}</span></TableCell>
-                  <TableCell><span style={{ fontSize: 13, fontFamily: 'var(--mono)' }}>{fmtDate(due ?? null)}</span></TableCell>
-                  <TableCell>
-                    <select value={outcome} onChange={(e) => setTag(patient.id, e.target.value)}
-                      style={{ border: '1px solid var(--border)', borderRadius: 4, padding: '3px 6px', fontSize: 12 }}>
-                      <option value="—">—</option>
-                      {OUTCOME_TAGS.map((t) => <option key={t} value={t}>{t}</option>)}
-                    </select>
-                  </TableCell>
+      <div className="page-body">
+        <div className="stack">
+          <div className="stat-grid">
+            <Stat icon="mapPin" value={rows.length} label="Patients to visit" sub="No working phone" />
+            <Stat icon="checkCircle" tone="ok" value={rows.filter((r) => r.outcome !== '—').length} label="Outcome recorded" sub="Visited or resolved" />
+            <Stat icon="clock" tone="hold" value={rows.filter((r) => r.outcome === '—').length} label="Not visited yet" sub="Still on the list" />
+          </div>
+          <section className="card card-flush">
+            <div className="card-header">
+              <div>
+                <div className="card-title">Visit list</div>
+                <div className="card-sub">Sorted as received from the Records Desk</div>
+              </div>
+              <Chip variant="neutral">{rows.length} patients</Chip>
+            </div>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Area / ward</TableCell>
+                  <TableCell>Last due date</TableCell>
+                  <TableCell>Outcome tag</TableCell>
                 </TableRow>
-              ))}
-              {rows.length === 0 && (
-                <TableRow><TableCell colSpan={4} style={{ textAlign: 'center', fontSize: 12, color: 'var(--ink-3)', padding: 16 }}>No unreachable patients.</TableCell></TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </div>
+              </TableHead>
+              <TableBody>
+                {rows.map(({ patient, outcome, due }) => (
+                  <TableRow key={patient.id}>
+                    <TableCell>
+                      <div style={{ fontWeight: 600 }}>{patient.name}</div>
+                      <div className="mono muted" style={{ fontSize: 11 }}>{patient.token}</div>
+                    </TableCell>
+                    <TableCell className={patient.ward ? undefined : 'muted'}>{patient.ward || 'Not recorded'}</TableCell>
+                    <TableCell className="mono">{fmtDate(due ?? null)}</TableCell>
+                    <TableCell>
+                      <select value={outcome} onChange={(e) => setTag(patient.id, e.target.value)} aria-label={`Outcome for ${patient.name}`} style={{ minWidth: 190 }}>
+                        <option value="—">Not visited yet</option>
+                        {OUTCOME_TAGS.map((t) => <option key={t} value={t}>{t}</option>)}
+                      </select>
+                    </TableCell>
+                  </TableRow>
+                ))}
+                {rows.length === 0 && (
+                  <TableRow><TableCell colSpan={4} className="table-empty">No unreachable patients. Everyone on the list has a working phone.</TableCell></TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </section>
 
-        <div style={{ marginTop: 16, fontSize: 12, color: 'var(--ink-3)' }}>
-          Outcome tags are logistics only, never clinical. Read-only view for ASHA workers.
+          <Banner variant="info">Outcome tags are logistics only, never clinical. Read-only view for ASHA workers.</Banner>
         </div>
       </div>
     </div>

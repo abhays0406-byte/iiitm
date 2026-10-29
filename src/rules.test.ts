@@ -53,7 +53,7 @@ describe('RULES.md hard rules 1-10', () => {
   it('Rule 3: queue sort is deterministic: High first, then days overdue desc, token asc; no household grouping', () => {
     const now = makeDate(2026, 10, 12);
     const a = { id: 'A', patient_id: 'PA', token: 'OPD-0200', visit_date: now, note_text: null, doctor_priority: 'Routine', status: 'Approved', approved_date: makeDate(2026, 9, 30), approved_by: 'D', approved_at: now, interval_days: 7, target_date: null, reason_category: null, source_phrase: null, needs_review: false, review_reason: null, rejection_reason: null, simulated: true, created_at: now, updated_at: now };
-    const b = { id: 'B', patient_id: 'PB', token: 'OPD-0100', visit_date: now, note_text: null, doctor_priority: 'High', status: 'Approved', approved_date: makeDate(2026, 10, 10), approved_by: 'D', approved_at: now, interval_days: 7, target_date: null, reason_category: null, source_phrase: null, needs_review: false, review_reason: null, rejection_reason: null, simulated: true, created_at: now, updated_at: now };
+    const b = { id: 'B', patient_id: 'PB', token: 'OPD-0100', visit_date: now, note_text: null, doctor_priority: 'High', status: 'Approved', approved_date: makeDate(2026, 10, 3), approved_by: 'D', approved_at: now, interval_days: 7, target_date: null, reason_category: null, source_phrase: null, needs_review: false, review_reason: null, rejection_reason: null, simulated: true, created_at: now, updated_at: now };
     const queue = buildQueue(reconcile([a, b], [], now));
     expect(queue[0].visit.id).toBe('B');
     expect(queue[1].visit.id).toBe('A');

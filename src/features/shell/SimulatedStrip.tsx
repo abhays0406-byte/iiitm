@@ -1,18 +1,20 @@
-import { useClockStore } from '@/store/clock';
+import { useClockStore, SIMULATED_NOW } from '@/store/clock';
+import { Icon } from '@/ui/Icon';
+import { fmtDate } from '@/features/records/selector';
 
 export function SimulatedStrip() {
-  const { now } = useClockStore();
-  const isSimulated = now.getTime() !== new Date(2026, 10, 12).getTime();
+  const now = useClockStore((s) => s.now);
+  const isSimulated = now.getTime() !== SIMULATED_NOW.getTime();
 
   if (!isSimulated) return null;
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--warn)', background: 'rgba(232,160,0,0.08)', padding: '4px 16px', flexShrink: 0 }}>
-      <span style={{ fontSize: 12, fontWeight: 500, color: 'var(--hold)', display: 'flex', alignItems: 'center', gap: 4 }}>
-        <span role="img" aria-label="simulated">•</span>
-        Simulated data. Not real patients.
+    <div className="simulated-strip" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, background: 'var(--hold-bg)', borderBottom: '1px solid color-mix(in srgb, var(--hold) 30%, transparent)', padding: '6px 24px', flexShrink: 0, fontSize: 12 }}>
+      <span style={{ fontWeight: 500, color: 'var(--hold-ink)', display: 'flex', alignItems: 'center', gap: 6 }}>
+        <Icon name="clock" size={13} />
+        Training date is ahead of today. Overdue counts and due dates use this date.
       </span>
-      <span style={{ fontSize: 12, color: 'var(--ink-3)' }}>Clock: {now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+      <span style={{ color: 'var(--hold-ink)', fontFamily: 'var(--mono)' }}>Today is {fmtDate(SIMULATED_NOW)} · App date {fmtDate(now)}</span>
     </div>
   );
 }

@@ -2,15 +2,13 @@ import { useMemo } from 'react';
 import { useDomainStore } from '@/domain/store';
 import { useClockStore } from '@/store/clock';
 import { reconcile } from '@/engine/reconcile';
-import { Table, TableHead, TableRow, TableCell, TableBody } from '@/ui/Table';
+import { PageHeader } from '@/ui/PageHeader';
+import { Stat } from '@/ui/Stat';
 
 const OUTCOME_TAGS = [
   'Resolved', 'Went elsewhere', 'Too far',
   'Cost or leave issue', 'Number wrong or off', 'Could not reach',
 ] as const;
-
-const pageStyle: React.CSSProperties = { display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden' };
-const headerStyle: React.CSSProperties = { borderBottom: '1px solid var(--border)', background: 'var(--surface)', padding: '10px 16px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 };
 
 export function AdminPage() {
   const visits = useDomainStore((s) => s.visits);
@@ -40,70 +38,64 @@ export function AdminPage() {
   const maxCount = Math.max(...OUTCOME_TAGS.map((t) => tagCounts[t] ?? 0), 1);
 
   return (
-    <div style={pageStyle}>
-      <div style={headerStyle}>
-        <h2 style={{ margin: 0, fontSize: 18, fontWeight: 600, color: 'var(--ink)' }}>Admin overview</h2>
-        <div style={{ fontSize: 12, color: 'var(--ink-3)', fontFamily: 'var(--mono)' }}>{now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
-      </div>
+    <div className="page">
+      <PageHeader
+        eyebrow="Admin"
+        title="Overview"
+        subtitle="How follow-ups are moving through the clinic this week."
+      />
 
-      <div style={{ flex: 1, overflow: 'auto', padding: 16 }}>
-        <div style={{ display: 'flex', gap: 16, marginBottom: 24 }}>
-          <Stat number={approved} label="Follow-ups approved" />
-          <Stat number={defaulters} label="Overdue defaulters now" />
-          <Stat number={`${pctContacted}%`} label="Contacted this week" />
-        </div>
+      <div className="page-body">
+        <div className="stack">
+          <div className="stat-grid">
+            <Stat icon="checkCircle" tone="ok" value={approved} label="Follow-ups approved" sub="Dates confirmed by staff" />
+            <Stat icon="alertCircle" tone="high" value={defaulters} label="Overdue defaulters now" sub="Past their due date" />
+            <Stat icon="send" tone="accent" value={`${pctContacted}%`} label="Contacted this week" sub={`${sent} of ${weekOutreach.length} reminders sent`} />
+            <Stat icon="users" tone="hold" value={patients.length} label="Patients on record" sub="Registered at this OPD" />
+          </div>
 
-        <div style={{ border: '1px solid var(--border)', borderRadius: 4, padding: 16, marginBottom: 24 }}>
-          <h3 style={{ margin: '0 0 4px', fontSize: 12, fontWeight: 600, color: 'var(--ink-3)' }}>Why patients did not return</h3>
-          <p style={{ margin: '0 0 16px', fontSize: 12, color: 'var(--ink-3)' }}>Based on simulated outcomes</p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            {OUTCOME_TAGS.map((tag) => {
-              const count = tagCounts[tag] ?? 0;
-              const width = totalTags ? (count / maxCount) * 100 : 0;
-              return (
-                <div key={tag} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <span style={{ width: 150, fontSize: 13, color: 'var(--ink)', flexShrink: 0 }}>{tag}</span>
-                  <div style={{ flex: 1, height: 20, background: 'var(--surface)', borderRadius: 10, overflow: 'hidden', border: '1px solid var(--border)' }}>
-                    <div style={{ height: '100%', background: 'var(--accent)', width: `${width}%`, transition: 'width 120ms ease-out' }} />
-                  </div>
-                  <span style={{ width: 32, fontSize: 13, color: 'var(--ink-2)', fontFamily: 'var(--mono)', textAlign: 'right' }}>{count}</span>
+          <div className="admin-grid">
+            <section className="card">
+              <div className="card-header">
+                <div>
+                  <div className="card-title">Why patients did not return</div>
+                  <div className="card-sub">Based on simulated outcomes</div>
                 </div>
-              );
-            })}
+              </div>
+              <div className="card-body" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+                {OUTCOME_TAGS.map((tag) => {
+                  const count = tagCounts[tag] ?? 0;
+                  const width = totalTags ? (count / maxCount) * 100 : 0;
+                  return (
+                    <div key={tag} style={{ display: 'grid', gridTemplateColumns: '150px 1fr 36px', alignItems: 'center', gap: 12 }}>
+                      <span style={{ fontSize: 13 }}>{tag}</span>
+                      <div className="meter" style={{ height: 8 }}><span style={{ width: `${width}%` }} /></div>
+                      <span style={{ fontSize: 13, color: 'var(--ink-2)', fontFamily: 'var(--mono)', textAlign: 'right' }}>{count}</span>
+                    </div>
+                  );
+                })}
+                {totalTags === 0 && (
+                  <div className="hint">No outcomes tagged yet. They appear once the Records Desk or ASHA tags a contact.</div>
+                )}
+              </div>
+            </section>
+
+            <section className="card">
+              <div className="card-header">
+                <div className="card-title">Totals</div>
+              </div>
+              <div className="card-body" style={{ paddingTop: 4, paddingBottom: 4 }}>
+                <dl className="def-list" style={{ gridTemplateColumns: '1fr auto' }}>
+                  <div><dt>Patients</dt><dd style={{ fontFamily: 'var(--mono)' }}>{patients.length}</dd></div>
+                  <div><dt>Approved visits</dt><dd style={{ fontFamily: 'var(--mono)' }}>{approved}</dd></div>
+                  <div><dt>Outreach attempts</dt><dd style={{ fontFamily: 'var(--mono)' }}>{outreach.length}</dd></div>
+                  <div><dt>Contacted this week</dt><dd style={{ fontFamily: 'var(--mono)' }}>{sent} of {weekOutreach.length}</dd></div>
+                </dl>
+              </div>
+            </section>
           </div>
         </div>
-
-        <div style={{ border: '1px solid var(--border)', borderRadius: 4, overflow: 'hidden' }}>
-          <Table>
-            <TableHead>
-              <TableRow><TableCell>Metric</TableCell><TableCell>Value</TableCell></TableRow>
-            </TableHead>
-            <TableBody>
-              <TableRow>
-                <TableCell><span style={{ fontSize: 13 }}>Patients</span></TableCell>
-                <TableCell><span style={{ fontSize: 13, fontFamily: 'var(--mono)' }}>{patients.length}</span></TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell><span style={{ fontSize: 13 }}>Approved visits</span></TableCell>
-                <TableCell><span style={{ fontSize: 13, fontFamily: 'var(--mono)' }}>{approved}</span></TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell><span style={{ fontSize: 13 }}>Outreach attempts</span></TableCell>
-                <TableCell><span style={{ fontSize: 13, fontFamily: 'var(--mono)' }}>{outreach.length}</span></TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </div>
       </div>
-    </div>
-  );
-}
-
-function Stat({ number, label }: { number: string | number; label: string }) {
-  return (
-    <div style={{ border: '1px solid var(--border)', borderRadius: 4, padding: 12, textAlign: 'center', minWidth: 120 }}>
-      <div style={{ fontSize: 24, fontFamily: 'var(--mono)', fontWeight: 600, color: 'var(--ink)' }}>{number}</div>
-      <div style={{ fontSize: 12, color: 'var(--ink-3)', marginTop: 4 }}>{label}</div>
     </div>
   );
 }

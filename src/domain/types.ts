@@ -39,6 +39,16 @@ export interface Visit {
   updated_at: Date;
 }
 
+/** A scan or photo of the doctor's paper slip, attached to a visit. Clinical: never sent to the Records Desk. */
+export interface Slip {
+  visit_id: string;
+  name: string;
+  type: string;
+  size: number;
+  data_url: string;
+  attached_at: Date;
+}
+
 export interface Checkin {
   id: string;
   patient_id: string;
