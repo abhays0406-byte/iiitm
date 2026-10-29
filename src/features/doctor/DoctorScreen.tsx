@@ -15,6 +15,8 @@ import { NewPatientDrawer } from '@/features/patients/NewPatientDrawer';
 import { toast } from '@/features/demo/useDemoToast';
 import { reconcile } from '@/engine/reconcile';
 import { useGSAP, motionAllowed, enter } from '@/ui/motion';
+import { suggestReason, type MlCategorySuggestion } from '@/extractor/mlCategoryModel';
+import { useConfigStore } from '@/config/store';
 
 type Priority = 'Routine' | 'High';
 
@@ -52,8 +54,16 @@ export function DoctorScreen() {
   const [slipError, setSlipError] = useState('');
   const [slipBusy, setSlipBusy] = useState(false);
   const [dragOver, setDragOver] = useState(false);
-  const [passive, setPassive] = useState<{ intervalDays: number | null; reasonCategory: string } | null>(null);
+  const [passive, setPassive] = useState<{
+    intervalDays: number | null;
+    reasonCategory: string;
+    isMl?: boolean;
+    mlBasis?: string;
+    mlConfidence?: string;
+  } | null>(null);
   const [suggestion, setSuggestion] = useState<{ suggested: Priority; matchedKeyword: string; basis: string } | null>(null);
+  const [mlCategory, setMlCategory] = useState<MlCategorySuggestion | null>(null);
+  const reasonCategories = useConfigStore((s) => s.reasonCategories);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const confirmRef = useRef<HTMLDivElement>(null);
   const patientRef = useRef<HTMLDivElement>(null);
@@ -63,17 +73,24 @@ export function DoctorScreen() {
   const patient = patients.find((p) => p.id === patientId) ?? patients[0];
   const [registerOpen, setRegisterOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
+  const [showPhone, setShowPhone] = useState(false);
 
   useEffect(() => {
     textareaRef.current?.focus();
   }, []);
 
   const runPassive = useCallback((text: string) => {
-    if (!text.trim()) { setPassive(null); setSuggestion(null); return; }
+    if (!text.trim()) { setPassive(null); setSuggestion(null); setMlCategory(null); return; }
     const result = extract(text, now);
-    setPassive(result.intervalDays !== null ? { intervalDays: result.intervalDays, reasonCategory: result.reasonCategory } : null);
+    setPassive(result.intervalDays !== null
+      ? { intervalDays: result.intervalDays, reasonCategory: result.reasonCategory }
+      : result.mlSuggestion
+        ? { intervalDays: result.mlSuggestion.suggestedDays, reasonCategory: result.reasonCategory, isMl: true, mlBasis: result.mlSuggestion.basis, mlConfidence: result.mlSuggestion.confidence }
+        : null
+    );
     setSuggestion(suggestPriority(text));
-  }, [now]);
+    void suggestReason(text, reasonCategories).then(setMlCategory);
+  }, [now, reasonCategories]);
 
   const onNoteChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setNote(e.target.value);
@@ -250,9 +267,19 @@ export function DoctorScreen() {
                 <span className="ai-badge"><Icon name="sparkle" size={12} />AI</span>
                 {passive ? (
                   <>
-                    <span>Read:</span>
+                    <span>{(passive as { isMl?: boolean }).isMl ? 'Suggested:' : 'Read:'}</span>
                     <Chip variant="accent"><span style={{ fontFamily: 'var(--mono)' }}>{passive.intervalDays} days</span></Chip>
                     <Chip variant="accent">{passive.reasonCategory}</Chip>
+                    {(passive as { isMl?: boolean }).isMl && (
+                      <Chip variant="hold" title={(passive as { mlBasis?: string }).mlBasis}>
+                        {(passive as { mlConfidence?: string }).mlConfidence === 'high' ? '●●●' : (passive as { mlConfidence?: string }).mlConfidence === 'medium' ? '●●○' : '●○○'} Suggested · not decided
+                      </Chip>
+                    )}
+                    {mlCategory && (
+                      <Chip variant="accent" title={`Model confidence: ${(mlCategory.confidence * 100).toFixed(0)}%`}>
+                        Suggested: {mlCategory.reasonCategory}
+                      </Chip>
+                    )}
                     {suggestion && (
                       <>
                         <Chip variant={suggestion.suggested === 'High' ? 'high' : 'neutral'} title={suggestion.basis}>
@@ -329,7 +356,7 @@ export function DoctorScreen() {
             )}
           </div>
 
-          <aside className="stack">
+          <aside className="stack" aria-label="Patient information panel">
             <section className="card patient-card">
               <div className="patient-picker">
                 <label className="visually-hidden" htmlFor="patient-select">Current patient</label>
@@ -346,7 +373,25 @@ export function DoctorScreen() {
                   <div style={{ minWidth: 0 }}>
                     <div className="patient-name">{patient?.name}</div>
                     <div className="patient-token">{patient?.token}</div>
-                    <div className="patient-token">{patient?.phone ? `+91 ${patient.phone}` : 'No working phone'}</div>
+                    <div className="patient-token" style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                      {patient?.phone ? (
+                        <>
+                          <span>+91 {showPhone ? patient.phone : `${patient.phone.slice(0, 5)} •••••`}</span>
+                          <button
+                            type="button"
+                            className="icon-btn"
+                            style={{ padding: 2, height: 'auto', width: 'auto' }}
+                            onClick={() => setShowPhone((s) => !s)}
+                            aria-label={showPhone ? 'Hide phone number' : 'Show full phone number'}
+                            title={showPhone ? 'Hide phone number' : 'Show full phone number'}
+                          >
+                            <Icon name={showPhone ? 'eyeOff' : 'eye'} size={12} />
+                          </button>
+                        </>
+                      ) : (
+                        'No working phone'
+                      )}
+                    </div>
                   </div>
                   <span style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 6 }}>
                     {registeredIds.has(patient?.id ?? '')

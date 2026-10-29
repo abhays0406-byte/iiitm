@@ -9,8 +9,12 @@ export interface SlipFile {
 export const SLIP_ACCEPT = 'image/*,application/pdf';
 const MAX_IMAGE_EDGE = 1400;
 const JPEG_QUALITY = 0.72;
-// Slips live in browser storage (about 5 MB per site), so PDFs are capped.
-const MAX_PDF_BYTES = 1.5 * 1024 * 1024;
+// Slips live in browser storage (about 5 MB per site), so PDFs are capped conservatively to prevent quota exhaustion.
+const MAX_PDF_BYTES = 750 * 1024;
+
+function sanitizeFileName(name: string): string {
+  return name.replace(/[^a-zA-Z0-9._ -]/g, '_').slice(0, 100);
+}
 
 function readAsDataUrl(file: Blob): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -33,8 +37,8 @@ function loadImage(src: string): Promise<HTMLImageElement> {
 /** Reads a photo or PDF of a paper slip. Throws an Error with a user-facing message when it cannot be used. */
 export async function readSlipFile(file: File): Promise<SlipFile> {
   if (file.type === 'application/pdf') {
-    if (file.size > MAX_PDF_BYTES) throw new Error('PDF is larger than 1.5 MB. Attach a photo of the slip instead.');
-    return { name: file.name, type: file.type, size: file.size, data_url: await readAsDataUrl(file) };
+    if (file.size > MAX_PDF_BYTES) throw new Error('PDF is larger than 750 KB. Attach a photo of the slip instead.');
+    return { name: sanitizeFileName(file.name), type: file.type, size: file.size, data_url: await readAsDataUrl(file) };
   }
   if (!file.type.startsWith('image/')) throw new Error('Attach a photo (JPG, PNG) or a PDF of the slip.');
 
@@ -50,17 +54,23 @@ export async function readSlipFile(file: File): Promise<SlipFile> {
   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
   const data_url = canvas.toDataURL('image/jpeg', JPEG_QUALITY);
   const size = Math.round((data_url.length - data_url.indexOf(',') - 1) * 0.75);
-  return { name: file.name.replace(/\.[^.]+$/, '') + '.jpg', type: 'image/jpeg', size, data_url };
+  const safeBase = sanitizeFileName(file.name.replace(/\.[^.]+$/, ''));
+  return { name: (safeBase || 'slip') + '.jpg', type: 'image/jpeg', size, data_url };
 }
 
 /** Opens a stored data URL in a new tab (browsers block top-level data: URLs, so go through a blob URL). */
 export function openSlipInNewTab(dataUrl: string) {
-  const [head, body] = dataUrl.split(',');
-  const mime = /data:([^;]+)/.exec(head)?.[1] ?? 'application/octet-stream';
-  const bytes = Uint8Array.from(atob(body), (c) => c.charCodeAt(0));
-  const url = URL.createObjectURL(new Blob([bytes], { type: mime }));
-  window.open(url, '_blank', 'noopener');
-  setTimeout(() => URL.revokeObjectURL(url), 60_000);
+  try {
+    const [head, body] = dataUrl.split(',');
+    if (!head || !body) throw new Error('Invalid data URL');
+    const mime = /data:([^;]+)/.exec(head)?.[1] ?? 'application/octet-stream';
+    const bytes = Uint8Array.from(atob(body), (c) => c.charCodeAt(0));
+    const url = URL.createObjectURL(new Blob([bytes], { type: mime }));
+    window.open(url, '_blank', 'noopener');
+    setTimeout(() => URL.revokeObjectURL(url), 60_000);
+  } catch {
+    console.error('Failed to open slip attachment in new tab');
+  }
 }
 
 export function formatBytes(n: number): string {

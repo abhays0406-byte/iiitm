@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { buildSafeRows, neutralMessage, messageContainsForbidden } from '@/features/records/selector';
 import { makeDate } from '@/store/clock';
-import type { Visit, Patient, Checkin } from '@/domain/types';
+import type { Visit, Patient } from '@/domain/types';
 
 const NOW = makeDate(2026, 10, 12);
 

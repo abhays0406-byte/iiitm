@@ -1,46 +1,59 @@
 @layer tokens {
   :root {
-    --radius: 8px;
+    --radius: 6px;
     --touch: 44px;
-    --border-width: 1px;
 
-    /* Warm paper neutrals with a calm clinical green. */
+    /* Backgrounds */
     --bg: #ffffff;
     --canvas: #f4f3ee;
-    --surface: #f9f8f4;
-    --surface-2: #efede6;
+    --surface: #faf9f7;
+    --surface-2: #f0ede8;
     --paper: #fdfbf5;
-    --ink: #1d2420;
-    --ink-2: #4f5650;
-    --ink-3: #737a73;
-    --border: #e3e0d6;
-    --border-strong: #8f8a7d;
+
+    /* Ink */
+    --ink: #1a1a1a;
+    --ink-2: #484848;
+    --ink-3: #585858;
+
+    /* Borders */
+    --border: #d4d2ce;
+    --border-strong: #6e6e6e;
     --border-focus: #4a4a4a;
 
+    /* Accent (green) */
     --accent: #2d6a4f;
-    --accent-strong: #1f4f3a;
-    --accent-bg: #e7f0ea;
-    --high: #b03a2e;
-    --high-bg: #fbece9;
-    --hold: #c98a1b;
-    --hold-bg: #fbf3e2;
-    --hold-ink: #845a10;
-    --mark: #fbf0b8;
+    --accent-strong: #1b4332;
+    --accent-bg: #e8f5ee;
 
-    --ok: #2e7d4f;
-    --ok-bg: #e6f2ea;
-    --warn: #b36b00;
+    /* High / danger */
+    --high: #b00020;
+    --high-bg: #fdecea;
 
-    --nav-bg: #1e2f27;
-    --nav-hover: #283d33;
-    --nav-active: #31493d;
-    --nav-ink: #c3cfc7;
-    --nav-ink-strong: #ffffff;
+    /* Hold / warn */
+    --hold: #c48000;
+    --hold-bg: #fdf3e3;
+    --hold-ink: #664c00;
 
-    --shadow-sm: 0 1px 2px rgba(40, 45, 35, 0.04);
-    --shadow-md: 0 2px 10px rgba(40, 45, 35, 0.06);
-    --shadow-lg: 0 10px 30px rgba(40, 45, 35, 0.12);
+    /* OK */
+    --ok: #1f7a33;
+    --ok-bg: #e6f4ea;
 
+    /* Mark */
+    --mark: #fff9c4;
+
+    /* Nav sidebar */
+    --nav-bg: #1c2c24;
+    --nav-ink: #a8bfb2;
+    --nav-ink-strong: #e8f0eb;
+    --nav-hover: rgba(255,255,255,0.06);
+    --nav-active: #f4f3ee;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 8px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.06);
+    --shadow-lg: 0 12px 32px rgba(0,0,0,0.14), 0 4px 8px rgba(0,0,0,0.08);
+
+    /* Typography */
     --sans: "IBM Plex Sans", system-ui, "Noto Sans Devanagari", sans-serif;
     --serif: "IBM Plex Serif", system-ui, "Noto Sans Devanagari", serif;
     --mono: "IBM Plex Mono", ui-monospace, "Noto Sans Devanagari", monospace;
@@ -49,69 +62,62 @@
     font-size: 14px;
     line-height: 1.5;
     color: var(--ink);
-    background: var(--bg);
+    background: var(--canvas);
     color-scheme: light;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
+  *, *::before, *::after { box-sizing: border-box; }
 
-  html,
-  body,
-  #root {
+  html, body, #root {
     margin: 0;
     width: 100%;
     height: 100%;
-    background: var(--bg);
-    color: var(--ink);
     font-family: inherit;
   }
 
-  body {
-    font-family: var(--sans);
-  }
+  body { font-family: var(--sans); background: var(--canvas); }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     margin: 0;
     font-family: var(--sans);
     font-weight: 600;
     color: var(--ink);
   }
 
-  a {
-    color: var(--accent);
-    text-decoration: underline;
-  }
+  p { margin: 0; }
 
-  button,
-  input,
+  a { color: var(--accent); text-decoration: underline; }
+
+  button, input, select, textarea { font-family: inherit; font-size: inherit; }
+
+  [role="button"], button, input[type="submit"] { cursor: pointer; }
+
+  input:not([type="checkbox"],[type="radio"],[type="range"]),
   select,
   textarea {
-    font-family: inherit;
-    font-size: inherit;
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    background: var(--bg);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 120ms ease-out;
   }
-
-  [role="button"],
-  button,
-  input[type="submit"] {
-    cursor: pointer;
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-bg);
   }
+  textarea { height: auto; padding: 10px; resize: vertical; }
 
   .tabular-nums {
     font-variant-numeric: tabular-nums;
     font-family: var(--mono);
   }
+  .mono { font-family: var(--mono); }
 
   .paper-slip {
     font-family: var(--serif);
@@ -128,111 +134,25 @@
     display: block;
     width: 100%;
     box-sizing: border-box;
-    background-image: repeating-linear-gradient(
-      var(--serif-line-height, 1.7em),
-      var(--serif-line-height, 1.7em),
-      var(--border) 0,
-      var(--border) 1px,
-      transparent 1px,
-      transparent 100%
-    );
-    background-size: 100% var(--serif-line-height, 1.7em);
   }
-  .paper-slip::placeholder {
-    color: var(--ink-3);
-  }
+  .paper-slip::placeholder { color: var(--ink-3); }
 
-  .paper-slip:focus-visible {
-    outline: none;
-    border-color: var(--accent);
-    border-left-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-bg);
-  }
-
-  .role-switcher-select {
-    border: none;
-    background: transparent;
-    padding: 0;
-    font: inherit;
-    color: inherit;
-    cursor: pointer;
-  }
-
-  /* Visible focus on every control (DESIGN.md: 2px accent, 2px offset). */
-  :focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-
-  input:not([type="checkbox"], [type="radio"], [type="range"]),
-  select {
-    height: 32px;
-    padding: 0 10px;
-    border: 1px solid var(--border-strong);
-    border-radius: 4px;
-    background-color: var(--bg);
-    color: var(--ink);
-    font-size: 13px;
-    transition: border-color 120ms ease-out;
-  }
-  input::placeholder {
-    color: var(--ink-3);
-  }
-  input:not([type="checkbox"], [type="radio"], [type="range"]):hover,
-  select:hover {
-    border-color: var(--ink-2);
-  }
-  input:focus-visible,
-  select:focus-visible {
-    outline-offset: 0;
-    border-color: var(--accent);
-  }
-  select {
-    appearance: none;
-    /* Inline padding on page selects must not cover the chevron. */
-    padding-right: 28px !important;
-    cursor: pointer;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16' fill='none' stroke='%235c5c5c' stroke-width='1.5'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 9px center;
+  .saved-confirm {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ok);
+    margin-top: 12px;
   }
 
   @media print {
-    .no-print,
-    header,
-    nav,
-    .simulated-strip,
-    button,
-    select,
-    input[type="button"],
-    input[type="submit"],
-    .drawer,
-    .toast {
+    .no-print, header, nav, .simulated-strip, button, select,
+    input[type="button"], input[type="submit"], .drawer, .toast {
       display: none !important;
     }
-    body,
-    #root,
-    .asha-print {
-      background: #fff !important;
-      color: #000 !important;
-      font-family: var(--sans);
-      font-size: 11px;
-    }
-    @page {
-      size: A4;
-      margin: 12mm;
-    }
-    .asha-print-header {
-      border-bottom: 1px solid #000;
-      padding-bottom: 6px;
-      margin-bottom: 10px;
-    }
-    .asha-print-signature {
-      margin-top: 26mm;
-      border-top: 1px solid #000;
-      padding-top: 4px;
-      font-size: 10px;
-      color: #000;
-    }
+    body, #root { background: #fff !important; color: #000 !important; font-size: 11px; }
+    @page { size: A4; margin: 12mm; }
   }
 }

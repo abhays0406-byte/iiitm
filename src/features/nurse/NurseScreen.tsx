@@ -16,6 +16,7 @@ import { Stat } from '@/ui/Stat';
 import { gsap, useGSAP, motionAllowed, enter } from '@/ui/motion';
 import { neutralDateMessage, neutralMessage, messageContainsForbidden } from '@/features/records/selector';
 import { formatBytes, openSlipInNewTab } from '@/lib/slip';
+import { mlSuggest } from '@/extractor/mlSuggest';
 
 type Tab = 'needs-review' | 'staged' | 'done';
 
@@ -386,6 +387,21 @@ export function ApprovalScreen({ role }: Props) {
                             }}>Use this</Button>
                           </div>
                         )}
+                        {selected.interval_days == null && (() => {
+                          const ml = mlSuggest(selected.note_text ?? '', selected.reason_category ?? 'General Follow-Up', selected.review_reason);
+                          if (!ml) return null;
+                          const dots = ml.confidence === 'high' ? '●●●' : ml.confidence === 'medium' ? '●●○' : '●○○';
+                          const mlDate = new Date(selected.visit_date.getTime() + ml.suggestedDays * 86400000);
+                          return (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, marginBottom: 8, padding: '8px 10px', borderRadius: 4, background: 'var(--accent-bg)', border: '1px solid color-mix(in srgb, var(--accent) 25%, transparent)' }}>
+                              <Icon name="sparkle" size={13} style={{ color: 'var(--accent)', flexShrink: 0 }} />
+                              <span style={{ color: 'var(--accent-strong)', fontWeight: 500 }}>Suggested: <span style={{ fontFamily: 'var(--mono)' }}>{ml.suggestedDays} days</span></span>
+                              <span style={{ color: 'var(--ink-3)', fontSize: 11 }}>{dots} {ml.confidence}</span>
+                              <span style={{ color: 'var(--ink-3)', fontSize: 11, flex: 1 }}>{ml.basis}</span>
+                              <Button variant="ghost" size="small" onClick={() => setManualDate(mlDate.toISOString().slice(0, 10))}>Use this</Button>
+                            </div>
+                          );
+                        })()}
                         <input id="manual-date" type="date" value={manualDate}
                           onChange={(e) => setManualDate(e.target.value)}
                           style={{ width: '100%', maxWidth: 240 }} />

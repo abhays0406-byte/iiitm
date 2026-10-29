@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useClockStore } from '@/store/clock';
 import { useOfflineStore } from '@/store/offline';
 import { Icon } from '@/ui/Icon';
@@ -15,11 +16,11 @@ export function TopBar({ role, onChange, onMenu }: { role: Role; onChange: (r: R
       <button type="button" className="icon-btn menu-btn" onClick={onMenu} aria-label="Open menu">
         <Icon name="menu" size={20} />
       </button>
-      <div className="topbar-context">
+      <Link to="/" className="topbar-context" style={{ textDecoration: 'none', color: 'inherit' }} title="District Hospital Portal Gateway">
         <Icon name="home" size={15} />
         <strong>District Hospital</strong>
         <span>· OPD follow-ups</span>
-      </div>
+      </Link>
       <div className="topbar-right">
         <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <span className="role-chip" aria-hidden="true">
@@ -44,6 +45,9 @@ export function TopBar({ role, onChange, onMenu }: { role: Role; onChange: (r: R
         ) : (
           <span className="status-pill warn" title={`Offline, ${queued} changes queued`}><Icon name="wifiOff" size={13} /><span className="pill-label">Offline, {queued} changes queued</span></span>
         )}
+        <Link to="/" className="icon-btn" title="Sign out / Switch workspace" aria-label="Sign out / Switch workspace" style={{ marginLeft: 4 }}>
+          <Icon name="logOut" size={16} />
+        </Link>
       </div>
     </header>
   );

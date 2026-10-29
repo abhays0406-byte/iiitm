@@ -67,7 +67,7 @@ export function Nav({ role, open = false, onClose, onTools }: { role: Role; open
   return (
     <>
       {open && <div className="sidebar-overlay" onClick={onClose} />}
-      <aside className={`sidebar${open ? ' open' : ''}`}>
+      <aside className={`sidebar${open ? ' open' : ''}`} aria-label="Main navigation sidebar">
         <div className="brand">
           <span className="brand-mark"><Icon name="cross" size={15} strokeWidth={2} /></span>
           <span style={{ minWidth: 0 }}>

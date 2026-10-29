@@ -23,7 +23,10 @@ interface ConfigState {
   reset: () => void;
 }
 
-const DEFAULT_CONFIG = {
+const DEFAULT_CONFIG: Omit<
+  ConfigState,
+  'addReasonCategory' | 'addTimePhrasePattern' | 'setWorkingDays' | 'setDefaultPriority' | 'setMonthDays' | 'reset'
+> = {
   reasonCategories: ['Lab Review', 'Medication Titration', 'Surgical Dressing', 'General Follow-Up'],
   timePhrasePatterns: [
     { pattern: '\\bnext month\\b', kind: 'fixed', days: 30 },
@@ -32,10 +35,22 @@ const DEFAULT_CONFIG = {
     { pattern: '\\bday after tomorrow\\b', kind: 'fixed', days: 2 },
     { pattern: '\\b(?:a\\s+)?fortnight\\b', kind: 'fixed', days: 14 },
     // Hinglish fixed
-    { pattern: '\\bek mahine\\b', kind: 'fixed', days: 30 },
-    { pattern: '\\bek hafte\\b', kind: 'fixed', days: 7 },
-    { pattern: '\\bdo hafte\\b', kind: 'fixed', days: 14 },
+    { pattern: '\\bagle\\s+saal(?:\\s+baad)?\\b', kind: 'fixed', days: 365 },
+    { pattern: '\\bagle\\s+hafte\\b', kind: 'fixed', days: 7 },
+    { pattern: '\\bagla\\s+hafta\\b', kind: 'fixed', days: 7 },
+    { pattern: '\\bdo\\s+din(?:\\s+baad)?\\b', kind: 'fixed', days: 2 },
+    { pattern: '\\bteen\\s+din(?:\\s+baad)?\\b', kind: 'fixed', days: 3 },
+    { pattern: '\\bek\\s+mahine(?:\\s+baad)?\\b', kind: 'fixed', days: 30 },
+    { pattern: '\\bteen\\s+hafte(?:\\s+baad)?\\b', kind: 'fixed', days: 21 },
+    { pattern: '\\bdo\\s+hafte(?:\\s+baad)?\\b', kind: 'fixed', days: 14 },
+    { pattern: '\\bek\\s+hafte(?:\\s+baad)?\\b', kind: 'fixed', days: 7 },
+    { pattern: '\\bchaar\\s+hafte(?:\\s+baad)?\\b', kind: 'fixed', days: 28 },
     // Hindi fixed
+    { pattern: 'अगले\\s*साल(?:\\s*बाद)?', kind: 'fixed', days: 365 },
+    { pattern: 'अगले\\s*ह[फ़फ]्ते', kind: 'fixed', days: 7 },
+    { pattern: 'दो\\s*दिन(?:\\s*बाद)?', kind: 'fixed', days: 2 },
+    { pattern: 'तीन\\s*दिन(?:\\s*बाद)?', kind: 'fixed', days: 3 },
+    { pattern: 'एक\\s*महीने(?:\\s*बाद)?', kind: 'fixed', days: 30 },
     { pattern: '\\bएक महीने\\b', kind: 'fixed', days: 30 },
     // English number words
     { pattern: '\\bone\\s+week\\b', kind: 'fixed', days: 7 },
@@ -76,7 +91,7 @@ const DEFAULT_CONFIG = {
     'Number wrong or off',
     'Could not reach',
   ],
-} as const;
+};
 
 export const useConfigStore = create<ConfigState>()(
   persist(

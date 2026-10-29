@@ -1,0 +1,122 @@
+[
+  {
+    "note_text": "Tanke cutwane ke liye 1 mahine baad surgery OPD me aana. post meal",
+    "reason_category": "Surgical Dressing"
+  },
+  {
+    "note_text": "Child active, appetite improved. Routine paediatric check in 2 months. pls",
+    "reason_category": "General Follow-Up"
+  },
+  {
+    "note_text": "Known diabetic, घाव पूरी तरह सूख चुका है, टांके कट चुके हैं। अब ड्रेसिंग की जरूरत नहीं।",
+    "reason_category": "Surgical Dressing"
+  },
+  {
+    "note_text": "Routine review after festivals or next month.",
+    "reason_category": "General Follow-Up"
+  },
+  {
+    "note_text": "OPD Slip: Wound dressing kal me repeat karein. Swelling check karni hai. strictly",
+    "reason_category": "Surgical Dressing"
+  },
+  {
+    "note_text": "Insulin dose adjusted to 14 units SC before dinner. Review after 10 days. review with slip",
+    "reason_category": "Medication Titration"
+  },
+  {
+    "note_text": "USG abdomen advised. Review after 3 days with sonography report. strictly",
+    "reason_category": "Lab Review"
+  },
+  {
+    "note_text": "Condition stable. Continue lifestyle modifications, no fixed review. review with slip",
+    "reason_category": "General Follow-Up"
+  },
+  {
+    "note_text": "R/o Reports normal hain, abhi test repeat nahi karna. post meal",
+    "reason_category": "Lab Review"
+  },
+  {
+    "note_text": "Antihypertensive dosage titrated. Come for BP check after next week.",
+    "reason_category": "Medication Titration"
+  },
+  {
+    "note_text": "OPD Slip: Staples removal due after 2 weeks. Inspect incision site.",
+    "reason_category": "Surgical Dressing"
+  },
+  {
+    "note_text": "Insulin units badhayi hain, sugar chart ke sath 2 hafte me dikhana.",
+    "reason_category": "Medication Titration"
+  },
+  {
+    "note_text": "K/C/O HTN, Condition stable. Continue lifestyle modifications, no fixed review. strictly",
+    "reason_category": "General Follow-Up"
+  },
+  {
+    "note_text": "Pt: Stitches cut chuke hain, healing complete hai.",
+    "reason_category": "Surgical Dressing"
+  },
+  {
+    "note_text": "Imp: Wound dressing agale hafte me repeat karein. Swelling check karni hai. SOS",
+    "reason_category": "Surgical Dressing"
+  },
+  {
+    "note_text": "Urine routine & microscopy sent. Follow up in 4 weeks. post meal",
+    "reason_category": "Lab Review"
+  },
+  {
+    "note_text": "USG abdomen advised. Review after 1 week with sonography report.",
+    "reason_category": "Lab Review"
+  },
+  {
+    "note_text": "OPD Slip: Tapering prednisolone: 10mg for 5 days then 5mg. Review in 3 weeks.",
+    "reason_category": "Medication Titration"
+  },
+  {
+    "note_text": "Adv: घाव की पट्टी ६ हफ्ते बाद बदलवाने आएं। पट्टी को सूखा रखें।",
+    "reason_category": "Surgical Dressing"
+  },
+  {
+    "note_text": "Pt: Dose adjusted today. Review soon if any giddiness or side effects. post meal",
+    "reason_category": "Medication Titration"
+  },
+  {
+    "note_text": "Known diabetic, Sonography karwa ke report ke sath agale hafte me aao. SOS",
+    "reason_category": "Lab Review"
+  },
+  {
+    "note_text": "OPD Slip: Dose stable hai, koi change ki zaroorat nahi. SOS",
+    "reason_category": "Medication Titration"
+  },
+  {
+    "note_text": "K/C/O HTN, खांसी और जुकाम में आराम है, ६ हफ्ते बाद फॉलो-अप करें। SOS",
+    "reason_category": "General Follow-Up"
+  },
+  {
+    "note_text": "Known diabetic, Ghav ki patti 2 mahine baad change karwane aana. Paani mat lagne dena. post meal",
+    "reason_category": "Surgical Dressing"
+  },
+  {
+    "note_text": "Reports normal hain, abhi test repeat nahi karna. empty stomach",
+    "reason_category": "Lab Review"
+  },
+  {
+    "note_text": "Recovery achhi hai, 6 hafte baad ek baar review karwa lena.",
+    "reason_category": "General Follow-Up"
+  },
+  {
+    "note_text": "Known diabetic, Stitches cut chuke hain, healing complete hai.",
+    "reason_category": "Surgical Dressing"
+  },
+  {
+    "note_text": "R/o तबीयत में सुधार है। चार हफ्ते बाद रूटीन चेकअप के लिए आएं। review with slip",
+    "reason_category": "General Follow-Up"
+  },
+  {
+    "note_text": "Pt: Wound dressing change after 2 weeks. Keep area dry and clean. strictly",
+    "reason_category": "Surgical Dressing"
+  },
+  {
+    "note_text": "Labs normal, no further testing needed. pls",
+    "reason_category": "Lab Review"
+  }
+]

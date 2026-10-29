@@ -1,0 +1,1501 @@
+note_text,reason_category,has_followup
+R/o Sputum for AFB sent. Collect report and show after 2 months. strictly,Lab Review,yes
+R/o Tab Telmisartan 40mg changed to 80mg. Check BP after 7 days. empty stomach,Medication Titration,yes
+Imp: Suture removal (stitches out) scheduled after 5 days. strictly,Surgical Dressing,yes
+"Pt: Urine culture report kal me aayegi, tab dikha dena. pls",Lab Review,yes
+Urine routine & microscopy sent. Follow up in 4 weeks. post meal,Lab Review,yes
+"Adv: बीपी कंट्रोल में है, दवा की खुराक यथावत रहेगी।",Medication Titration,no
+OPD Slip: Continue current treatment. Routine visit in 5 days.,General Follow-Up,yes
+"Imp: Abscess drained, sterile dressing done. Change dressing in 6 weeks. post meal",Surgical Dressing,yes
+"Known diabetic, Sonography karwa ke report ke sath 14 din me aao. SOS",Lab Review,yes
+"Known diabetic, Sonography karwa ke report ke sath kal me aao.",Lab Review,yes
+R/o Agar bandage geeli ho jaye ya dard badhe to turant aana. post meal,Surgical Dressing,yes
+R/o Medication titrated as discussed. No follow-up needed if stable.,Medication Titration,no
+R/o पेशाब की जांच की रिपोर्ट ७ दिन बाद दिखाएं। post meal,Lab Review,yes
+General follow up after 5 days. Review symptoms and progress.,General Follow-Up,yes
+"BP ki goli dose badha di hai, 2 mahine baad BP check karwane aana. post meal",Medication Titration,yes
+"OPD Slip: बीपी कंट्रोल में है, दवा की खुराक यथावत रहेगी। SOS",Medication Titration,no
+Wound dressing 2 mahine me repeat karein. Swelling check karni hai.,Surgical Dressing,yes
+Adv: Continue current treatment. Routine visit in next week.,General Follow-Up,yes
+Urine routine & microscopy sent. Follow up in 2 weeks. strictly,Lab Review,yes
+"Pt: Insulin units badhayi hain, sugar chart ke sath 3 din me dikhana.",Medication Titration,yes
+Post-op wound healthy. Clean dressing in 6 weeks. empty stomach,Surgical Dressing,yes
+"OPD Slip: दवा सही असर कर रही है, खुराक जारी रखें। SOS",Medication Titration,no
+"Adv: Sterile dressing kar di hai, agale hafte me fresh dressing karwayen.",Surgical Dressing,yes
+"R/o If BP remains > 150/90, increase dose and report back. SOS",Medication Titration,yes
+"K/C/O HTN, Sterile dressing kar di hai, 1 mahine me fresh dressing karwayen. empty stomach",Surgical Dressing,yes
+"Known diabetic, Burn dressing done. Review in OPD after 7 days for fresh dressing. SOS",Surgical Dressing,yes
+"HbA1c test karwana hai, kal me report ke sath milna. post meal",Lab Review,yes
+Pt: शुगर की जांच (Fasting/PP) कराकर दो हफ्ते बाद रिपोर्ट लेकर आएं। post meal,Lab Review,yes
+Pt: General follow up after 4 weeks. Review symptoms and progress.,General Follow-Up,yes
+"Imp: Child active, appetite improved. Routine paediatric check in tomorrow. post meal",General Follow-Up,yes
+R/o तबीयत में सुधार है। चार हफ्ते बाद रूटीन चेकअप के लिए आएं। review with slip,General Follow-Up,yes
+"Pt: Dose stable hai, koi change ki zaroorat nahi.",Medication Titration,no
+"खांसी और जुकाम में आराम है, ७ दिन बाद फॉलो-अप करें। empty stomach",General Follow-Up,yes
+R/o Patient symptom free. Advice given. Discharge on SOS basis.,General Follow-Up,no
+Chest congestion improved. Re-consult after 2 weeks if cough continues.,General Follow-Up,yes
+"Imp: Aaram mil raha hai, regular follow-up agale hafte baad karein. review with slip",General Follow-Up,yes
+"Imp: Patti utaar di hai, ghav poora bhar gaya hai.",Surgical Dressing,no
+"K/C/O HTN, यदि घाव से मवाद या खून निकले तो तुरंत आएं।",Surgical Dressing,yes
+"Stitches cut chuke hain, healing complete hai.",Surgical Dressing,no
+"R/o Wound completely healed, sutures removed, no further dressing required. SOS",Surgical Dressing,no
+Imp: Blood reports pending. Show as soon as available. SOS,Lab Review,yes
+छाती का एक्स-रे करवा कर ५ दिन में दिखाएं। post meal,Lab Review,yes
+"K/C/O HTN, Tab Metformin 500mg BD started. Monitor FBS, review in 1 week.",Medication Titration,yes
+"Adv: Labs normal, no further testing needed.",Lab Review,no
+Adv: Blood reports pending. Show as soon as available. pls,Lab Review,yes
+"Adv: थायरॉइड की जांच कराएं, चार हफ्ते बाद रिपोर्ट के साथ मिलें। SOS",Lab Review,yes
+Medicine titration done. Check response in 1 mahine.,Medication Titration,yes
+"Pt: Stitches dry hain, 6 hafte baad removal hoga. empty stomach",Surgical Dressing,yes
+"HbA1c test karwana hai, 5 din me report ke sath milna.",Lab Review,yes
+"Sab theek chal raha hai, general checkup ke liye 3 hafte me aana. post meal",General Follow-Up,yes
+"Imp: Sterile dressing kar di hai, 4 hafte me fresh dressing karwayen.",Surgical Dressing,yes
+OPD Slip: Insulin dose adjusted to 14 units SC before dinner. Review after 6 weeks.,Medication Titration,yes
+Tab Telmisartan 40mg changed to 80mg. Check BP after 2 months.,Medication Titration,yes
+OPD Slip: बीपी की दवा (Amlodipine) की खुराक बढ़ा दी है। चार हफ्ते बाद बीपी जांच कराएं। SOS,Medication Titration,yes
+"Abscess drained, sterile dressing done. Change dressing in tomorrow.",Surgical Dressing,yes
+Tab Telmisartan 40mg changed to 80mg. Check BP after 3 days. SOS,Medication Titration,yes
+"Condition bilkul normal hai, follow up zaroori nahi. review with slip",General Follow-Up,no
+बीपी की दवा (Amlodipine) की खुराक बढ़ा दी है। दो महीने बाद बीपी जांच कराएं।,Medication Titration,yes
+Pt: HbA1c and lipid profile advised. Come with report in 4 weeks. review with slip,Lab Review,yes
+Adv: Review after 10 days for routine consultation.,General Follow-Up,yes
+टांके ७ दिन बाद कटवाने अस्पताल आएं। strictly,Surgical Dressing,yes
+Review after 1 week for routine consultation.,General Follow-Up,yes
+"K/C/O HTN, थायरॉइड की गोली 50mcg से 75mcg की। ६ हफ्ते बाद जांच और फॉलो-अप। strictly",Medication Titration,yes
+"OPD Slip: Condition bilkul normal hai, follow up zaroori nahi.",General Follow-Up,no
+शुगर की जांच (Fasting/PP) कराकर १४ दिन बाद रिपोर्ट लेकर आएं। review with slip,Lab Review,yes
+सर्जरी के बाद का घाव ठीक हो रहा है। १० दिन बाद ड्रेसिंग कराएं। SOS,Surgical Dressing,yes
+"Adv: Stitches cut chuke hain, healing complete hai. empty stomach",Surgical Dressing,no
+Pt: घाव की पट्टी एक हफ्ते बाद बदलवाने आएं। पट्टी को सूखा रखें। strictly,Surgical Dressing,yes
+Adv: घाव की पट्टी एक हफ्ते बाद बदलवाने आएं। पट्टी को सूखा रखें। post meal,Surgical Dressing,yes
+R/o अगर बुखार या पेट दर्द दोबारा हो तो तुरंत अस्पताल आएं। review with slip,General Follow-Up,yes
+Antihypertensive dosage titrated. Come for BP check after 2 weeks.,Medication Titration,yes
+"Pt: दवा कम की जा रही है, एक हफ्ते बाद आकर दिखाएं। empty stomach",Medication Titration,yes
+"K/C/O HTN, पेशाब की जांच की रिपोर्ट चार हफ्ते बाद दिखाएं। post meal",Lab Review,yes
+R/o Ghav ki patti 2 hafte baad change karwane aana. Paani mat lagne dena. SOS,Surgical Dressing,yes
+"OPD Slip: Condition bilkul normal hai, follow up zaroori nahi. post meal",General Follow-Up,no
+Adv: Urine routine & microscopy sent. Follow up in 1 week. post meal,Lab Review,yes
+"Known diabetic, खून की जांच (CBC, LFT) करवाएं। दो हफ्ते बाद रिपोर्ट दिखाएं। strictly",Lab Review,yes
+Agar test me infection aaye to turant aana. post meal,Lab Review,yes
+Imp: Antihypertensive dosage titrated. Come for BP check after tomorrow. SOS,Medication Titration,yes
+R/o Patient symptom free. Advice given. Discharge on SOS basis. empty stomach,General Follow-Up,no
+"Pt: Abscess drained, sterile dressing done. Change dressing in 4 weeks.",Surgical Dressing,yes
+"Known diabetic, Cured. No further visit required. SOS",General Follow-Up,no
+Pt: Routine review after festivals or next month. post meal,General Follow-Up,yes
+Pt: Staples removal due after 1 month. Inspect incision site. empty stomach,Surgical Dressing,yes
+Urine routine & microscopy sent. Follow up in 10 days.,Lab Review,yes
+R/o Burn dressing done. Review in OPD after 2 weeks for fresh dressing. post meal,Surgical Dressing,yes
+"घाव ठीक हो गया है, पट्टी हटा दी गई है।",Surgical Dressing,no
+"Adv: घाव साफ है, दो हफ्ते बाद टांके चेक करवाएं। SOS",Surgical Dressing,yes
+"Known diabetic, Burn dressing done. Review in OPD after 3 days for fresh dressing. pls",Surgical Dressing,yes
+Blood sugar fasting and PP to be done. Show reports after 2 weeks.,Lab Review,yes
+R/o Wound healing well. Remove stitches in 4 weeks.,Surgical Dressing,yes
+जांच रिपोर्ट आते ही तुरंत दिखाएं।,Lab Review,yes
+"Child active, appetite improved. Routine paediatric check in 6 weeks. strictly",General Follow-Up,yes
+Adv: शुगर की दवा की खुराक बदली है। ३ दिन बाद शुगर नाप कर दिखाएं।,Medication Titration,yes
+"K/C/O HTN, Tab Atorvastatin dose increased. Re-evaluate lipid levels in 1 month. empty stomach",Medication Titration,yes
+"Adv: घाव पूरी तरह सूख चुका है, टांके कट चुके हैं। अब ड्रेसिंग की जरूरत नहीं।",Surgical Dressing,no
+"Pt: Dressing review soon, avoid soaking in water. SOS",Surgical Dressing,yes
+"Pt: सभी जांच रिपोर्ट सामान्य हैं, अब जांच की जरूरत नहीं। empty stomach",Lab Review,no
+"Condition bilkul normal hai, follow up zaroori nahi. post meal",General Follow-Up,no
+"Adv: Condition stable. Continue lifestyle modifications, no fixed review. post meal",General Follow-Up,no
+थायरॉइड की गोली 50mcg से 75mcg की। १० दिन बाद जांच और फॉलो-अप। SOS,Medication Titration,yes
+"If reports show infection, review immediately. strictly",Lab Review,yes
+Medicines continue rakhein aur 6 hafte me OPD me dikha dein.,General Follow-Up,yes
+"Labs normal, no further testing needed. pls",Lab Review,no
+Pt: Daily sterile dressing advised. Review in OPD after tomorrow. review with slip,Surgical Dressing,yes
+OPD Slip: Tab Pantocid 40mg added. Adjust dose if symptoms persist after 6 weeks. review with slip,Medication Titration,yes
+"Adv: Dose stable hai, koi change ki zaroorat nahi. pls",Medication Titration,no
+R/o थायरॉइड की गोली 50mcg से 75mcg की। ३ दिन बाद जांच और फॉलो-अप। strictly,Medication Titration,yes
+टांके १० दिन बाद कटवाने अस्पताल आएं। pls,Surgical Dressing,yes
+"Recovery achhi hai, 14 din baad ek baar review karwa lena. strictly",General Follow-Up,yes
+Creatinine aur urea test repeat karna hai after 2 mahine. pls,Lab Review,yes
+"Adv: अब कोई परेशानी नहीं है, फॉलो-अप समाप्त।",General Follow-Up,no
+Adv: Come for dressing if bandage becomes soaked or foul smelling. post meal,Surgical Dressing,yes
+यदि घाव से मवाद या खून निकले तो तुरंत आएं। review with slip,Surgical Dressing,yes
+OPD Slip: सामान्य जांच के लिए १ महीने बाद दोबारा दिखाएं। strictly,General Follow-Up,yes
+R/o Urine routine & microscopy sent. Follow up in 6 weeks. empty stomach,Lab Review,yes
+"Known diabetic, Stitches cut chuke hain, healing complete hai. post meal",Surgical Dressing,no
+R/o Ghav ki patti 5 din baad change karwane aana. Paani mat lagne dena. review with slip,Surgical Dressing,yes
+"OPD Slip: घाव साफ है, ६ हफ्ते बाद टांके चेक करवाएं। strictly",Surgical Dressing,yes
+Routine review after festivals or next month.,General Follow-Up,yes
+"Imp: Sterile dressing kar di hai, 14 din me fresh dressing karwayen. SOS",Surgical Dressing,yes
+"Imp: Wound completely healed, sutures removed, no further dressing required. empty stomach",Surgical Dressing,no
+OPD Slip: Urine routine & microscopy sent. Follow up in 5 days. empty stomach,Lab Review,yes
+"Imp: Insulin units badhayi hain, sugar chart ke sath kal me dikhana. strictly",Medication Titration,yes
+यदि खून की जांच में प्लेटलेट्स कम हों तो तुरंत आएं।,Lab Review,yes
+Imp: इंसुलिन की मात्रा 12 यूनिट की गई। अगले हफ्ते बाद आकर मिलें।,Medication Titration,yes
+"Repeat CBC, LFT, KFT after 7 days. Review with reports.",Lab Review,yes
+सामान्य जांच के लिए ६ हफ्ते बाद दोबारा दिखाएं। SOS,General Follow-Up,yes
+"Abhi sab control me hai, jab zaroorat lage tabhi aana.",General Follow-Up,no
+Review soon or if symptoms worsen. pls,General Follow-Up,yes
+पेशाब की जांच की रिपोर्ट अगले हफ्ते बाद दिखाएं।,Lab Review,yes
+"Known diabetic, Pus discharge reduced. Suture line review in tomorrow. SOS",Surgical Dressing,yes
+Medicine titration done. Check response in 2 mahine. empty stomach,Medication Titration,yes
+R/o Wound dressing 5 din me repeat karein. Swelling check karni hai. post meal,Surgical Dressing,yes
+"K/C/O HTN, अल्ट्रासाउंड (USG) रिपोर्ट आने पर १ महीने बाद दिखाएं। post meal",Lab Review,yes
+Pt: Review in OPD after tomorrow if not fully relieved. post meal,General Follow-Up,yes
+Thyroid report aane par kal me review karein.,Lab Review,yes
+Pt: X-ray chest PA view done. Review in 10 days with film.,Lab Review,yes
+"OPD Slip: घाव ठीक हो गया है, पट्टी हटा दी गई है।",Surgical Dressing,no
+"Known diabetic, Dose well tolerated. Continue current prescription. pls",Medication Titration,no
+"OPD Slip: Skin healed well. Clean with soap water, dressing discontinued. SOS",Surgical Dressing,no
+"Sterile dressing kar di hai, 4 hafte me fresh dressing karwayen. pls",Surgical Dressing,yes
+"घाव ठीक हो गया है, पट्टी हटा दी गई है।",Surgical Dressing,no
+OPD Slip: Agar tabiyat thodi bhi kharab lage to bina der kiye aana.,General Follow-Up,yes
+Review after 1 week for routine consultation. empty stomach,General Follow-Up,yes
+"Adv: Abhi sab control me hai, jab zaroorat lage tabhi aana.",General Follow-Up,no
+Continue current treatment. Routine visit in 7 days.,General Follow-Up,yes
+"Stitches dry hain, 2 mahine baad removal hoga. post meal",Surgical Dressing,yes
+"If reports show infection, review immediately. empty stomach",Lab Review,yes
+खून की रिपोर्ट नॉर्मल है। 1 महीने बाद दोबारा रूटीन जांच कराएं। empty stomach,Lab Review,yes
+Pt: छाती का एक्स-रे करवा कर १० दिन में दिखाएं। empty stomach,Lab Review,yes
+"K/C/O HTN, Sugar medicine dose adjust ki hai, 14 din baad fasting sugar check karayein.",Medication Titration,yes
+Imp: Medication titrated as discussed. No follow-up needed if stable.,Medication Titration,no
+"OPD Slip: Sab theek chal raha hai, general checkup ke liye agale hafte me aana.",General Follow-Up,yes
+अल्ट्रासाउंड (USG) रिपोर्ट आने पर दो हफ्ते बाद दिखाएं। post meal,Lab Review,yes
+Burn dressing done. Review in OPD after 10 days for fresh dressing.,Surgical Dressing,yes
+Tapering prednisolone: 10mg for 5 days then 5mg. Review in 2 months. review with slip,Medication Titration,yes
+Imp: Burn dressing done. Review in OPD after 10 days for fresh dressing. review with slip,Surgical Dressing,yes
+"Imp: Insulin units badhayi hain, sugar chart ke sath kal me dikhana.",Medication Titration,yes
+Pt: जांच रिपोर्ट आते ही तुरंत दिखाएं। empty stomach,Lab Review,yes
+Imp: अगर बुखार या पेट दर्द दोबारा हो तो तुरंत अस्पताल आएं। pls,General Follow-Up,yes
+"K/C/O HTN, HbA1c test karwana hai, 7 din me report ke sath milna.",Lab Review,yes
+"दवा कम की जा रही है, ७ दिन बाद आकर दिखाएं। strictly",Medication Titration,yes
+Imp: Agar tabiyat thodi bhi kharab lage to bina der kiye aana.,General Follow-Up,yes
+"Abhi sab control me hai, jab zaroorat lage tabhi aana. strictly",General Follow-Up,no
+"Known diabetic, मरीज पूरी तरह स्वस्थ है, आगे दिखाने की आवश्यकता नहीं है।",General Follow-Up,no
+Imp: Post-op wound healthy. Clean dressing in next week. empty stomach,Surgical Dressing,yes
+Pt: छाती का एक्स-रे करवा कर ३ दिन में दिखाएं। empty stomach,Lab Review,yes
+Adv: Chest congestion improved. Re-consult after next week if cough continues.,General Follow-Up,yes
+Pt: जांच रिपोर्ट आते ही तुरंत दिखाएं। empty stomach,Lab Review,yes
+"Known diabetic, Reports aate hi dikha dena. pls",Lab Review,yes
+Tab Amlodipine increased to 10mg OD. BP check and review after 2 weeks. pls,Medication Titration,yes
+सर्जरी के बाद का घाव ठीक हो रहा है। १ महीने बाद ड्रेसिंग कराएं।,Surgical Dressing,yes
+"Medicines theek chal rahi hain, continue karein.",Medication Titration,no
+Agar bandage geeli ho jaye ya dard badhe to turant aana. review with slip,Surgical Dressing,yes
+"Skin healed well. Clean with soap water, dressing discontinued. post meal",Surgical Dressing,no
+Adv: Cured. No further visit required. SOS,General Follow-Up,no
+"Adv: Sab theek chal raha hai, general checkup ke liye 2 mahine me aana.",General Follow-Up,yes
+R/o Tab Atorvastatin dose increased. Re-evaluate lipid levels in tomorrow. SOS,Medication Titration,yes
+"घाव साफ है, ३ दिन बाद टांके चेक करवाएं।",Surgical Dressing,yes
+R/o Come back if fever or abdominal pain recurs. strictly,General Follow-Up,yes
+Urine routine & microscopy sent. Follow up in 1 week.,Lab Review,yes
+"Known diabetic, Stitches cut chuke hain, healing complete hai. SOS",Surgical Dressing,no
+R/o अगर दवा से चक्कर आए तो तुरंत आएं। review with slip,Medication Titration,yes
+Review after 2 weeks for routine consultation.,General Follow-Up,yes
+"Pt: Stitches dry hain, 7 din baad removal hoga. empty stomach",Surgical Dressing,yes
+"R/o If BP remains > 150/90, increase dose and report back.",Medication Titration,yes
+R/o दवा की खुराक में बदलाव किया गया है। दो हफ्ते बाद पुनरावलोकन करें।,Medication Titration,yes
+R/o तबीयत में सुधार है। दो हफ्ते बाद रूटीन चेकअप के लिए आएं।,General Follow-Up,yes
+"Adv: BP ki goli dose badha di hai, kal baad BP check karwane aana. post meal",Medication Titration,yes
+"सभी जांच रिपोर्ट सामान्य हैं, अब जांच की जरूरत नहीं। empty stomach",Lab Review,no
+अगर बुखार या पेट दर्द दोबारा हो तो तुरंत अस्पताल आएं। strictly,General Follow-Up,yes
+"Known diabetic, Chest congestion improved. Re-consult after 3 weeks if cough continues. post meal",General Follow-Up,yes
+"R/o घाव पूरी तरह सूख चुका है, टांके कट चुके हैं। अब ड्रेसिंग की जरूरत नहीं। strictly",Surgical Dressing,no
+"Imp: Condition bilkul normal hai, follow up zaroori nahi. review with slip",General Follow-Up,no
+OPD Slip: शुगर की जांच (Fasting/PP) कराकर अगले हफ्ते बाद रिपोर्ट लेकर आएं। strictly,Lab Review,yes
+"Adv: Stitches dry hain, kal baad removal hoga. review with slip",Surgical Dressing,yes
+Pt: Sputum for AFB sent. Collect report and show after tomorrow.,Lab Review,yes
+OPD Slip: इंसुलिन की मात्रा 12 यूनिट की गई। ५ दिन बाद आकर मिलें।,Medication Titration,yes
+Adv: Blood reports pending. Show as soon as available. strictly,Lab Review,yes
+Adv: Dose well tolerated. Continue current prescription.,Medication Titration,no
+Wound dressing change after 14 days. Keep area dry and clean. review with slip,Surgical Dressing,yes
+Inhaler Budecort 200mcg puff twice daily. Assess asthma control in 2 weeks.,Medication Titration,yes
+"Recovery achhi hai, 5 din baad ek baar review karwa lena. review with slip",General Follow-Up,yes
+"Pt: Steroid dose taper kar rahe hain, agale hafte me review karein. pls",Medication Titration,yes
+"Dose stable hai, koi change ki zaroorat nahi. SOS",Medication Titration,no
+"Adv: Dressing review soon, avoid soaking in water. review with slip",Surgical Dressing,yes
+OPD Slip: Review soon or if symptoms worsen. empty stomach,General Follow-Up,yes
+R/o Creatinine aur urea test repeat karna hai after 1 mahine. review with slip,Lab Review,yes
+Adv: Tab Amlodipine increased to 10mg OD. BP check and review after 1 week.,Medication Titration,yes
+जांच रिपोर्ट आते ही तुरंत दिखाएं। SOS,Lab Review,yes
+"Abhi sab control me hai, jab zaroorat lage tabhi aana. pls",General Follow-Up,no
+"K/C/O HTN, Tab Atorvastatin dose increased. Re-evaluate lipid levels in 7 days. empty stomach",Medication Titration,yes
+"Sugar test fasting and PP karwao, report lekar kal baad aana. empty stomach",Lab Review,yes
+Imp: Urine routine & microscopy sent. Follow up in 14 days. review with slip,Lab Review,yes
+R/o Continue current treatment. Routine visit in 3 days. pls,General Follow-Up,yes
+OPD Slip: Agar tabiyat thodi bhi kharab lage to bina der kiye aana.,General Follow-Up,yes
+"Adv: Reports normal hain, abhi test repeat nahi karna. review with slip",Lab Review,no
+"Known diabetic, Creatinine aur urea test repeat karna hai after 4 hafte.",Lab Review,yes
+"Known diabetic, कमजोरी और भूख न लगने की समीक्षा तीन हफ्ते बाद की जाएगी। strictly",General Follow-Up,yes
+"Pt: घाव पूरी तरह सूख चुका है, टांके कट चुके हैं। अब ड्रेसिंग की जरूरत नहीं।",Surgical Dressing,no
+"K/C/O HTN, Aaram mil raha hai, regular follow-up 1 week baad karein. empty stomach",General Follow-Up,yes
+Suture removal (stitches out) scheduled after 6 weeks. empty stomach,Surgical Dressing,yes
+R/o X-ray chest PA view done. Review in 4 weeks with film. strictly,Lab Review,yes
+Pt: Thyroid report aane par 14 din me review karein.,Lab Review,yes
+"दवाइयां जारी रखें, चार हफ्ते बाद आकर मिलें। review with slip",General Follow-Up,yes
+Imp: Blood reports pending. Show as soon as available. empty stomach,Lab Review,yes
+"K/C/O HTN, Medicine titration done. Check response in 10 din. SOS",Medication Titration,yes
+Imp: जांच रिपोर्ट आते ही तुरंत दिखाएं।,Lab Review,yes
+Pt: Come back if fever or abdominal pain recurs. SOS,General Follow-Up,yes
+R/o Sputum for AFB sent. Collect report and show after 4 weeks.,Lab Review,yes
+Patient symptom free. Advice given. Discharge on SOS basis. SOS,General Follow-Up,no
+OPD Slip: Sonography karwa ke report ke sath agale hafte me aao. pls,Lab Review,yes
+"Known diabetic, Tab Amlodipine increased to 10mg OD. BP check and review after 2 weeks. empty stomach",Medication Titration,yes
+"थायरॉइड की जांच कराएं, ७ दिन बाद रिपोर्ट के साथ मिलें। pls",Lab Review,yes
+"OPD Slip: Sterile dressing kar di hai, 2 hafte me fresh dressing karwayen. review with slip",Surgical Dressing,yes
+CBC reports reviewed. Mild anaemia. Recheck Hb in 6 weeks. post meal,Lab Review,yes
+"K/C/O HTN, Sterile dressing kar di hai, 2 mahine me fresh dressing karwayen. strictly",Surgical Dressing,yes
+Medicine titration done. Check response in 2 hafte.,Medication Titration,yes
+Review in OPD after 4 weeks if not fully relieved. post meal,General Follow-Up,yes
+"Known diabetic, Agar bandage geeli ho jaye ya dard badhe to turant aana. empty stomach",Surgical Dressing,yes
+"Sugar test fasting and PP karwao, report lekar 1 week baad aana. empty stomach",Lab Review,yes
+OPD Slip: Medicines continue rakhein aur 3 hafte me OPD me dikha dein.,General Follow-Up,yes
+"Dose stable hai, koi change ki zaroorat nahi. empty stomach",Medication Titration,no
+Agar test me infection aaye to turant aana. strictly,Lab Review,yes
+Adv: छाती का एक्स-रे करवा कर दो हफ्ते में दिखाएं।,Lab Review,yes
+"Known diabetic, सभी जांच रिपोर्ट सामान्य हैं, अब जांच की जरूरत नहीं। post meal",Lab Review,no
+Imp: छाती का एक्स-रे करवा कर दो हफ्ते में दिखाएं। post meal,Lab Review,yes
+"Adv: Condition bilkul normal hai, follow up zaroori nahi.",General Follow-Up,no
+"Imp: Sugar test fasting and PP karwao, report lekar 14 din baad aana. pls",Lab Review,yes
+"Known diabetic, Wound completely healed, sutures removed, no further dressing required. strictly",Surgical Dressing,no
+Tanke cutwane ke liye 2 hafte baad surgery OPD me aana.,Surgical Dressing,yes
+Adv: X-ray chest PA view done. Review in tomorrow with film. strictly,Lab Review,yes
+"Skin healed well. Clean with soap water, dressing discontinued.",Surgical Dressing,no
+"If BP remains > 150/90, increase dose and report back. strictly",Medication Titration,yes
+"Adv: Sugar test fasting and PP karwao, report lekar kal baad aana. pls",Lab Review,yes
+Adv: Wound healing well. Remove stitches in 3 weeks. empty stomach,Surgical Dressing,yes
+Adv: Inhaler Budecort 200mcg puff twice daily. Assess asthma control in 3 days.,Medication Titration,yes
+"K/C/O HTN, थायरॉइड की गोली 50mcg से 75mcg की। दो हफ्ते बाद जांच और फॉलो-अप। empty stomach",Medication Titration,yes
+Pt: Inhaler Budecort 200mcg puff twice daily. Assess asthma control in 10 days.,Medication Titration,yes
+OPD Slip: Review soon or if symptoms worsen. SOS,General Follow-Up,yes
+"K/C/O HTN, Sugar medicine dose adjust ki hai, 14 din baad fasting sugar check karayein. pls",Medication Titration,yes
+Joint pain persisting. Clinical re-assessment after 14 days. review with slip,General Follow-Up,yes
+"K/C/O HTN, Abhi sab control me hai, jab zaroorat lage tabhi aana.",General Follow-Up,no
+Adv: X-ray chest PA view done. Review in 14 days with film. SOS,Lab Review,yes
+OPD Slip: Tab Pantocid 40mg added. Adjust dose if symptoms persist after 7 days.,Medication Titration,yes
+टांके ६ हफ्ते बाद कटवाने अस्पताल आएं।,Surgical Dressing,yes
+Imp: Tab Thyronorm dose hiked to 75mcg. Repeat TSH & review in 7 days.,Medication Titration,yes
+"K/C/O HTN, General follow up after 2 weeks. Review symptoms and progress. empty stomach",General Follow-Up,yes
+टांके चार हफ्ते बाद कटवाने अस्पताल आएं।,Surgical Dressing,yes
+Imp: यदि घाव से मवाद या खून निकले तो तुरंत आएं। empty stomach,Surgical Dressing,yes
+"Known diabetic, Dose change kiya hai, agar weakness lage to turant contact karein.",Medication Titration,yes
+"K/C/O HTN, If reports show infection, review immediately. pls",Lab Review,yes
+"Known diabetic, Tab Amlodipine increased to 10mg OD. BP check and review after 3 days. review with slip",Medication Titration,yes
+Adv: दवा की खुराक में बदलाव किया गया है। चार हफ्ते बाद पुनरावलोकन करें। SOS,Medication Titration,yes
+OPD Slip: Come back if fever or abdominal pain recurs. SOS,General Follow-Up,yes
+"घाव ठीक हो गया है, पट्टी हटा दी गई है। review with slip",Surgical Dressing,no
+Imp: Agar bandage geeli ho jaye ya dard badhe to turant aana. review with slip,Surgical Dressing,yes
+Wound dressing 7 din me repeat karein. Swelling check karni hai.,Surgical Dressing,yes
+"Pt: पट्टी रोज बदलें, दो हफ्ते बाद डॉक्टर को दिखाएं। review with slip",Surgical Dressing,yes
+Imp: इंसुलिन की मात्रा 12 यूनिट की गई। ६ हफ्ते बाद आकर मिलें। review with slip,Medication Titration,yes
+R/o Joint pain persisting. Clinical re-assessment after 1 week. strictly,General Follow-Up,yes
+"OPD Slip: Condition bilkul normal hai, follow up zaroori nahi. review with slip",General Follow-Up,no
+Routine review after festivals or next month. empty stomach,General Follow-Up,yes
+"Abscess drained, sterile dressing done. Change dressing in 4 weeks. SOS",Surgical Dressing,yes
+Adv: General follow up after 10 days. Review symptoms and progress.,General Follow-Up,yes
+Come back if fever or abdominal pain recurs. SOS,General Follow-Up,yes
+Medication titrated as discussed. No follow-up needed if stable. review with slip,Medication Titration,no
+"पट्टी रोज बदलें, दो महीने बाद डॉक्टर को दिखाएं।",Surgical Dressing,yes
+"Pt: Abscess drained, sterile dressing done. Change dressing in 4 weeks.",Surgical Dressing,yes
+"K/C/O HTN, Agar test me infection aaye to turant aana.",Lab Review,yes
+"Medicines theek chal rahi hain, continue karein.",Medication Titration,no
+"Adv: Labs normal, no further testing needed.",Lab Review,no
+OPD Slip: Medicine titration done. Check response in 3 hafte. post meal,Medication Titration,yes
+"Pt: Skin healed well. Clean with soap water, dressing discontinued. review with slip",Surgical Dressing,no
+"Known diabetic, अगर बुखार या पेट दर्द दोबारा हो तो तुरंत अस्पताल आएं। empty stomach",General Follow-Up,yes
+"OPD Slip: खून की जांच (CBC, LFT) करवाएं। ५ दिन बाद रिपोर्ट दिखाएं। SOS",Lab Review,yes
+"Imp: दवा सही असर कर रही है, खुराक जारी रखें। pls",Medication Titration,no
+OPD Slip: Tab Pantocid 40mg added. Adjust dose if symptoms persist after 2 weeks. pls,Medication Titration,yes
+"Adv: Sab theek chal raha hai, general checkup ke liye 1 mahine me aana. review with slip",General Follow-Up,yes
+"K/C/O HTN, Blood sugar fasting and PP to be done. Show reports after 4 weeks. post meal",Lab Review,yes
+OPD Slip: Sonography karwa ke report ke sath 5 din me aao.,Lab Review,yes
+OPD Slip: Joint pain persisting. Clinical re-assessment after 5 days.,General Follow-Up,yes
+R/o HbA1c and lipid profile advised. Come with report in 3 days. SOS,Lab Review,yes
+"Dose change kiya hai, agar weakness lage to turant contact karein.",Medication Titration,yes
+"Adv: If reports show infection, review immediately. strictly",Lab Review,yes
+"Imp: अब कोई परेशानी नहीं है, फॉलो-अप समाप्त।",General Follow-Up,no
+"मरीज पूरी तरह स्वस्थ है, आगे दिखाने की आवश्यकता नहीं है।",General Follow-Up,no
+"K/C/O HTN, Abscess drained, sterile dressing done. Change dressing in 2 months. empty stomach",Surgical Dressing,yes
+"Imp: घाव ठीक हो गया है, पट्टी हटा दी गई है। strictly",Surgical Dressing,no
+"Insulin units badhayi hain, sugar chart ke sath 5 din me dikhana. post meal",Medication Titration,yes
+"K/C/O HTN, Wound dressing change after 1 week. Keep area dry and clean. empty stomach",Surgical Dressing,yes
+Blood reports pending. Show as soon as available. post meal,Lab Review,yes
+Burn dressing done. Review in OPD after 6 weeks for fresh dressing.,Surgical Dressing,yes
+"Imp: घाव साफ है, अगले हफ्ते बाद टांके चेक करवाएं। post meal",Surgical Dressing,yes
+"Known diabetic, Medicines theek chal rahi hain, continue karein. strictly",Medication Titration,no
+R/o Daily sterile dressing advised. Review in OPD after 2 weeks. post meal,Surgical Dressing,yes
+"Condition stable. Continue lifestyle modifications, no fixed review. review with slip",General Follow-Up,no
+Adv: घाव की पट्टी ३ दिन बाद बदलवाने आएं। पट्टी को सूखा रखें। post meal,Surgical Dressing,yes
+OPD Slip: Burn dressing done. Review in OPD after 10 days for fresh dressing. SOS,Surgical Dressing,yes
+"Pt: Sugar test fasting and PP karwao, report lekar 3 din baad aana. pls",Lab Review,yes
+"K/C/O HTN, Recovery achhi hai, 10 din baad ek baar review karwa lena.",General Follow-Up,yes
+"थायरॉइड की जांच कराएं, दो महीने बाद रिपोर्ट के साथ मिलें। SOS",Lab Review,yes
+Imp: छाती का एक्स-रे करवा कर ६ हफ्ते में दिखाएं। strictly,Lab Review,yes
+Inhaler Budecort 200mcg puff twice daily. Assess asthma control in next week. strictly,Medication Titration,yes
+Pt: Medicine titration done. Check response in agale hafte.,Medication Titration,yes
+"Adv: Skin healed well. Clean with soap water, dressing discontinued.",Surgical Dressing,no
+Thyroid panel (TSH/T3/T4) ordered. Review 3 days. strictly,Lab Review,yes
+Pt: दवा की खुराक में बदलाव किया गया है। अगले हफ्ते बाद पुनरावलोकन करें। empty stomach,Medication Titration,yes
+"Wound completely healed, sutures removed, no further dressing required. strictly",Surgical Dressing,no
+Imp: जांच रिपोर्ट आते ही तुरंत दिखाएं।,Lab Review,yes
+"Aaram mil raha hai, regular follow-up 1 mahine baad karein. strictly",General Follow-Up,yes
+Tapering prednisolone: 10mg for 5 days then 5mg. Review in 2 months.,Medication Titration,yes
+"थायरॉइड की जांच कराएं, ७ दिन बाद रिपोर्ट के साथ मिलें।",Lab Review,yes
+Imp: Medicines continue rakhein aur 1 week me OPD me dikha dein. empty stomach,General Follow-Up,yes
+"Adv: Dose change kiya hai, agar weakness lage to turant contact karein.",Medication Titration,yes
+OPD Slip: Come for dressing if bandage becomes soaked or foul smelling.,Surgical Dressing,yes
+OPD Slip: Tapering prednisolone: 10mg for 5 days then 5mg. Review in 3 weeks.,Medication Titration,yes
+"Known diabetic, Tapering prednisolone: 10mg for 5 days then 5mg. Review in 6 weeks.",Medication Titration,yes
+OPD Slip: खून की रिपोर्ट नॉर्मल है। 1 महीने बाद दोबारा रूटीन जांच कराएं।,Lab Review,yes
+"Reports normal hain, abhi test repeat nahi karna. empty stomach",Lab Review,no
+"Imp: खून की जांच (CBC, LFT) करवाएं। तीन हफ्ते बाद रिपोर्ट दिखाएं। post meal",Lab Review,yes
+OPD Slip: Come back if fever or abdominal pain recurs.,General Follow-Up,yes
+"OPD Slip: Condition stable. Continue lifestyle modifications, no fixed review.",General Follow-Up,no
+Post-op wound healthy. Clean dressing in 2 weeks.,Surgical Dressing,yes
+"Patti utaar di hai, ghav poora bhar gaya hai.",Surgical Dressing,no
+"Repeat CBC, LFT, KFT after 4 weeks. Review with reports. post meal",Lab Review,yes
+"Dressing review soon, avoid soaking in water. pls",Surgical Dressing,yes
+"K/C/O HTN, Steroid dose taper kar rahe hain, 14 din me review karein.",Medication Titration,yes
+"Sugar medicine dose adjust ki hai, 3 din baad fasting sugar check karayein. pls",Medication Titration,yes
+Adv: Antihypertensive dosage titrated. Come for BP check after 2 weeks. empty stomach,Medication Titration,yes
+"OPD Slip: बीपी कंट्रोल में है, दवा की खुराक यथावत रहेगी। review with slip",Medication Titration,no
+Adv: Medicine titration done. Check response in 10 din.,Medication Titration,yes
+छाती का एक्स-रे करवा कर १० दिन में दिखाएं। strictly,Lab Review,yes
+बीपी की दवा (Amlodipine) की खुराक बढ़ा दी है। तीन हफ्ते बाद बीपी जांच कराएं। strictly,Medication Titration,yes
+"Known diabetic, इंसुलिन की मात्रा 12 यूनिट की गई। १० दिन बाद आकर मिलें। post meal",Medication Titration,yes
+X-ray chest PA view done. Review in 3 weeks with film. review with slip,Lab Review,yes
+"Imp: Insulin units badhayi hain, sugar chart ke sath 4 hafte me dikhana.",Medication Titration,yes
+"Sugar test fasting and PP karwao, report lekar kal baad aana. pls",Lab Review,yes
+OPD Slip: टांके ५ दिन बाद कटवाने अस्पताल आएं। review with slip,Surgical Dressing,yes
+R/o पेशाब की जांच की रिपोर्ट कल बाद दिखाएं।,Lab Review,yes
+"K/C/O HTN, CBC reports reviewed. Mild anaemia. Recheck Hb in 1 week. empty stomach",Lab Review,yes
+"Known diabetic, Platelet count low. Repeat test tomorrow morning and review. SOS",Lab Review,yes
+Follow up after 1 week to monitor overall recovery. review with slip,General Follow-Up,yes
+OPD Slip: टांके अगले हफ्ते बाद कटवाने अस्पताल आएं। empty stomach,Surgical Dressing,yes
+"K/C/O HTN, Reports aate hi dikha dena.",Lab Review,yes
+Adv: Pus discharge reduced. Suture line review in 6 weeks. SOS,Surgical Dressing,yes
+"Imp: सभी जांच रिपोर्ट सामान्य हैं, अब जांच की जरूरत नहीं। empty stomach",Lab Review,no
+"Known diabetic, Wound healing well. Remove stitches in 5 days. review with slip",Surgical Dressing,yes
+"Pt: Condition bilkul normal hai, follow up zaroori nahi.",General Follow-Up,no
+OPD Slip: Agar tabiyat thodi bhi kharab lage to bina der kiye aana. post meal,General Follow-Up,yes
+Imp: अगर बुखार या पेट दर्द दोबारा हो तो तुरंत अस्पताल आएं। pls,General Follow-Up,yes
+Adv: Cured. No further visit required.,General Follow-Up,no
+"Stitches cut chuke hain, healing complete hai. strictly",Surgical Dressing,no
+"Imp: जले का घाव है, कल बाद नई पट्टी करवाने आएं। empty stomach",Surgical Dressing,yes
+Suture removal (stitches out) scheduled after 14 days. pls,Surgical Dressing,yes
+"Imp: दवाइयां जारी रखें, दो हफ्ते बाद आकर मिलें।",General Follow-Up,yes
+Pt: Staples removal due after 6 weeks. Inspect incision site. strictly,Surgical Dressing,yes
+R/o Urine routine & microscopy sent. Follow up in 14 days. SOS,Lab Review,yes
+"K/C/O HTN, मरीज पूरी तरह स्वस्थ है, आगे दिखाने की आवश्यकता नहीं है। empty stomach",General Follow-Up,no
+"Pt: अब कोई परेशानी नहीं है, फॉलो-अप समाप्त।",General Follow-Up,no
+घाव की पट्टी दो हफ्ते बाद बदलवाने आएं। पट्टी को सूखा रखें। SOS,Surgical Dressing,yes
+अगर दवा से चक्कर आए तो तुरंत आएं।,Medication Titration,yes
+"Known diabetic, Creatinine aur urea test repeat karna hai after 5 din. post meal",Lab Review,yes
+OPD Slip: पेशाब की जांच की रिपोर्ट एक हफ्ते बाद दिखाएं। review with slip,Lab Review,yes
+"K/C/O HTN, Agar test me infection aaye to turant aana. SOS",Lab Review,yes
+"R/o Recovery achhi hai, 14 din baad ek baar review karwa lena. strictly",General Follow-Up,yes
+OPD Slip: Agar tabiyat thodi bhi kharab lage to bina der kiye aana. SOS,General Follow-Up,yes
+USG abdomen advised. Review after 3 days with sonography report. strictly,Lab Review,yes
+Pt: Agar test me infection aaye to turant aana. review with slip,Lab Review,yes
+"Recovery achhi hai, 14 din baad ek baar review karwa lena. strictly",General Follow-Up,yes
+"Adv: Stitches dry hain, kal baad removal hoga. post meal",Surgical Dressing,yes
+"Imp: Condition stable. Continue lifestyle modifications, no fixed review. post meal",General Follow-Up,no
+Pt: सामान्य जांच के लिए १४ दिन बाद दोबारा दिखाएं।,General Follow-Up,yes
+Continue current treatment. Routine visit in tomorrow. pls,General Follow-Up,yes
+Adv: जांच रिपोर्ट आते ही तुरंत दिखाएं।,Lab Review,yes
+Pt: Daily sterile dressing advised. Review in OPD after 5 days. strictly,Surgical Dressing,yes
+OPD Slip: X-ray chest PA view done. Review in 4 weeks with film.,Lab Review,yes
+"Adv: Condition stable. Continue lifestyle modifications, no fixed review. post meal",General Follow-Up,no
+"If BP remains > 150/90, increase dose and report back. strictly",Medication Titration,yes
+बीपी की दवा (Amlodipine) की खुराक बढ़ा दी है। दो महीने बाद बीपी जांच कराएं।,Medication Titration,yes
+"Pt: Urine culture report 2 hafte me aayegi, tab dikha dena. pls",Lab Review,yes
+"Repeat CBC, LFT, KFT after 3 weeks. Review with reports. review with slip",Lab Review,yes
+OPD Slip: Cured. No further visit required.,General Follow-Up,no
+Tab Atorvastatin dose increased. Re-evaluate lipid levels in 2 weeks. strictly,Medication Titration,yes
+"OPD Slip: दवा सही असर कर रही है, खुराक जारी रखें। SOS",Medication Titration,no
+Imp: इंसुलिन की मात्रा 12 यूनिट की गई। १० दिन बाद आकर मिलें।,Medication Titration,yes
+Chest congestion improved. Re-consult after next week if cough continues. pls,General Follow-Up,yes
+Wound healing well. Remove stitches in 3 days. empty stomach,Surgical Dressing,yes
+थायरॉइड की गोली 50mcg से 75mcg की। ३ दिन बाद जांच और फॉलो-अप।,Medication Titration,yes
+Ghav ki patti agale hafte baad change karwane aana. Paani mat lagne dena.,Surgical Dressing,yes
+"Adv: Stitches cut chuke hain, healing complete hai. post meal",Surgical Dressing,no
+"दवा कम की जा रही है, अगले हफ्ते बाद आकर दिखाएं।",Medication Titration,yes
+Pus discharge reduced. Suture line review in 6 weeks. pls,Surgical Dressing,yes
+"Known diabetic, घाव पूरी तरह सूख चुका है, टांके कट चुके हैं। अब ड्रेसिंग की जरूरत नहीं। post meal",Surgical Dressing,no
+Post-op wound healthy. Clean dressing in 10 days. post meal,Surgical Dressing,yes
+Review soon or if symptoms worsen.,General Follow-Up,yes
+"Adv: If reports show infection, review immediately. SOS",Lab Review,yes
+"R/o अब कोई परेशानी नहीं है, फॉलो-अप समाप्त। post meal",General Follow-Up,no
+"Known diabetic, Dose adjusted today. Review soon if any giddiness or side effects. pls",Medication Titration,yes
+"Reports normal hain, abhi test repeat nahi karna. post meal",Lab Review,no
+Platelet count low. Repeat test tomorrow morning and review.,Lab Review,yes
+"R/o खून की जांच (CBC, LFT) करवाएं। चार हफ्ते बाद रिपोर्ट दिखाएं। empty stomach",Lab Review,yes
+Adv: Urine routine & microscopy sent. Follow up in tomorrow. pls,Lab Review,yes
+R/o Dose well tolerated. Continue current prescription. review with slip,Medication Titration,no
+"Known diabetic, जले का घाव है, चार हफ्ते बाद नई पट्टी करवाने आएं। empty stomach",Surgical Dressing,yes
+"K/C/O HTN, Review blood test reports 1 week. Fasting sugar pending.",Lab Review,yes
+"अब कोई परेशानी नहीं है, फॉलो-अप समाप्त। SOS",General Follow-Up,no
+Pt: General follow up after 3 weeks. Review symptoms and progress. pls,General Follow-Up,yes
+"Known diabetic, Sputum for AFB sent. Collect report and show after 1 month. review with slip",Lab Review,yes
+Patient symptom free. Advice given. Discharge on SOS basis.,General Follow-Up,no
+"Skin healed well. Clean with soap water, dressing discontinued. SOS",Surgical Dressing,no
+"K/C/O HTN, Tanke cutwane ke liye 10 din baad surgery OPD me aana.",Surgical Dressing,yes
+OPD Slip: Deep laceration sutured. Review after next week for suture inspection. pls,Surgical Dressing,yes
+R/o थायरॉइड की गोली 50mcg से 75mcg की। एक हफ्ते बाद जांच और फॉलो-अप। empty stomach,Medication Titration,yes
+Wound dressing 4 hafte me repeat karein. Swelling check karni hai. empty stomach,Surgical Dressing,yes
+Adv: Medicine titration done. Check response in 4 hafte.,Medication Titration,yes
+"Known diabetic, Sonography karwa ke report ke sath agale hafte me aao. SOS",Lab Review,yes
+"K/C/O HTN, Tapering prednisolone: 10mg for 5 days then 5mg. Review in 1 month. empty stomach",Medication Titration,yes
+R/o Ghav ki patti 1 mahine baad change karwane aana. Paani mat lagne dena. SOS,Surgical Dressing,yes
+"Dressing review soon, avoid soaking in water.",Surgical Dressing,yes
+"Known diabetic, Stitches dry hain, 7 din baad removal hoga. review with slip",Surgical Dressing,yes
+"Tab Metformin 500mg BD started. Monitor FBS, review in 3 weeks. pls",Medication Titration,yes
+"Known diabetic, Cured. No further visit required.",General Follow-Up,no
+CBC reports reviewed. Mild anaemia. Recheck Hb in tomorrow.,Lab Review,yes
+OPD Slip: Wound dressing kal me repeat karein. Swelling check karni hai. strictly,Surgical Dressing,yes
+Blood sugar fasting and PP to be done. Show reports after tomorrow. empty stomach,Lab Review,yes
+R/o अगर बुखार या पेट दर्द दोबारा हो तो तुरंत अस्पताल आएं। review with slip,General Follow-Up,yes
+"Insulin units badhayi hain, sugar chart ke sath agale hafte me dikhana. pls",Medication Titration,yes
+"Medicines theek chal rahi hain, continue karein.",Medication Titration,no
+"Pt: पट्टी रोज बदलें, ७ दिन बाद डॉक्टर को दिखाएं। empty stomach",Surgical Dressing,yes
+"OPD Slip: Recovery achhi hai, 1 mahine baad ek baar review karwa lena. pls",General Follow-Up,yes
+Routine review after festivals or next month.,General Follow-Up,yes
+"Pt: दवा सही असर कर रही है, खुराक जारी रखें।",Medication Titration,no
+OPD Slip: बीपी की दवा (Amlodipine) की खुराक बढ़ा दी है। अगले हफ्ते बाद बीपी जांच कराएं। strictly,Medication Titration,yes
+Sputum for AFB sent. Collect report and show after 6 weeks. strictly,Lab Review,yes
+"BP ki goli dose badha di hai, 3 din baad BP check karwane aana.",Medication Titration,yes
+"K/C/O HTN, अगर बुखार या पेट दर्द दोबारा हो तो तुरंत अस्पताल आएं। review with slip",General Follow-Up,yes
+"OPD Slip: Sab theek chal raha hai, general checkup ke liye 3 din me aana. strictly",General Follow-Up,yes
+OPD Slip: सर्जरी के बाद का घाव ठीक हो रहा है। चार हफ्ते बाद ड्रेसिंग कराएं। empty stomach,Surgical Dressing,yes
+Tab Pantocid 40mg added. Adjust dose if symptoms persist after 6 weeks. empty stomach,Medication Titration,yes
+Adv: कमजोरी और भूख न लगने की समीक्षा १० दिन बाद की जाएगी।,General Follow-Up,yes
+Pt: General follow up after 3 weeks. Review symptoms and progress.,General Follow-Up,yes
+Imp: Insulin dose adjusted to 14 units SC before dinner. Review after 3 weeks. strictly,Medication Titration,yes
+Deep laceration sutured. Review after tomorrow for suture inspection. SOS,Surgical Dressing,yes
+Adv: Agar tabiyat thodi bhi kharab lage to bina der kiye aana. post meal,General Follow-Up,yes
+"Skin healed well. Clean with soap water, dressing discontinued.",Surgical Dressing,no
+"Imp: Urine culture report 14 din me aayegi, tab dikha dena. empty stomach",Lab Review,yes
+Creatinine aur urea test repeat karna hai after 3 hafte. SOS,Lab Review,yes
+"खांसी और जुकाम में आराम है, १० दिन बाद फॉलो-अप करें।",General Follow-Up,yes
+Deep laceration sutured. Review after tomorrow for suture inspection.,Surgical Dressing,yes
+OPD Slip: Joint pain persisting. Clinical re-assessment after 5 days. pls,General Follow-Up,yes
+Tab Atorvastatin dose increased. Re-evaluate lipid levels in 5 days. SOS,Medication Titration,yes
+"Condition stable. Continue lifestyle modifications, no fixed review. pls",General Follow-Up,no
+"थायरॉइड की जांच कराएं, दो महीने बाद रिपोर्ट के साथ मिलें। post meal",Lab Review,yes
+"Imp: Condition bilkul normal hai, follow up zaroori nahi. empty stomach",General Follow-Up,no
+Adv: Agar tabiyat thodi bhi kharab lage to bina der kiye aana.,General Follow-Up,yes
+Imp: इंसुलिन की मात्रा 12 यूनिट की गई। ६ हफ्ते बाद आकर मिलें। empty stomach,Medication Titration,yes
+"K/C/O HTN, Steroid dose taper kar rahe hain, 14 din me review karein.",Medication Titration,yes
+"K/C/O HTN, मरीज पूरी तरह स्वस्थ है, आगे दिखाने की आवश्यकता नहीं है। empty stomach",General Follow-Up,no
+"Insulin units badhayi hain, sugar chart ke sath 14 din me dikhana. post meal",Medication Titration,yes
+OPD Slip: Medication titrated as discussed. No follow-up needed if stable.,Medication Titration,no
+Adv: अल्ट्रासाउंड (USG) रिपोर्ट आने पर १ महीने बाद दिखाएं। SOS,Lab Review,yes
+"Known diabetic, Dose well tolerated. Continue current prescription. empty stomach",Medication Titration,no
+"Recovery achhi hai, 6 hafte baad ek baar review karwa lena.",General Follow-Up,yes
+"Dose stable hai, koi change ki zaroorat nahi. review with slip",Medication Titration,no
+"Stitches cut chuke hain, healing complete hai. SOS",Surgical Dressing,no
+"Adv: If BP remains > 150/90, increase dose and report back.",Medication Titration,yes
+"Known diabetic, Urine routine & microscopy sent. Follow up in tomorrow.",Lab Review,yes
+OPD Slip: Continue current treatment. Routine visit in 14 days. post meal,General Follow-Up,yes
+"Known diabetic, Medicines theek chal rahi hain, continue karein. review with slip",Medication Titration,no
+OPD Slip: CBC reports reviewed. Mild anaemia. Recheck Hb in 14 days. post meal,Lab Review,yes
+OPD Slip: इंसुलिन की मात्रा 12 यूनिट की गई। दो हफ्ते बाद आकर मिलें। post meal,Medication Titration,yes
+R/o Routine review after festivals or next month. pls,General Follow-Up,yes
+"Abhi sab control me hai, jab zaroorat lage tabhi aana. strictly",General Follow-Up,no
+OPD Slip: घाव की पट्टी एक हफ्ते बाद बदलवाने आएं। पट्टी को सूखा रखें।,Surgical Dressing,yes
+"Abscess drained, sterile dressing done. Change dressing in 2 weeks. post meal",Surgical Dressing,yes
+"Known diabetic, घाव पूरी तरह सूख चुका है, टांके कट चुके हैं। अब ड्रेसिंग की जरूरत नहीं।",Surgical Dressing,no
+"Imp: Sugar medicine dose adjust ki hai, 7 din baad fasting sugar check karayein. pls",Medication Titration,yes
+"K/C/O HTN, Urine culture report 10 din me aayegi, tab dikha dena.",Lab Review,yes
+Tab Amlodipine increased to 10mg OD. BP check and review after 5 days. post meal,Medication Titration,yes
+Medicine titration done. Check response in 1 week.,Medication Titration,yes
+"Steroid dose taper kar rahe hain, 4 hafte me review karein. strictly",Medication Titration,yes
+Daily sterile dressing advised. Review in OPD after next week. SOS,Surgical Dressing,yes
+"Known diabetic, Check serum creatinine and urea. Return after next week with results. review with slip",Lab Review,yes
+"Skin healed well. Clean with soap water, dressing discontinued. post meal",Surgical Dressing,no
+Imp: Chest congestion improved. Re-consult after 2 months if cough continues. SOS,General Follow-Up,yes
+"Known diabetic, तबीयत में सुधार है। चार हफ्ते बाद रूटीन चेकअप के लिए आएं। strictly",General Follow-Up,yes
+"Adv: Dressing review soon, avoid soaking in water. strictly",Surgical Dressing,yes
+Wound dressing change after 6 weeks. Keep area dry and clean. post meal,Surgical Dressing,yes
+Adv: Agar tabiyat thodi bhi kharab lage to bina der kiye aana.,General Follow-Up,yes
+"If reports show infection, review immediately.",Lab Review,yes
+OPD Slip: Tanke cutwane ke liye kal baad surgery OPD me aana. review with slip,Surgical Dressing,yes
+"Pt: Abhi sab control me hai, jab zaroorat lage tabhi aana. review with slip",General Follow-Up,no
+"OPD Slip: घाव पूरी तरह सूख चुका है, टांके कट चुके हैं। अब ड्रेसिंग की जरूरत नहीं।",Surgical Dressing,no
+"Imp: Abhi sab control me hai, jab zaroorat lage tabhi aana. SOS",General Follow-Up,no
+Reports aate hi dikha dena. review with slip,Lab Review,yes
+"Pt: Stitches dry hain, 6 hafte baad removal hoga.",Surgical Dressing,yes
+OPD Slip: Pus discharge reduced. Suture line review in 5 days.,Surgical Dressing,yes
+"Pt: Wound completely healed, sutures removed, no further dressing required. post meal",Surgical Dressing,no
+OPD Slip: Suture removal (stitches out) scheduled after 6 weeks.,Surgical Dressing,yes
+"Insulin units badhayi hain, sugar chart ke sath 3 din me dikhana. review with slip",Medication Titration,yes
+"Known diabetic, Wound completely healed, sutures removed, no further dressing required. post meal",Surgical Dressing,no
+Adv: Review blood test reports 10 days. Fasting sugar pending. review with slip,Lab Review,yes
+"R/o Sugar medicine dose adjust ki hai, 10 din baad fasting sugar check karayein. post meal",Medication Titration,yes
+R/o Come back if fever or abdominal pain recurs.,General Follow-Up,yes
+Pt: Burn dressing done. Review in OPD after 3 days for fresh dressing.,Surgical Dressing,yes
+Review soon or if symptoms worsen. strictly,General Follow-Up,yes
+"K/C/O HTN, Recovery achhi hai, 2 hafte baad ek baar review karwa lena.",General Follow-Up,yes
+Daily sterile dressing advised. Review in OPD after 5 days. pls,Surgical Dressing,yes
+"R/o Abscess drained, sterile dressing done. Change dressing in 3 weeks. review with slip",Surgical Dressing,yes
+"Known diabetic, पट्टी रोज बदलें, १४ दिन बाद डॉक्टर को दिखाएं। post meal",Surgical Dressing,yes
+"Pt: Urine culture report 4 hafte me aayegi, tab dikha dena.",Lab Review,yes
+"R/o Recovery achhi hai, 2 mahine baad ek baar review karwa lena. pls",General Follow-Up,yes
+OPD Slip: All baseline investigations satisfactory. Continue same rx. review with slip,Lab Review,no
+OPD Slip: Urine routine & microscopy sent. Follow up in 7 days. pls,Lab Review,yes
+"OPD Slip: Sab theek chal raha hai, general checkup ke liye 7 din me aana. post meal",General Follow-Up,yes
+"Adv: HbA1c test karwana hai, 4 hafte me report ke sath milna.",Lab Review,yes
+Adv: Ghav ki patti 2 mahine baad change karwane aana. Paani mat lagne dena. SOS,Surgical Dressing,yes
+"Adv: Child active, appetite improved. Routine paediatric check in 14 days. review with slip",General Follow-Up,yes
+Medicines continue rakhein aur 3 hafte me OPD me dikha dein. strictly,General Follow-Up,yes
+"K/C/O HTN, Wound dressing change after 3 days. Keep area dry and clean. empty stomach",Surgical Dressing,yes
+"K/C/O HTN, सर्जरी के बाद का घाव ठीक हो रहा है। ७ दिन बाद ड्रेसिंग कराएं। empty stomach",Surgical Dressing,yes
+"Pt: Stitches cut chuke hain, healing complete hai.",Surgical Dressing,no
+"K/C/O HTN, Insulin units badhayi hain, sugar chart ke sath 2 mahine me dikhana. empty stomach",Medication Titration,yes
+"घाव साफ है, कल बाद टांके चेक करवाएं। review with slip",Surgical Dressing,yes
+Imp: खून की रिपोर्ट नॉर्मल है। 1 महीने बाद दोबारा रूटीन जांच कराएं। empty stomach,Lab Review,yes
+"R/o Aaram mil raha hai, regular follow-up 14 din baad karein. empty stomach",General Follow-Up,yes
+"R/o Sugar test fasting and PP karwao, report lekar agale hafte baad aana. empty stomach",Lab Review,yes
+"Imp: घाव ठीक हो गया है, पट्टी हटा दी गई है। post meal",Surgical Dressing,no
+"Labs normal, no further testing needed. empty stomach",Lab Review,no
+Burn dressing done. Review in OPD after 2 weeks for fresh dressing.,Surgical Dressing,yes
+Adv: Tab Amlodipine increased to 10mg OD. BP check and review after 7 days. pls,Medication Titration,yes
+Ghav ki patti 6 hafte baad change karwane aana. Paani mat lagne dena. post meal,Surgical Dressing,yes
+"R/o Wound completely healed, sutures removed, no further dressing required. review with slip",Surgical Dressing,no
+Imp: All baseline investigations satisfactory. Continue same rx. SOS,Lab Review,no
+"Medicines theek chal rahi hain, continue karein.",Medication Titration,no
+"Recovery achhi hai, 4 hafte baad ek baar review karwa lena.",General Follow-Up,yes
+"K/C/O HTN, Reports aate hi dikha dena.",Lab Review,yes
+Insulin dose adjusted to 14 units SC before dinner. Review after tomorrow.,Medication Titration,yes
+"Pt: दवा कम की जा रही है, ३ दिन बाद आकर दिखाएं। SOS",Medication Titration,yes
+OPD Slip: Thyroid panel (TSH/T3/T4) ordered. Review 3 days. empty stomach,Lab Review,yes
+R/o घाव की पट्टी दो हफ्ते बाद बदलवाने आएं। पट्टी को सूखा रखें। strictly,Surgical Dressing,yes
+"पट्टी रोज बदलें, ६ हफ्ते बाद डॉक्टर को दिखाएं।",Surgical Dressing,yes
+Pt: Wound dressing change after 4 weeks. Keep area dry and clean.,Surgical Dressing,yes
+"Known diabetic, Abhi sab control me hai, jab zaroorat lage tabhi aana. empty stomach",General Follow-Up,no
+"Known diabetic, Tab Amlodipine increased to 10mg OD. BP check and review after 6 weeks. empty stomach",Medication Titration,yes
+Review soon or if symptoms worsen.,General Follow-Up,yes
+Inhaler Budecort 200mcg puff twice daily. Assess asthma control in 7 days. empty stomach,Medication Titration,yes
+"K/C/O HTN, Sonography karwa ke report ke sath kal me aao. empty stomach",Lab Review,yes
+"जले का घाव है, १ महीने बाद नई पट्टी करवाने आएं।",Surgical Dressing,yes
+"K/C/O HTN, Reports aate hi dikha dena.",Lab Review,yes
+"खांसी और जुकाम में आराम है, १ महीने बाद फॉलो-अप करें।",General Follow-Up,yes
+"OPD Slip: थायरॉइड की जांच कराएं, ६ हफ्ते बाद रिपोर्ट के साथ मिलें।",Lab Review,yes
+"R/o Patti utaar di hai, ghav poora bhar gaya hai. pls",Surgical Dressing,no
+Pt: दवा की खुराक में बदलाव किया गया है। कल बाद पुनरावलोकन करें। post meal,Medication Titration,yes
+Pt: अगर बुखार या पेट दर्द दोबारा हो तो तुरंत अस्पताल आएं। post meal,General Follow-Up,yes
+"Dressing review soon, avoid soaking in water. empty stomach",Surgical Dressing,yes
+"Known diabetic, घाव ठीक हो गया है, पट्टी हटा दी गई है। pls",Surgical Dressing,no
+Post-op wound healthy. Clean dressing in 6 weeks.,Surgical Dressing,yes
+"Adv: घाव ठीक हो गया है, पट्टी हटा दी गई है। strictly",Surgical Dressing,no
+"Imp: दवा कम की जा रही है, कल बाद आकर दिखाएं। review with slip",Medication Titration,yes
+"K/C/O HTN, Condition stable. Continue lifestyle modifications, no fixed review. SOS",General Follow-Up,no
+Adv: USG abdomen advised. Review after 2 weeks with sonography report.,Lab Review,yes
+"Insulin units badhayi hain, sugar chart ke sath 2 hafte me dikhana.",Medication Titration,yes
+Pt: Come for dressing if bandage becomes soaked or foul smelling. SOS,Surgical Dressing,yes
+"K/C/O HTN, थायरॉइड की गोली 50mcg से 75mcg की। १४ दिन बाद जांच और फॉलो-अप।",Medication Titration,yes
+"K/C/O HTN, HbA1c test karwana hai, 1 week me report ke sath milna.",Lab Review,yes
+थायरॉइड की गोली 50mcg से 75mcg की। चार हफ्ते बाद जांच और फॉलो-अप। post meal,Medication Titration,yes
+R/o CBC reports reviewed. Mild anaemia. Recheck Hb in tomorrow. empty stomach,Lab Review,yes
+"K/C/O HTN, अल्ट्रासाउंड (USG) रिपोर्ट आने पर ३ दिन बाद दिखाएं। review with slip",Lab Review,yes
+अगर बुखार या पेट दर्द दोबारा हो तो तुरंत अस्पताल आएं।,General Follow-Up,yes
+Continue current treatment. Routine visit in tomorrow. pls,General Follow-Up,yes
+R/o Antihypertensive dosage titrated. Come for BP check after 1 month. review with slip,Medication Titration,yes
+"Pt: Stitches cut chuke hain, healing complete hai. review with slip",Surgical Dressing,no
+"K/C/O HTN, Dose stable hai, koi change ki zaroorat nahi.",Medication Titration,no
+"K/C/O HTN, जांच रिपोर्ट आते ही तुरंत दिखाएं। post meal",Lab Review,yes
+Adv: Insulin dose adjusted to 14 units SC before dinner. Review after 6 weeks. strictly,Medication Titration,yes
+"K/C/O HTN, Tapering prednisolone: 10mg for 5 days then 5mg. Review in 3 weeks. SOS",Medication Titration,yes
+Medication titrated as discussed. No follow-up needed if stable. pls,Medication Titration,no
+"OPD Slip: घाव ठीक हो गया है, पट्टी हटा दी गई है।",Surgical Dressing,no
+Pt: Inhaler Budecort 200mcg puff twice daily. Assess asthma control in 3 weeks. empty stomach,Medication Titration,yes
+"Imp: Aaram mil raha hai, regular follow-up 5 din baad karein. strictly",General Follow-Up,yes
+"Known diabetic, Review blood test reports 1 month. Fasting sugar pending. empty stomach",Lab Review,yes
+"K/C/O HTN, HbA1c and lipid profile advised. Come with report in 14 days. post meal",Lab Review,yes
+"खांसी और जुकाम में आराम है, अगले हफ्ते बाद फॉलो-अप करें।",General Follow-Up,yes
+Imp: Check serum creatinine and urea. Return after 14 days with results.,Lab Review,yes
+Insulin dose adjusted to 14 units SC before dinner. Review after 10 days. review with slip,Medication Titration,yes
+OPD Slip: अगर दवा से चक्कर आए तो तुरंत आएं। review with slip,Medication Titration,yes
+Review in OPD after 5 days if not fully relieved. pls,General Follow-Up,yes
+"K/C/O HTN, खून की जांच (CBC, LFT) करवाएं। चार हफ्ते बाद रिपोर्ट दिखाएं। post meal",Lab Review,yes
+"Pt: Blood test (CBC/KFT) karwa lena, reports ke sath 1 week baad dikhana. strictly",Lab Review,yes
+Dose adjusted today. Review soon if any giddiness or side effects. review with slip,Medication Titration,yes
+"Known diabetic, Aaram mil raha hai, regular follow-up 2 mahine baad karein.",General Follow-Up,yes
+"Known diabetic, X-ray chest PA view done. Review in 2 months with film. post meal",Lab Review,yes
+Tanke cutwane ke liye 7 din baad surgery OPD me aana. pls,Surgical Dressing,yes
+"Pt: Recovery achhi hai, 14 din baad ek baar review karwa lena. pls",General Follow-Up,yes
+OPD Slip: अगर दवा से चक्कर आए तो तुरंत आएं। strictly,Medication Titration,yes
+Pt: Agar tabiyat thodi bhi kharab lage to bina der kiye aana. pls,General Follow-Up,yes
+"R/o If reports show infection, review immediately. SOS",Lab Review,yes
+Adv: शुगर की दवा की खुराक बदली है। चार हफ्ते बाद शुगर नाप कर दिखाएं। pls,Medication Titration,yes
+Reports aate hi dikha dena. post meal,Lab Review,yes
+"Known diabetic, Aaram mil raha hai, regular follow-up 5 din baad karein. SOS",General Follow-Up,yes
+"Known diabetic, अगर दवा से चक्कर आए तो तुरंत आएं। strictly",Medication Titration,yes
+"Stitches cut chuke hain, healing complete hai.",Surgical Dressing,no
+Pt: Tab Thyronorm dose hiked to 75mcg. Repeat TSH & review in 2 months. SOS,Medication Titration,yes
+Adv: Cured. No further visit required. review with slip,General Follow-Up,no
+"Known diabetic, खून की रिपोर्ट नॉर्मल है। 1 महीने बाद दोबारा रूटीन जांच कराएं।",Lab Review,yes
+तबीयत में सुधार है। एक हफ्ते बाद रूटीन चेकअप के लिए आएं। strictly,General Follow-Up,yes
+"Adv: Steroid dose taper kar rahe hain, agale hafte me review karein. review with slip",Medication Titration,yes
+R/o सर्जरी के बाद का घाव ठीक हो रहा है। दो महीने बाद ड्रेसिंग कराएं। strictly,Surgical Dressing,yes
+OPD Slip: Patient symptom free. Advice given. Discharge on SOS basis. SOS,General Follow-Up,no
+"Urine culture report 14 din me aayegi, tab dikha dena. pls",Lab Review,yes
+"Child active, appetite improved. Routine paediatric check in 14 days.",General Follow-Up,yes
+"K/C/O HTN, यदि खून की जांच में प्लेटलेट्स कम हों तो तुरंत आएं। pls",Lab Review,yes
+Adv: Blood sugar fasting and PP to be done. Show reports after 14 days.,Lab Review,yes
+"Imp: सभी जांच रिपोर्ट सामान्य हैं, अब जांच की जरूरत नहीं। SOS",Lab Review,no
+"OPD Slip: घाव ठीक हो गया है, पट्टी हटा दी गई है।",Surgical Dressing,no
+Imp: Routine review after festivals or next month. strictly,General Follow-Up,yes
+Medicines continue rakhein aur 14 din me OPD me dikha dein. strictly,General Follow-Up,yes
+Creatinine aur urea test repeat karna hai after 10 din. empty stomach,Lab Review,yes
+X-ray chest PA view done. Review in 4 weeks with film. post meal,Lab Review,yes
+USG abdomen advised. Review after 1 week with sonography report.,Lab Review,yes
+"Repeat CBC, LFT, KFT after 1 month. Review with reports. review with slip",Lab Review,yes
+"K/C/O HTN, Suture removal (stitches out) scheduled after 10 days. SOS",Surgical Dressing,yes
+"Known diabetic, Insulin dose adjusted to 14 units SC before dinner. Review after 7 days.",Medication Titration,yes
+"Known diabetic, Tanke cutwane ke liye 10 din baad surgery OPD me aana. post meal",Surgical Dressing,yes
+Adv: Post-op wound healthy. Clean dressing in 3 weeks. empty stomach,Surgical Dressing,yes
+"Sterile dressing kar di hai, 4 hafte me fresh dressing karwayen.",Surgical Dressing,yes
+"Sugar test fasting and PP karwao, report lekar 6 hafte baad aana. post meal",Lab Review,yes
+"R/o दवा कम की जा रही है, १ महीने बाद आकर दिखाएं। pls",Medication Titration,yes
+Wound dressing change after 10 days. Keep area dry and clean. pls,Surgical Dressing,yes
+Imp: बीपी की दवा (Amlodipine) की खुराक बढ़ा दी है। चार हफ्ते बाद बीपी जांच कराएं। pls,Medication Titration,yes
+"Patti utaar di hai, ghav poora bhar gaya hai.",Surgical Dressing,no
+"दवाइयां जारी रखें, एक हफ्ते बाद आकर मिलें।",General Follow-Up,yes
+"Adv: Blood test (CBC/KFT) karwa lena, reports ke sath 5 din baad dikhana. pls",Lab Review,yes
+R/o Check serum creatinine and urea. Return after 1 month with results.,Lab Review,yes
+घाव की पट्टी चार हफ्ते बाद बदलवाने आएं। पट्टी को सूखा रखें।,Surgical Dressing,yes
+"K/C/O HTN, General follow up after 3 days. Review symptoms and progress.",General Follow-Up,yes
+Daily sterile dressing advised. Review in OPD after 4 weeks. review with slip,Surgical Dressing,yes
+Adv: Reports aate hi dikha dena. SOS,Lab Review,yes
+"Adv: दवा कम की जा रही है, १४ दिन बाद आकर दिखाएं। empty stomach",Medication Titration,yes
+"R/o Medicines theek chal rahi hain, continue karein.",Medication Titration,no
+OPD Slip: Wound dressing 4 hafte me repeat karein. Swelling check karni hai.,Surgical Dressing,yes
+"Adv: सभी जांच रिपोर्ट सामान्य हैं, अब जांच की जरूरत नहीं।",Lab Review,no
+Medicines continue rakhein aur 3 din me OPD me dikha dein.,General Follow-Up,yes
+Adv: USG abdomen advised. Review after 10 days with sonography report. review with slip,Lab Review,yes
+"Sugar test fasting and PP karwao, report lekar 6 hafte baad aana. empty stomach",Lab Review,yes
+"K/C/O HTN, Recovery achhi hai, 4 hafte baad ek baar review karwa lena.",General Follow-Up,yes
+"K/C/O HTN, USG abdomen advised. Review after 3 weeks with sonography report. empty stomach",Lab Review,yes
+"Known diabetic, दवा की खुराक में बदलाव किया गया है। १० दिन बाद पुनरावलोकन करें। pls",Medication Titration,yes
+Urine routine & microscopy sent. Follow up in 1 week. review with slip,Lab Review,yes
+"Known diabetic, Review after 5 days for routine consultation.",General Follow-Up,yes
+"Known diabetic, Tab Metformin 500mg BD started. Monitor FBS, review in 6 weeks. empty stomach",Medication Titration,yes
+"Pt: BP ki goli dose badha di hai, 14 din baad BP check karwane aana.",Medication Titration,yes
+"Imp: Sab theek chal raha hai, general checkup ke liye 3 hafte me aana. SOS",General Follow-Up,yes
+"K/C/O HTN, HbA1c test karwana hai, kal me report ke sath milna. empty stomach",Lab Review,yes
+Adv: CBC reports reviewed. Mild anaemia. Recheck Hb in 5 days.,Lab Review,yes
+"Patti utaar di hai, ghav poora bhar gaya hai.",Surgical Dressing,no
+Pt: Chest congestion improved. Re-consult after 1 month if cough continues. pls,General Follow-Up,yes
+"Imp: Abscess drained, sterile dressing done. Change dressing in next week. pls",Surgical Dressing,yes
+"Imp: BP ki goli dose badha di hai, 14 din baad BP check karwane aana. strictly",Medication Titration,yes
+R/o जांच रिपोर्ट आते ही तुरंत दिखाएं। empty stomach,Lab Review,yes
+"Stitches dry hain, 10 din baad removal hoga. post meal",Surgical Dressing,yes
+"Known diabetic, बीपी कंट्रोल में है, दवा की खुराक यथावत रहेगी। review with slip",Medication Titration,no
+Pt: Tab Atorvastatin dose increased. Re-evaluate lipid levels in 3 weeks. empty stomach,Medication Titration,yes
+OPD Slip: Reports aate hi dikha dena. review with slip,Lab Review,yes
+"घाव पूरी तरह सूख चुका है, टांके कट चुके हैं। अब ड्रेसिंग की जरूरत नहीं। strictly",Surgical Dressing,no
+Pt: Chest congestion improved. Re-consult after tomorrow if cough continues. pls,General Follow-Up,yes
+"K/C/O HTN, Chest congestion improved. Re-consult after tomorrow if cough continues. post meal",General Follow-Up,yes
+"मरीज पूरी तरह स्वस्थ है, आगे दिखाने की आवश्यकता नहीं है। SOS",General Follow-Up,no
+Imp: X-ray chest PA view done. Review in 2 weeks with film. strictly,Lab Review,yes
+यदि खून की जांच में प्लेटलेट्स कम हों तो तुरंत आएं।,Lab Review,yes
+OPD Slip: Wound dressing 14 din me repeat karein. Swelling check karni hai. post meal,Surgical Dressing,yes
+थायरॉइड की गोली 50mcg से 75mcg की। चार हफ्ते बाद जांच और फॉलो-अप।,Medication Titration,yes
+Adv: शुगर की दवा की खुराक बदली है। १ महीने बाद शुगर नाप कर दिखाएं। review with slip,Medication Titration,yes
+Medication titrated as discussed. No follow-up needed if stable.,Medication Titration,no
+Medicines continue rakhein aur 10 din me OPD me dikha dein. review with slip,General Follow-Up,yes
+"K/C/O HTN, Dose change kiya hai, agar weakness lage to turant contact karein. post meal",Medication Titration,yes
+"K/C/O HTN, थायरॉइड की गोली 50mcg से 75mcg की। कल बाद जांच और फॉलो-अप। empty stomach",Medication Titration,yes
+OPD Slip: Tab Atorvastatin dose increased. Re-evaluate lipid levels in 3 days. empty stomach,Medication Titration,yes
+Pt: All baseline investigations satisfactory. Continue same rx. pls,Lab Review,no
+Tab Pantocid 40mg added. Adjust dose if symptoms persist after 1 month. review with slip,Medication Titration,yes
+Pt: Pus discharge reduced. Suture line review in 2 weeks. post meal,Surgical Dressing,yes
+"Adv: Condition stable. Continue lifestyle modifications, no fixed review.",General Follow-Up,no
+OPD Slip: Insulin dose adjusted to 14 units SC before dinner. Review after 2 weeks. post meal,Medication Titration,yes
+पेशाब की जांच की रिपोर्ट १० दिन बाद दिखाएं। review with slip,Lab Review,yes
+"Known diabetic, Medicines continue rakhein aur 1 week me OPD me dikha dein.",General Follow-Up,yes
+Pt: Continue current treatment. Routine visit in tomorrow. empty stomach,General Follow-Up,yes
+OPD Slip: Tapering prednisolone: 10mg for 5 days then 5mg. Review in 2 months. SOS,Medication Titration,yes
+"Known diabetic, Continue current treatment. Routine visit in tomorrow.",General Follow-Up,yes
+"Known diabetic, Stitches dry hain, 4 hafte baad removal hoga. post meal",Surgical Dressing,yes
+दवा की खुराक में बदलाव किया गया है। दो महीने बाद पुनरावलोकन करें। review with slip,Medication Titration,yes
+"Imp: Sterile dressing kar di hai, 2 mahine me fresh dressing karwayen. post meal",Surgical Dressing,yes
+"K/C/O HTN, घाव ठीक हो गया है, पट्टी हटा दी गई है।",Surgical Dressing,no
+"K/C/O HTN, Condition bilkul normal hai, follow up zaroori nahi.",General Follow-Up,no
+"K/C/O HTN, खांसी और जुकाम में आराम है, दो महीने बाद फॉलो-अप करें। strictly",General Follow-Up,yes
+थायरॉइड की गोली 50mcg से 75mcg की। १० दिन बाद जांच और फॉलो-अप। review with slip,Medication Titration,yes
+Review blood test reports next week. Fasting sugar pending. review with slip,Lab Review,yes
+Adv: अगर दवा से चक्कर आए तो तुरंत आएं।,Medication Titration,yes
+Pt: Deep laceration sutured. Review after 3 weeks for suture inspection. strictly,Surgical Dressing,yes
+OPD Slip: Joint pain persisting. Clinical re-assessment after 14 days. pls,General Follow-Up,yes
+"Known diabetic, CBC reports reviewed. Mild anaemia. Recheck Hb in 3 days. review with slip",Lab Review,yes
+"Known diabetic, बीपी कंट्रोल में है, दवा की खुराक यथावत रहेगी। post meal",Medication Titration,no
+Agar bandage geeli ho jaye ya dard badhe to turant aana.,Surgical Dressing,yes
+"Known diabetic, मरीज पूरी तरह स्वस्थ है, आगे दिखाने की आवश्यकता नहीं है। empty stomach",General Follow-Up,no
+Adv: Review soon or if symptoms worsen. review with slip,General Follow-Up,yes
+"K/C/O HTN, Follow up after 4 weeks to monitor overall recovery.",General Follow-Up,yes
+"K/C/O HTN, Blood test (CBC/KFT) karwa lena, reports ke sath 4 hafte baad dikhana.",Lab Review,yes
+"Medicines theek chal rahi hain, continue karein. SOS",Medication Titration,no
+"K/C/O HTN, बीपी कंट्रोल में है, दवा की खुराक यथावत रहेगी। SOS",Medication Titration,no
+"R/o Aaram mil raha hai, regular follow-up 2 hafte baad karein. SOS",General Follow-Up,yes
+थायरॉइड की गोली 50mcg से 75mcg की। ६ हफ्ते बाद जांच और फॉलो-अप।,Medication Titration,yes
+"Pt: Dose change kiya hai, agar weakness lage to turant contact karein. empty stomach",Medication Titration,yes
+Pt: Sonography karwa ke report ke sath agale hafte me aao. pls,Lab Review,yes
+General follow up after 4 weeks. Review symptoms and progress. SOS,General Follow-Up,yes
+कमजोरी और भूख न लगने की समीक्षा ५ दिन बाद की जाएगी। post meal,General Follow-Up,yes
+OPD Slip: Agar bandage geeli ho jaye ya dard badhe to turant aana. empty stomach,Surgical Dressing,yes
+R/o Come back if fever or abdominal pain recurs. post meal,General Follow-Up,yes
+"BP ki goli dose badha di hai, 10 din baad BP check karwane aana. empty stomach",Medication Titration,yes
+Dose adjusted today. Review soon if any giddiness or side effects. empty stomach,Medication Titration,yes
+"K/C/O HTN, Agar test me infection aaye to turant aana. pls",Lab Review,yes
+"Medicines theek chal rahi hain, continue karein.",Medication Titration,no
+"Known diabetic, इंसुलिन की मात्रा 12 यूनिट की गई। अगले हफ्ते बाद आकर मिलें। strictly",Medication Titration,yes
+"Known diabetic, थायरॉइड की गोली 50mcg से 75mcg की। ३ दिन बाद जांच और फॉलो-अप। SOS",Medication Titration,yes
+OPD Slip: Review in OPD after 2 months if not fully relieved.,General Follow-Up,yes
+"OPD Slip: Patti utaar di hai, ghav poora bhar gaya hai.",Surgical Dressing,no
+OPD Slip: कमजोरी और भूख न लगने की समीक्षा एक हफ्ते बाद की जाएगी।,General Follow-Up,yes
+"Stitches cut chuke hain, healing complete hai.",Surgical Dressing,no
+Adv: Review blood test reports 1 week. Fasting sugar pending.,Lab Review,yes
+"Imp: Recovery achhi hai, 1 mahine baad ek baar review karwa lena. SOS",General Follow-Up,yes
+Pt: यदि घाव से मवाद या खून निकले तो तुरंत आएं। pls,Surgical Dressing,yes
+"K/C/O HTN, थायरॉइड की गोली 50mcg से 75mcg की। कल बाद जांच और फॉलो-अप। post meal",Medication Titration,yes
+Pt: Tab Amlodipine increased to 10mg OD. BP check and review after 10 days.,Medication Titration,yes
+सामान्य जांच के लिए ६ हफ्ते बाद दोबारा दिखाएं। strictly,General Follow-Up,yes
+Adv: Medicine titration done. Check response in 4 hafte.,Medication Titration,yes
+"R/o पट्टी रोज बदलें, ३ दिन बाद डॉक्टर को दिखाएं। SOS",Surgical Dressing,yes
+"HbA1c test karwana hai, 1 mahine me report ke sath milna.",Lab Review,yes
+OPD Slip: Post-op wound healthy. Clean dressing in 5 days. post meal,Surgical Dressing,yes
+Review soon or if symptoms worsen. strictly,General Follow-Up,yes
+Review soon or if symptoms worsen.,General Follow-Up,yes
+Tab Thyronorm dose hiked to 75mcg. Repeat TSH & review in 6 weeks.,Medication Titration,yes
+Pt: Tapering prednisolone: 10mg for 5 days then 5mg. Review in next week. pls,Medication Titration,yes
+"OPD Slip: Labs normal, no further testing needed.",Lab Review,no
+"K/C/O HTN, Agar bandage geeli ho jaye ya dard badhe to turant aana. review with slip",Surgical Dressing,yes
+"Known diabetic, Dose stable hai, koi change ki zaroorat nahi. post meal",Medication Titration,no
+Pt: तबीयत में सुधार है। १० दिन बाद रूटीन चेकअप के लिए आएं। empty stomach,General Follow-Up,yes
+R/o Agar bandage geeli ho jaye ya dard badhe to turant aana. strictly,Surgical Dressing,yes
+"HbA1c test karwana hai, 14 din me report ke sath milna.",Lab Review,yes
+"K/C/O HTN, Chest congestion improved. Re-consult after tomorrow if cough continues. strictly",General Follow-Up,yes
+"K/C/O HTN, Agar bandage geeli ho jaye ya dard badhe to turant aana.",Surgical Dressing,yes
+"K/C/O HTN, Aaram mil raha hai, regular follow-up 1 week baad karein.",General Follow-Up,yes
+Adv: Wound healing well. Remove stitches in 3 days.,Surgical Dressing,yes
+"खांसी और जुकाम में आराम है, ५ दिन बाद फॉलो-अप करें। pls",General Follow-Up,yes
+"Known diabetic, दवा सही असर कर रही है, खुराक जारी रखें। post meal",Medication Titration,no
+"K/C/O HTN, Dose stable hai, koi change ki zaroorat nahi. post meal",Medication Titration,no
+USG abdomen advised. Review after 1 week with sonography report.,Lab Review,yes
+"K/C/O HTN, Labs normal, no further testing needed. pls",Lab Review,no
+OPD Slip: छाती का एक्स-रे करवा कर ७ दिन में दिखाएं। review with slip,Lab Review,yes
+Post-op wound healthy. Clean dressing in 10 days.,Surgical Dressing,yes
+R/o Post-op wound healthy. Clean dressing in 1 month. SOS,Surgical Dressing,yes
+"OPD Slip: HbA1c test karwana hai, agale hafte me report ke sath milna.",Lab Review,yes
+"Child active, appetite improved. Routine paediatric check in 2 months. empty stomach",General Follow-Up,yes
+"K/C/O HTN, Sugar test fasting and PP karwao, report lekar agale hafte baad aana.",Lab Review,yes
+"If BP remains > 150/90, increase dose and report back.",Medication Titration,yes
+"Imp: सभी जांच रिपोर्ट सामान्य हैं, अब जांच की जरूरत नहीं।",Lab Review,no
+कमजोरी और भूख न लगने की समीक्षा चार हफ्ते बाद की जाएगी। post meal,General Follow-Up,yes
+"K/C/O HTN, दवाइयां जारी रखें, ७ दिन बाद आकर मिलें। post meal",General Follow-Up,yes
+"Adv: BP ki goli dose badha di hai, 4 hafte baad BP check karwane aana.",Medication Titration,yes
+Thyroid panel (TSH/T3/T4) ordered. Review 6 weeks. strictly,Lab Review,yes
+"R/o Sterile dressing kar di hai, agale hafte me fresh dressing karwayen. pls",Surgical Dressing,yes
+"घाव साफ है, चार हफ्ते बाद टांके चेक करवाएं।",Surgical Dressing,yes
+Thyroid panel (TSH/T3/T4) ordered. Review 1 week. strictly,Lab Review,yes
+"K/C/O HTN, Sab theek chal raha hai, general checkup ke liye 2 mahine me aana.",General Follow-Up,yes
+"Sugar medicine dose adjust ki hai, 3 hafte baad fasting sugar check karayein. review with slip",Medication Titration,yes
+यदि खून की जांच में प्लेटलेट्स कम हों तो तुरंत आएं। empty stomach,Lab Review,yes
+R/o Blood reports pending. Show as soon as available. SOS,Lab Review,yes
+"Pt: खांसी और जुकाम में आराम है, कल बाद फॉलो-अप करें। post meal",General Follow-Up,yes
+"K/C/O HTN, Review after 7 days for routine consultation.",General Follow-Up,yes
+Imp: Wound dressing agale hafte me repeat karein. Swelling check karni hai. SOS,Surgical Dressing,yes
+"K/C/O HTN, Insulin units badhayi hain, sugar chart ke sath 7 din me dikhana.",Medication Titration,yes
+अल्ट्रासाउंड (USG) रिपोर्ट आने पर ७ दिन बाद दिखाएं।,Lab Review,yes
+"OPD Slip: बीपी कंट्रोल में है, दवा की खुराक यथावत रहेगी।",Medication Titration,no
+शुगर की दवा की खुराक बदली है। ३ दिन बाद शुगर नाप कर दिखाएं।,Medication Titration,yes
+Pt: Review in OPD after 14 days if not fully relieved.,General Follow-Up,yes
+Imp: शुगर की जांच (Fasting/PP) कराकर ५ दिन बाद रिपोर्ट लेकर आएं। SOS,Lab Review,yes
+Pt: अल्ट्रासाउंड (USG) रिपोर्ट आने पर १४ दिन बाद दिखाएं।,Lab Review,yes
+सर्जरी के बाद का घाव ठीक हो रहा है। १४ दिन बाद ड्रेसिंग कराएं। SOS,Surgical Dressing,yes
+"Sab theek chal raha hai, general checkup ke liye 3 hafte me aana.",General Follow-Up,yes
+Adv: Review after 3 weeks for routine consultation. strictly,General Follow-Up,yes
+R/o Review after 4 weeks for routine consultation.,General Follow-Up,yes
+Pt: Review in OPD after tomorrow if not fully relieved. review with slip,General Follow-Up,yes
+R/o अगर दवा से चक्कर आए तो तुरंत आएं।,Medication Titration,yes
+Pt: Tab Atorvastatin dose increased. Re-evaluate lipid levels in 14 days.,Medication Titration,yes
+"Sugar medicine dose adjust ki hai, 1 week baad fasting sugar check karayein.",Medication Titration,yes
+"Medicines theek chal rahi hain, continue karein.",Medication Titration,no
+"Known diabetic, Tapering prednisolone: 10mg for 5 days then 5mg. Review in 1 week. review with slip",Medication Titration,yes
+"Imp: खांसी और जुकाम में आराम है, ५ दिन बाद फॉलो-अप करें।",General Follow-Up,yes
+R/o यदि घाव से मवाद या खून निकले तो तुरंत आएं।,Surgical Dressing,yes
+OPD Slip: अगर बुखार या पेट दर्द दोबारा हो तो तुरंत अस्पताल आएं।,General Follow-Up,yes
+"घाव ठीक हो गया है, पट्टी हटा दी गई है। strictly",Surgical Dressing,no
+"R/o खांसी और जुकाम में आराम है, कल बाद फॉलो-अप करें। post meal",General Follow-Up,yes
+"Pt: Dose stable hai, koi change ki zaroorat nahi. review with slip",Medication Titration,no
+Adv: Review after tomorrow for routine consultation. empty stomach,General Follow-Up,yes
+"Known diabetic, Inhaler Budecort 200mcg puff twice daily. Assess asthma control in 1 month. SOS",Medication Titration,yes
+"K/C/O HTN, CBC reports reviewed. Mild anaemia. Recheck Hb in tomorrow. strictly",Lab Review,yes
+Imp: Antihypertensive dosage titrated. Come for BP check after 1 month. strictly,Medication Titration,yes
+"Adv: Dose change kiya hai, agar weakness lage to turant contact karein. post meal",Medication Titration,yes
+HbA1c and lipid profile advised. Come with report in 1 week. SOS,Lab Review,yes
+"Pt: Sab theek chal raha hai, general checkup ke liye kal me aana.",General Follow-Up,yes
+Adv: Joint pain persisting. Clinical re-assessment after 5 days. review with slip,General Follow-Up,yes
+"OPD Slip: Labs normal, no further testing needed. strictly",Lab Review,no
+"Known diabetic, Ghav ki patti 2 mahine baad change karwane aana. Paani mat lagne dena. post meal",Surgical Dressing,yes
+"K/C/O HTN, Tab Amlodipine increased to 10mg OD. BP check and review after 4 weeks. strictly",Medication Titration,yes
+"Abscess drained, sterile dressing done. Change dressing in 10 days. empty stomach",Surgical Dressing,yes
+जांच रिपोर्ट आते ही तुरंत दिखाएं।,Lab Review,yes
+"If reports show infection, review immediately. strictly",Lab Review,yes
+"R/o Tab Metformin 500mg BD started. Monitor FBS, review in 4 weeks. pls",Medication Titration,yes
+"घाव साफ है, १ महीने बाद टांके चेक करवाएं।",Surgical Dressing,yes
+"Known diabetic, बीपी कंट्रोल में है, दवा की खुराक यथावत रहेगी।",Medication Titration,no
+"OPD Slip: Abhi sab control me hai, jab zaroorat lage tabhi aana.",General Follow-Up,no
+Tapering prednisolone: 10mg for 5 days then 5mg. Review in 5 days. strictly,Medication Titration,yes
+"Known diabetic, थायरॉइड की जांच कराएं, तीन हफ्ते बाद रिपोर्ट के साथ मिलें। review with slip",Lab Review,yes
+"Pt: Dose change kiya hai, agar weakness lage to turant contact karein. SOS",Medication Titration,yes
+"R/o Aaram mil raha hai, regular follow-up 1 mahine baad karein. SOS",General Follow-Up,yes
+Pt: Tab Pantocid 40mg added. Adjust dose if symptoms persist after 2 weeks.,Medication Titration,yes
+OPD Slip: थायरॉइड की गोली 50mcg से 75mcg की। अगले हफ्ते बाद जांच और फॉलो-अप।,Medication Titration,yes
+"Insulin units badhayi hain, sugar chart ke sath 2 hafte me dikhana.",Medication Titration,yes
+"OPD Slip: Condition bilkul normal hai, follow up zaroori nahi.",General Follow-Up,no
+"जले का घाव है, ६ हफ्ते बाद नई पट्टी करवाने आएं। post meal",Surgical Dressing,yes
+Imp: Joint pain persisting. Clinical re-assessment after 2 weeks. review with slip,General Follow-Up,yes
+Pt: Agar tabiyat thodi bhi kharab lage to bina der kiye aana.,General Follow-Up,yes
+"R/o Abscess drained, sterile dressing done. Change dressing in 3 days.",Surgical Dressing,yes
+Adv: General follow up after 3 days. Review symptoms and progress. post meal,General Follow-Up,yes
+"Known diabetic, Sputum for AFB sent. Collect report and show after tomorrow.",Lab Review,yes
+"K/C/O HTN, मरीज पूरी तरह स्वस्थ है, आगे दिखाने की आवश्यकता नहीं है।",General Follow-Up,no
+"Known diabetic, Blood sugar fasting and PP to be done. Show reports after 10 days.",Lab Review,yes
+Adv: अल्ट्रासाउंड (USG) रिपोर्ट आने पर ६ हफ्ते बाद दिखाएं। review with slip,Lab Review,yes
+Review blood test reports 2 weeks. Fasting sugar pending. post meal,Lab Review,yes
+"R/o HbA1c test karwana hai, 7 din me report ke sath milna. pls",Lab Review,yes
+R/o थायरॉइड की गोली 50mcg से 75mcg की। ५ दिन बाद जांच और फॉलो-अप। empty stomach,Medication Titration,yes
+"Aaram mil raha hai, regular follow-up 3 hafte baad karein.",General Follow-Up,yes
+Burn dressing done. Review in OPD after 6 weeks for fresh dressing. strictly,Surgical Dressing,yes
+"Imp: Wound completely healed, sutures removed, no further dressing required. post meal",Surgical Dressing,no
+Pt: थायरॉइड की गोली 50mcg से 75mcg की। १ महीने बाद जांच और फॉलो-अप। review with slip,Medication Titration,yes
+OPD Slip: Antihypertensive dosage titrated. Come for BP check after 4 weeks. SOS,Medication Titration,yes
+R/o Post-op wound healthy. Clean dressing in 1 week. SOS,Surgical Dressing,yes
+"K/C/O HTN, Creatinine aur urea test repeat karna hai after 1 mahine. post meal",Lab Review,yes
+"K/C/O HTN, इंसुलिन की मात्रा 12 यूनिट की गई। १४ दिन बाद आकर मिलें। pls",Medication Titration,yes
+OPD Slip: Review soon or if symptoms worsen.,General Follow-Up,yes
+"Patti utaar di hai, ghav poora bhar gaya hai.",Surgical Dressing,no
+"Known diabetic, Reports aate hi dikha dena. SOS",Lab Review,yes
+"Imp: Dressing review soon, avoid soaking in water.",Surgical Dressing,yes
+"BP ki goli dose badha di hai, 14 din baad BP check karwane aana. SOS",Medication Titration,yes
+तबीयत में सुधार है। एक हफ्ते बाद रूटीन चेकअप के लिए आएं। empty stomach,General Follow-Up,yes
+खून की रिपोर्ट नॉर्मल है। 1 महीने बाद दोबारा रूटीन जांच कराएं।,Lab Review,yes
+"Known diabetic, टांके १० दिन बाद कटवाने अस्पताल आएं। post meal",Surgical Dressing,yes
+Adv: दवा की खुराक में बदलाव किया गया है। एक हफ्ते बाद पुनरावलोकन करें। SOS,Medication Titration,yes
+"Pt: Sab theek chal raha hai, general checkup ke liye 7 din me aana. pls",General Follow-Up,yes
+OPD Slip: Check serum creatinine and urea. Return after 10 days with results. SOS,Lab Review,yes
+"Known diabetic, Blood reports pending. Show as soon as available.",Lab Review,yes
+"Child active, appetite improved. Routine paediatric check in 5 days.",General Follow-Up,yes
+Pt: HbA1c and lipid profile advised. Come with report in 2 months. strictly,Lab Review,yes
+Adv: Medicines continue rakhein aur 1 mahine me OPD me dikha dein. strictly,General Follow-Up,yes
+सामान्य जांच के लिए तीन हफ्ते बाद दोबारा दिखाएं। empty stomach,General Follow-Up,yes
+Adv: Tab Pantocid 40mg added. Adjust dose if symptoms persist after 2 months. pls,Medication Titration,yes
+"Known diabetic, Deep laceration sutured. Review after 2 months for suture inspection. pls",Surgical Dressing,yes
+"OPD Slip: Dose stable hai, koi change ki zaroorat nahi.",Medication Titration,no
+Imp: Inhaler Budecort 200mcg puff twice daily. Assess asthma control in 3 weeks. strictly,Medication Titration,yes
+"घाव ठीक हो गया है, पट्टी हटा दी गई है। post meal",Surgical Dressing,no
+बीपी की दवा (Amlodipine) की खुराक बढ़ा दी है। कल बाद बीपी जांच कराएं। pls,Medication Titration,yes
+"Pt: दवाइयां जारी रखें, तीन हफ्ते बाद आकर मिलें। SOS",General Follow-Up,yes
+"R/o घाव पूरी तरह सूख चुका है, टांके कट चुके हैं। अब ड्रेसिंग की जरूरत नहीं।",Surgical Dressing,no
+Pt: Tab Pantocid 40mg added. Adjust dose if symptoms persist after next week. review with slip,Medication Titration,yes
+यदि घाव से मवाद या खून निकले तो तुरंत आएं। post meal,Surgical Dressing,yes
+R/o Staples removal due after 3 weeks. Inspect incision site. empty stomach,Surgical Dressing,yes
+"OPD Slip: दवाइयां जारी रखें, चार हफ्ते बाद आकर मिलें। strictly",General Follow-Up,yes
+Continue current treatment. Routine visit in 3 weeks. post meal,General Follow-Up,yes
+Adv: Daily sterile dressing advised. Review in OPD after next week.,Surgical Dressing,yes
+"K/C/O HTN, Condition bilkul normal hai, follow up zaroori nahi. strictly",General Follow-Up,no
+R/o Sonography karwa ke report ke sath 3 din me aao. strictly,Lab Review,yes
+Routine review after festivals or next month. pls,General Follow-Up,yes
+"Imp: जले का घाव है, ५ दिन बाद नई पट्टी करवाने आएं। review with slip",Surgical Dressing,yes
+Imp: Medicine titration done. Check response in 5 din. empty stomach,Medication Titration,yes
+R/o Thyroid report aane par 10 din me review karein.,Lab Review,yes
+"Aaram mil raha hai, regular follow-up agale hafte baad karein. SOS",General Follow-Up,yes
+"Adv: घाव ठीक हो गया है, पट्टी हटा दी गई है।",Surgical Dressing,no
+R/o Tab Amlodipine increased to 10mg OD. BP check and review after 10 days.,Medication Titration,yes
+Medicines continue rakhein aur 4 hafte me OPD me dikha dein. post meal,General Follow-Up,yes
+Imp: Agar bandage geeli ho jaye ya dard badhe to turant aana. empty stomach,Surgical Dressing,yes
+"Known diabetic, Review after 1 month for routine consultation. pls",General Follow-Up,yes
+"K/C/O HTN, पट्टी रोज बदलें, अगले हफ्ते बाद डॉक्टर को दिखाएं। strictly",Surgical Dressing,yes
+"R/o Sterile dressing kar di hai, 14 din me fresh dressing karwayen. pls",Surgical Dressing,yes
+Deep laceration sutured. Review after 7 days for suture inspection.,Surgical Dressing,yes
+"Known diabetic, Come back if fever or abdominal pain recurs.",General Follow-Up,yes
+"Imp: Condition stable. Continue lifestyle modifications, no fixed review. empty stomach",General Follow-Up,no
+"Adv: Abhi sab control me hai, jab zaroorat lage tabhi aana. strictly",General Follow-Up,no
+"K/C/O HTN, Blood reports pending. Show as soon as available.",Lab Review,yes
+"OPD Slip: Skin healed well. Clean with soap water, dressing discontinued.",Surgical Dressing,no
+"R/o Blood test (CBC/KFT) karwa lena, reports ke sath 1 mahine baad dikhana. post meal",Lab Review,yes
+"K/C/O HTN, Medicine titration done. Check response in kal. pls",Medication Titration,yes
+Imp: तबीयत में सुधार है। तीन हफ्ते बाद रूटीन चेकअप के लिए आएं। SOS,General Follow-Up,yes
+"OPD Slip: Insulin units badhayi hain, sugar chart ke sath 3 hafte me dikhana. SOS",Medication Titration,yes
+Adv: शुगर की जांच (Fasting/PP) कराकर दो महीने बाद रिपोर्ट लेकर आएं। post meal,Lab Review,yes
+Adv: HbA1c and lipid profile advised. Come with report in 2 months. strictly,Lab Review,yes
+"R/o घाव पूरी तरह सूख चुका है, टांके कट चुके हैं। अब ड्रेसिंग की जरूरत नहीं।",Surgical Dressing,no
+"Known diabetic, बीपी की दवा (Amlodipine) की खुराक बढ़ा दी है। एक हफ्ते बाद बीपी जांच कराएं। SOS",Medication Titration,yes
+OPD Slip: Come for dressing if bandage becomes soaked or foul smelling. review with slip,Surgical Dressing,yes
+OPD Slip: सामान्य जांच के लिए ६ हफ्ते बाद दोबारा दिखाएं।,General Follow-Up,yes
+"Known diabetic, Joint pain persisting. Clinical re-assessment after 1 month.",General Follow-Up,yes
+"Known diabetic, Sab theek chal raha hai, general checkup ke liye 7 din me aana.",General Follow-Up,yes
+"K/C/O HTN, Condition stable. Continue lifestyle modifications, no fixed review. strictly",General Follow-Up,no
+"Imp: मरीज पूरी तरह स्वस्थ है, आगे दिखाने की आवश्यकता नहीं है। post meal",General Follow-Up,no
+"Known diabetic, यदि खून की जांच में प्लेटलेट्स कम हों तो तुरंत आएं।",Lab Review,yes
+"Known diabetic, Medicines theek chal rahi hain, continue karein. SOS",Medication Titration,no
+"Imp: Stitches dry hain, 7 din baad removal hoga. pls",Surgical Dressing,yes
+"Known diabetic, Antihypertensive dosage titrated. Come for BP check after 7 days. review with slip",Medication Titration,yes
+"K/C/O HTN, Pus discharge reduced. Suture line review in next week. review with slip",Surgical Dressing,yes
+"Known diabetic, Post-op wound healthy. Clean dressing in 3 weeks.",Surgical Dressing,yes
+"बीपी कंट्रोल में है, दवा की खुराक यथावत रहेगी।",Medication Titration,no
+"Pt: Insulin units badhayi hain, sugar chart ke sath 5 din me dikhana. empty stomach",Medication Titration,yes
+Imp: Antihypertensive dosage titrated. Come for BP check after tomorrow. post meal,Medication Titration,yes
+R/o Creatinine aur urea test repeat karna hai after 6 hafte. post meal,Lab Review,yes
+अगर दवा से चक्कर आए तो तुरंत आएं। empty stomach,Medication Titration,yes
+OPD Slip: Tapering prednisolone: 10mg for 5 days then 5mg. Review in 3 days.,Medication Titration,yes
+"R/o Sugar medicine dose adjust ki hai, 2 hafte baad fasting sugar check karayein. review with slip",Medication Titration,yes
+"K/C/O HTN, If reports show infection, review immediately. review with slip",Lab Review,yes
+खून की रिपोर्ट नॉर्मल है। 1 महीने बाद दोबारा रूटीन जांच कराएं।,Lab Review,yes
+"Blood test (CBC/KFT) karwa lena, reports ke sath 14 din baad dikhana.",Lab Review,yes
+"Skin healed well. Clean with soap water, dressing discontinued.",Surgical Dressing,no
+"Abscess drained, sterile dressing done. Change dressing in 2 months.",Surgical Dressing,yes
+Imp: Dose well tolerated. Continue current prescription.,Medication Titration,no
+Adv: बीपी की दवा (Amlodipine) की खुराक बढ़ा दी है। ५ दिन बाद बीपी जांच कराएं।,Medication Titration,yes
+"K/C/O HTN, Review soon or if symptoms worsen.",General Follow-Up,yes
+शुगर की दवा की खुराक बदली है। ३ दिन बाद शुगर नाप कर दिखाएं। pls,Medication Titration,yes
+"OPD Slip: Aaram mil raha hai, regular follow-up 2 hafte baad karein. post meal",General Follow-Up,yes
+"Adv: अब कोई परेशानी नहीं है, फॉलो-अप समाप्त। strictly",General Follow-Up,no
+Adv: Deep laceration sutured. Review after 3 weeks for suture inspection. empty stomach,Surgical Dressing,yes
+Imp: घाव की पट्टी अगले हफ्ते बाद बदलवाने आएं। पट्टी को सूखा रखें। strictly,Surgical Dressing,yes
+Agar bandage geeli ho jaye ya dard badhe to turant aana. empty stomach,Surgical Dressing,yes
+"Adv: घाव पूरी तरह सूख चुका है, टांके कट चुके हैं। अब ड्रेसिंग की जरूरत नहीं।",Surgical Dressing,no
+"Known diabetic, Agar test me infection aaye to turant aana. post meal",Lab Review,yes
+"Imp: Labs normal, no further testing needed. pls",Lab Review,no
+"Adv: Sab theek chal raha hai, general checkup ke liye 14 din me aana.",General Follow-Up,yes
+Pt: Patient symptom free. Advice given. Discharge on SOS basis. post meal,General Follow-Up,no
+"K/C/O HTN, Joint pain persisting. Clinical re-assessment after 3 weeks.",General Follow-Up,yes
+शुगर की जांच (Fasting/PP) कराकर दो महीने बाद रिपोर्ट लेकर आएं।,Lab Review,yes
+Cured. No further visit required.,General Follow-Up,no
+"Known diabetic, Tab Pantocid 40mg added. Adjust dose if symptoms persist after next week.",Medication Titration,yes
+Imp: Staples removal due after next week. Inspect incision site.,Surgical Dressing,yes
+"Adv: Tab Metformin 500mg BD started. Monitor FBS, review in 6 weeks. empty stomach",Medication Titration,yes
+"Dose stable hai, koi change ki zaroorat nahi. review with slip",Medication Titration,no
+"Adv: Insulin units badhayi hain, sugar chart ke sath kal me dikhana. review with slip",Medication Titration,yes
+"Sugar medicine dose adjust ki hai, 2 hafte baad fasting sugar check karayein.",Medication Titration,yes
+"Pt: सभी जांच रिपोर्ट सामान्य हैं, अब जांच की जरूरत नहीं। review with slip",Lab Review,no
+"R/o दवाइयां जारी रखें, तीन हफ्ते बाद आकर मिलें। review with slip",General Follow-Up,yes
+Pt: अगर बुखार या पेट दर्द दोबारा हो तो तुरंत अस्पताल आएं।,General Follow-Up,yes
+"Pt: Dose change kiya hai, agar weakness lage to turant contact karein.",Medication Titration,yes
+"K/C/O HTN, All baseline investigations satisfactory. Continue same rx.",Lab Review,no
+तबीयत में सुधार है। चार हफ्ते बाद रूटीन चेकअप के लिए आएं। empty stomach,General Follow-Up,yes
+Adv: खून की रिपोर्ट नॉर्मल है। 1 महीने बाद दोबारा रूटीन जांच कराएं।,Lab Review,yes
+"मरीज पूरी तरह स्वस्थ है, आगे दिखाने की आवश्यकता नहीं है। empty stomach",General Follow-Up,no
+Pt: Urine routine & microscopy sent. Follow up in next week. pls,Lab Review,yes
+Imp: CBC reports reviewed. Mild anaemia. Recheck Hb in 14 days. strictly,Lab Review,yes
+Imp: शुगर की दवा की खुराक बदली है। ६ हफ्ते बाद शुगर नाप कर दिखाएं। review with slip,Medication Titration,yes
+"OPD Slip: Dose stable hai, koi change ki zaroorat nahi. SOS",Medication Titration,no
+OPD Slip: इंसुलिन की मात्रा 12 यूनिट की गई। ५ दिन बाद आकर मिलें। SOS,Medication Titration,yes
+Dose well tolerated. Continue current prescription. empty stomach,Medication Titration,no
+"OPD Slip: Insulin units badhayi hain, sugar chart ke sath 14 din me dikhana.",Medication Titration,yes
+"Adv: Sugar test fasting and PP karwao, report lekar 1 week baad aana.",Lab Review,yes
+"Known diabetic, घाव पूरी तरह सूख चुका है, टांके कट चुके हैं। अब ड्रेसिंग की जरूरत नहीं। strictly",Surgical Dressing,no
+"OPD Slip: Tab Metformin 500mg BD started. Monitor FBS, review in 1 month. empty stomach",Medication Titration,yes
+Pt: दवा की खुराक में बदलाव किया गया है। ६ हफ्ते बाद पुनरावलोकन करें। review with slip,Medication Titration,yes
+"K/C/O HTN, Urine culture report 6 hafte me aayegi, tab dikha dena.",Lab Review,yes
+"Imp: Repeat CBC, LFT, KFT after 4 weeks. Review with reports. post meal",Lab Review,yes
+छाती का एक्स-रे करवा कर अगले हफ्ते में दिखाएं।,Lab Review,yes
+"R/o Reports normal hain, abhi test repeat nahi karna. post meal",Lab Review,no
+R/o जांच रिपोर्ट आते ही तुरंत दिखाएं। strictly,Lab Review,yes
+"Known diabetic, General follow up after next week. Review symptoms and progress. empty stomach",General Follow-Up,yes
+Imp: अगर दवा से चक्कर आए तो तुरंत आएं।,Medication Titration,yes
+"K/C/O HTN, Aaram mil raha hai, regular follow-up 3 din baad karein. SOS",General Follow-Up,yes
+"R/o Steroid dose taper kar rahe hain, 2 mahine me review karein.",Medication Titration,yes
+"HbA1c test karwana hai, kal me report ke sath milna.",Lab Review,yes
+"Abhi sab control me hai, jab zaroorat lage tabhi aana.",General Follow-Up,no
+"Known diabetic, Child active, appetite improved. Routine paediatric check in tomorrow.",General Follow-Up,yes
+Adv: Sonography karwa ke report ke sath kal me aao. SOS,Lab Review,yes
+"Pt: Abhi sab control me hai, jab zaroorat lage tabhi aana. review with slip",General Follow-Up,no
+"OPD Slip: Urine culture report 6 hafte me aayegi, tab dikha dena. strictly",Lab Review,yes
+R/o सामान्य जांच के लिए तीन हफ्ते बाद दोबारा दिखाएं। empty stomach,General Follow-Up,yes
+Imp: Check serum creatinine and urea. Return after 1 week with results.,Lab Review,yes
+"Known diabetic, Review in OPD after 1 month if not fully relieved.",General Follow-Up,yes
+दवा की खुराक में बदलाव किया गया है। तीन हफ्ते बाद पुनरावलोकन करें। strictly,Medication Titration,yes
+OPD Slip: HbA1c and lipid profile advised. Come with report in 2 months. SOS,Lab Review,yes
+"Adv: दवा कम की जा रही है, अगले हफ्ते बाद आकर दिखाएं।",Medication Titration,yes
+"Dose stable hai, koi change ki zaroorat nahi.",Medication Titration,no
+"घाव पूरी तरह सूख चुका है, टांके कट चुके हैं। अब ड्रेसिंग की जरूरत नहीं। SOS",Surgical Dressing,no
+OPD Slip: छाती का एक्स-रे करवा कर एक हफ्ते में दिखाएं। strictly,Lab Review,yes
+Agar test me infection aaye to turant aana.,Lab Review,yes
+घाव की पट्टी ३ दिन बाद बदलवाने आएं। पट्टी को सूखा रखें। strictly,Surgical Dressing,yes
+R/o Review after 14 days for routine consultation. post meal,General Follow-Up,yes
+OPD Slip: Cured. No further visit required.,General Follow-Up,no
+Pus discharge reduced. Suture line review in 7 days. post meal,Surgical Dressing,yes
+"R/o Reports normal hain, abhi test repeat nahi karna. pls",Lab Review,no
+"Known diabetic, General follow up after 1 week. Review symptoms and progress. SOS",General Follow-Up,yes
+"Known diabetic, Medicines continue rakhein aur 14 din me OPD me dikha dein.",General Follow-Up,yes
+छाती का एक्स-रे करवा कर ७ दिन में दिखाएं।,Lab Review,yes
+"K/C/O HTN, घाव पूरी तरह सूख चुका है, टांके कट चुके हैं। अब ड्रेसिंग की जरूरत नहीं। pls",Surgical Dressing,no
+"Pt: Abscess drained, sterile dressing done. Change dressing in next week. review with slip",Surgical Dressing,yes
+R/o Routine review after festivals or next month. empty stomach,General Follow-Up,yes
+Check serum creatinine and urea. Return after 1 month with results. pls,Lab Review,yes
+Imp: Sputum for AFB sent. Collect report and show after 5 days. pls,Lab Review,yes
+"Known diabetic, अल्ट्रासाउंड (USG) रिपोर्ट आने पर ३ दिन बाद दिखाएं। empty stomach",Lab Review,yes
+"OPD Slip: Sterile dressing kar di hai, 3 din me fresh dressing karwayen.",Surgical Dressing,yes
+Daily sterile dressing advised. Review in OPD after 3 days. empty stomach,Surgical Dressing,yes
+"Known diabetic, Blood sugar fasting and PP to be done. Show reports after 10 days. review with slip",Lab Review,yes
+Imp: दवा की खुराक में बदलाव किया गया है। कल बाद पुनरावलोकन करें।,Medication Titration,yes
+"Sterile dressing kar di hai, 1 week me fresh dressing karwayen. pls",Surgical Dressing,yes
+Burn dressing done. Review in OPD after 4 weeks for fresh dressing. empty stomach,Surgical Dressing,yes
+USG abdomen advised. Review after 3 weeks with sonography report.,Lab Review,yes
+"R/o Sab theek chal raha hai, general checkup ke liye 5 din me aana. SOS",General Follow-Up,yes
+"Sugar medicine dose adjust ki hai, 1 week baad fasting sugar check karayein.",Medication Titration,yes
+"Adv: अब कोई परेशानी नहीं है, फॉलो-अप समाप्त।",General Follow-Up,no
+Pt: तबीयत में सुधार है। चार हफ्ते बाद रूटीन चेकअप के लिए आएं।,General Follow-Up,yes
+R/o HbA1c and lipid profile advised. Come with report in tomorrow. strictly,Lab Review,yes
+Inhaler Budecort 200mcg puff twice daily. Assess asthma control in 14 days. review with slip,Medication Titration,yes
+"Urine culture report 7 din me aayegi, tab dikha dena. SOS",Lab Review,yes
+Pt: पेशाब की जांच की रिपोर्ट दो महीने बाद दिखाएं। post meal,Lab Review,yes
+"Known diabetic, Insulin units badhayi hain, sugar chart ke sath 1 week me dikhana. SOS",Medication Titration,yes
+"K/C/O HTN, Staples removal due after 2 weeks. Inspect incision site. post meal",Surgical Dressing,yes
+"Known diabetic, Ghav ki patti 6 hafte baad change karwane aana. Paani mat lagne dena. SOS",Surgical Dressing,yes
+"K/C/O HTN, Platelet count low. Repeat test tomorrow morning and review.",Lab Review,yes
+R/o तबीयत में सुधार है। दो हफ्ते बाद रूटीन चेकअप के लिए आएं। empty stomach,General Follow-Up,yes
+Follow up after 2 weeks to monitor overall recovery. empty stomach,General Follow-Up,yes
+"R/o Labs normal, no further testing needed. pls",Lab Review,no
+Adv: Inhaler Budecort 200mcg puff twice daily. Assess asthma control in tomorrow. post meal,Medication Titration,yes
+"K/C/O HTN, Tab Atorvastatin dose increased. Re-evaluate lipid levels in 6 weeks.",Medication Titration,yes
+"Insulin units badhayi hain, sugar chart ke sath 6 hafte me dikhana.",Medication Titration,yes
+Adv: Blood sugar fasting and PP to be done. Show reports after 3 weeks. pls,Lab Review,yes
+Tab Atorvastatin dose increased. Re-evaluate lipid levels in 1 week.,Medication Titration,yes
+"K/C/O HTN, Check serum creatinine and urea. Return after 2 weeks with results. strictly",Lab Review,yes
+R/o यदि घाव से मवाद या खून निकले तो तुरंत आएं। strictly,Surgical Dressing,yes
+OPD Slip: Staples removal due after 2 weeks. Inspect incision site. empty stomach,Surgical Dressing,yes
+थायरॉइड की गोली 50mcg से 75mcg की। ३ दिन बाद जांच और फॉलो-अप।,Medication Titration,yes
+Imp: Continue current treatment. Routine visit in 6 weeks.,General Follow-Up,yes
+"K/C/O HTN, HbA1c and lipid profile advised. Come with report in 2 weeks. SOS",Lab Review,yes
+Continue current treatment. Routine visit in 6 weeks. empty stomach,General Follow-Up,yes
+"OPD Slip: दवा सही असर कर रही है, खुराक जारी रखें। empty stomach",Medication Titration,no
+OPD Slip: X-ray chest PA view done. Review in 3 days with film.,Lab Review,yes
+"R/o HbA1c test karwana hai, 2 mahine me report ke sath milna. empty stomach",Lab Review,yes
+सामान्य जांच के लिए कल बाद दोबारा दिखाएं।,General Follow-Up,yes
+"R/o Condition stable. Continue lifestyle modifications, no fixed review.",General Follow-Up,no
+"BP ki goli dose badha di hai, 4 hafte baad BP check karwane aana.",Medication Titration,yes
+R/o कमजोरी और भूख न लगने की समीक्षा एक हफ्ते बाद की जाएगी। SOS,General Follow-Up,yes
+R/o Joint pain persisting. Clinical re-assessment after 10 days. strictly,General Follow-Up,yes
+Pt: HbA1c and lipid profile advised. Come with report in 5 days. strictly,Lab Review,yes
+OPD Slip: Come back if fever or abdominal pain recurs.,General Follow-Up,yes
+Pt: यदि घाव से मवाद या खून निकले तो तुरंत आएं। pls,Surgical Dressing,yes
+शुगर की दवा की खुराक बदली है। तीन हफ्ते बाद शुगर नाप कर दिखाएं। strictly,Medication Titration,yes
+Thyroid panel (TSH/T3/T4) ordered. Review tomorrow. empty stomach,Lab Review,yes
+Review in OPD after 5 days if not fully relieved.,General Follow-Up,yes
+Adv: Review in OPD after 1 week if not fully relieved. strictly,General Follow-Up,yes
+"Abhi sab control me hai, jab zaroorat lage tabhi aana. empty stomach",General Follow-Up,no
+Burn dressing done. Review in OPD after 3 weeks for fresh dressing. review with slip,Surgical Dressing,yes
+"K/C/O HTN, Inhaler Budecort 200mcg puff twice daily. Assess asthma control in 2 months.",Medication Titration,yes
+"Known diabetic, Platelet count low. Repeat test tomorrow morning and review. review with slip",Lab Review,yes
+Come for dressing if bandage becomes soaked or foul smelling.,Surgical Dressing,yes
+Inhaler Budecort 200mcg puff twice daily. Assess asthma control in 2 weeks. review with slip,Medication Titration,yes
+OPD Slip: घाव की पट्टी दो हफ्ते बाद बदलवाने आएं। पट्टी को सूखा रखें। pls,Surgical Dressing,yes
+Blood reports pending. Show as soon as available. strictly,Lab Review,yes
+OPD Slip: Follow up after 3 weeks to monitor overall recovery.,General Follow-Up,yes
+Tab Atorvastatin dose increased. Re-evaluate lipid levels in next week. pls,Medication Titration,yes
+"Imp: घाव ठीक हो गया है, पट्टी हटा दी गई है।",Surgical Dressing,no
+Imp: Tanke cutwane ke liye 1 week baad surgery OPD me aana.,Surgical Dressing,yes
+"K/C/O HTN, Review in OPD after tomorrow if not fully relieved. SOS",General Follow-Up,yes
+"R/o HbA1c test karwana hai, 4 hafte me report ke sath milna. review with slip",Lab Review,yes
+"Imp: Medicines theek chal rahi hain, continue karein. strictly",Medication Titration,no
+"Known diabetic, HbA1c test karwana hai, 10 din me report ke sath milna.",Lab Review,yes
+"पट्टी रोज बदलें, तीन हफ्ते बाद डॉक्टर को दिखाएं। strictly",Surgical Dressing,yes
+"R/o BP ki goli dose badha di hai, 2 hafte baad BP check karwane aana.",Medication Titration,yes
+Pt: Wound dressing change after 6 weeks. Keep area dry and clean. SOS,Surgical Dressing,yes
+"Recovery achhi hai, agale hafte baad ek baar review karwa lena. empty stomach",General Follow-Up,yes
+"Known diabetic, Tapering prednisolone: 10mg for 5 days then 5mg. Review in 2 months. pls",Medication Titration,yes
+"Known diabetic, Tab Telmisartan 40mg changed to 80mg. Check BP after 14 days. review with slip",Medication Titration,yes
+"Known diabetic, Medicines theek chal rahi hain, continue karein. SOS",Medication Titration,no
+"Recovery achhi hai, agale hafte baad ek baar review karwa lena. strictly",General Follow-Up,yes
+"R/o Dose change kiya hai, agar weakness lage to turant contact karein.",Medication Titration,yes
+"R/o BP ki goli dose badha di hai, 1 week baad BP check karwane aana. post meal",Medication Titration,yes
+Pt: Wound dressing change after 2 weeks. Keep area dry and clean. strictly,Surgical Dressing,yes
+"Blood test (CBC/KFT) karwa lena, reports ke sath kal baad dikhana. SOS",Lab Review,yes
+Deep laceration sutured. Review after 7 days for suture inspection.,Surgical Dressing,yes
+"Child active, appetite improved. Routine paediatric check in 2 months. pls",General Follow-Up,yes
+"K/C/O HTN, दवा कम की जा रही है, ६ हफ्ते बाद आकर दिखाएं।",Medication Titration,yes
+"K/C/O HTN, Post-op wound healthy. Clean dressing in 4 weeks. post meal",Surgical Dressing,yes
+HbA1c and lipid profile advised. Come with report in 2 months. review with slip,Lab Review,yes
+Adv: Cured. No further visit required. strictly,General Follow-Up,no
+Pt: Tab Thyronorm dose hiked to 75mcg. Repeat TSH & review in 5 days. empty stomach,Medication Titration,yes
+Imp: Ghav ki patti 4 hafte baad change karwane aana. Paani mat lagne dena. review with slip,Surgical Dressing,yes
+शुगर की दवा की खुराक बदली है। १४ दिन बाद शुगर नाप कर दिखाएं।,Medication Titration,yes
+Dose well tolerated. Continue current prescription. empty stomach,Medication Titration,no
+"K/C/O HTN, Blood sugar fasting and PP to be done. Show reports after 7 days.",Lab Review,yes
+खून की रिपोर्ट नॉर्मल है। 1 महीने बाद दोबारा रूटीन जांच कराएं।,Lab Review,yes
+"OPD Slip: Urine culture report kal me aayegi, tab dikha dena. empty stomach",Lab Review,yes
+Medicine titration done. Check response in 1 mahine. pls,Medication Titration,yes
+"Known diabetic, घाव साफ है, १ महीने बाद टांके चेक करवाएं। strictly",Surgical Dressing,yes
+"K/C/O HTN, Chest congestion improved. Re-consult after 1 week if cough continues.",General Follow-Up,yes
+"OPD Slip: Insulin units badhayi hain, sugar chart ke sath kal me dikhana.",Medication Titration,yes
+Urine routine & microscopy sent. Follow up in 10 days. strictly,Lab Review,yes
+"Pt: Aaram mil raha hai, regular follow-up 3 hafte baad karein.",General Follow-Up,yes
+"Known diabetic, Tab Atorvastatin dose increased. Re-evaluate lipid levels in tomorrow. strictly",Medication Titration,yes
+"Imp: Stitches dry hain, 3 din baad removal hoga. pls",Surgical Dressing,yes
+Agar bandage geeli ho jaye ya dard badhe to turant aana. review with slip,Surgical Dressing,yes
+Pt: Ghav ki patti kal baad change karwane aana. Paani mat lagne dena. strictly,Surgical Dressing,yes
+"मरीज पूरी तरह स्वस्थ है, आगे दिखाने की आवश्यकता नहीं है। empty stomach",General Follow-Up,no
+"Adv: थायरॉइड की जांच कराएं, तीन हफ्ते बाद रिपोर्ट के साथ मिलें।",Lab Review,yes
+घाव की पट्टी एक हफ्ते बाद बदलवाने आएं। पट्टी को सूखा रखें। post meal,Surgical Dressing,yes
+Pus discharge reduced. Suture line review in 2 months. post meal,Surgical Dressing,yes
+"K/C/O HTN, Sab theek chal raha hai, general checkup ke liye 2 hafte me aana.",General Follow-Up,yes
+"Aaram mil raha hai, regular follow-up 3 din baad karein. post meal",General Follow-Up,yes
+Antihypertensive dosage titrated. Come for BP check after next week.,Medication Titration,yes
+सर्जरी के बाद का घाव ठीक हो रहा है। दो महीने बाद ड्रेसिंग कराएं।,Surgical Dressing,yes
+"R/o घाव ठीक हो गया है, पट्टी हटा दी गई है।",Surgical Dressing,no
+R/o Tapering prednisolone: 10mg for 5 days then 5mg. Review in 2 months. SOS,Medication Titration,yes
+Agar tabiyat thodi bhi kharab lage to bina der kiye aana. strictly,General Follow-Up,yes
+Creatinine aur urea test repeat karna hai after 2 hafte.,Lab Review,yes
+R/o खून की रिपोर्ट नॉर्मल है। 1 महीने बाद दोबारा रूटीन जांच कराएं।,Lab Review,yes
+"K/C/O HTN, अल्ट्रासाउंड (USG) रिपोर्ट आने पर कल बाद दिखाएं। empty stomach",Lab Review,yes
+Pt: अगर दवा से चक्कर आए तो तुरंत आएं।,Medication Titration,yes
+"Known diabetic, सर्जरी के बाद का घाव ठीक हो रहा है। दो महीने बाद ड्रेसिंग कराएं।",Surgical Dressing,yes
+"Abhi sab control me hai, jab zaroorat lage tabhi aana.",General Follow-Up,no
+OPD Slip: सर्जरी के बाद का घाव ठीक हो रहा है। दो हफ्ते बाद ड्रेसिंग कराएं। empty stomach,Surgical Dressing,yes
+Insulin dose adjusted to 14 units SC before dinner. Review after tomorrow. SOS,Medication Titration,yes
+"Recovery achhi hai, 7 din baad ek baar review karwa lena. empty stomach",General Follow-Up,yes
+"K/C/O HTN, Come back if fever or abdominal pain recurs. post meal",General Follow-Up,yes
+Pt: इंसुलिन की मात्रा 12 यूनिट की गई। कल बाद आकर मिलें। pls,Medication Titration,yes
+"K/C/O HTN, Child active, appetite improved. Routine paediatric check in 1 week. empty stomach",General Follow-Up,yes
+Tanke cutwane ke liye 2 mahine baad surgery OPD me aana. empty stomach,Surgical Dressing,yes
+"Pt: बीपी कंट्रोल में है, दवा की खुराक यथावत रहेगी। SOS",Medication Titration,no
+R/o सर्जरी के बाद का घाव ठीक हो रहा है। ६ हफ्ते बाद ड्रेसिंग कराएं। strictly,Surgical Dressing,yes
+टांके अगले हफ्ते बाद कटवाने अस्पताल आएं। strictly,Surgical Dressing,yes
+"Repeat CBC, LFT, KFT after 2 weeks. Review with reports.",Lab Review,yes
+"Pt: Patti utaar di hai, ghav poora bhar gaya hai. post meal",Surgical Dressing,no
+Imp: X-ray chest PA view done. Review in 1 month with film.,Lab Review,yes
+"K/C/O HTN, Abhi sab control me hai, jab zaroorat lage tabhi aana. pls",General Follow-Up,no
+Adv: खून की रिपोर्ट नॉर्मल है। 1 महीने बाद दोबारा रूटीन जांच कराएं।,Lab Review,yes
+"Dressing review soon, avoid soaking in water. SOS",Surgical Dressing,yes
+Pt: छाती का एक्स-रे करवा कर चार हफ्ते में दिखाएं। post meal,Lab Review,yes
+Adv: तबीयत में सुधार है। अगले हफ्ते बाद रूटीन चेकअप के लिए आएं। post meal,General Follow-Up,yes
+R/o Agar bandage geeli ho jaye ya dard badhe to turant aana.,Surgical Dressing,yes
+Adv: HbA1c and lipid profile advised. Come with report in tomorrow.,Lab Review,yes
+"K/C/O HTN, Dose change kiya hai, agar weakness lage to turant contact karein. pls",Medication Titration,yes
+Adv: Tab Pantocid 40mg added. Adjust dose if symptoms persist after 6 weeks. review with slip,Medication Titration,yes
+पेशाब की जांच की रिपोर्ट ५ दिन बाद दिखाएं। pls,Lab Review,yes
+Imp: Sputum for AFB sent. Collect report and show after 5 days.,Lab Review,yes
+OPD Slip: कमजोरी और भूख न लगने की समीक्षा ३ दिन बाद की जाएगी। pls,General Follow-Up,yes
+OPD Slip: Deep laceration sutured. Review after 14 days for suture inspection. SOS,Surgical Dressing,yes
+R/o X-ray chest PA view done. Review in 3 days with film.,Lab Review,yes
+"K/C/O HTN, पेशाब की जांच की रिपोर्ट ५ दिन बाद दिखाएं।",Lab Review,yes
+Imp: Medicines continue rakhein aur 1 mahine me OPD me dikha dein.,General Follow-Up,yes
+"If BP remains > 150/90, increase dose and report back. empty stomach",Medication Titration,yes
+"Adv: Dose change kiya hai, agar weakness lage to turant contact karein. review with slip",Medication Titration,yes
+OPD Slip: Urine routine & microscopy sent. Follow up in 14 days.,Lab Review,yes
+Pt: Review blood test reports 3 days. Fasting sugar pending. review with slip,Lab Review,yes
+"Known diabetic, बीपी कंट्रोल में है, दवा की खुराक यथावत रहेगी। review with slip",Medication Titration,no
+"K/C/O HTN, Thyroid panel (TSH/T3/T4) ordered. Review next week. post meal",Lab Review,yes
+"Imp: खांसी और जुकाम में आराम है, एक हफ्ते बाद फॉलो-अप करें। strictly",General Follow-Up,yes
+"Known diabetic, Sonography karwa ke report ke sath 4 hafte me aao.",Lab Review,yes
+"Known diabetic, घाव पूरी तरह सूख चुका है, टांके कट चुके हैं। अब ड्रेसिंग की जरूरत नहीं।",Surgical Dressing,no
+Suture removal (stitches out) scheduled after tomorrow. post meal,Surgical Dressing,yes
+"Known diabetic, Follow up after 1 month to monitor overall recovery. SOS",General Follow-Up,yes
+"Known diabetic, Agar bandage geeli ho jaye ya dard badhe to turant aana. strictly",Surgical Dressing,yes
+Post-op wound healthy. Clean dressing in 7 days. empty stomach,Surgical Dressing,yes
+"Adv: Medicines theek chal rahi hain, continue karein.",Medication Titration,no
+OPD Slip: दवा की खुराक में बदलाव किया गया है। एक हफ्ते बाद पुनरावलोकन करें। review with slip,Medication Titration,yes
+Check serum creatinine and urea. Return after 3 days with results. empty stomach,Lab Review,yes
+"Known diabetic, Inhaler Budecort 200mcg puff twice daily. Assess asthma control in 7 days.",Medication Titration,yes
+अल्ट्रासाउंड (USG) रिपोर्ट आने पर ६ हफ्ते बाद दिखाएं। strictly,Lab Review,yes
+"Known diabetic, USG abdomen advised. Review after 6 weeks with sonography report. strictly",Lab Review,yes
+अगर दवा से चक्कर आए तो तुरंत आएं। post meal,Medication Titration,yes
+"Skin healed well. Clean with soap water, dressing discontinued.",Surgical Dressing,no
+"Known diabetic, Dose adjusted today. Review soon if any giddiness or side effects.",Medication Titration,yes
+Imp: Tab Atorvastatin dose increased. Re-evaluate lipid levels in 1 week.,Medication Titration,yes
+Imp: छाती का एक्स-रे करवा कर ७ दिन में दिखाएं। post meal,Lab Review,yes
+Imp: Tapering prednisolone: 10mg for 5 days then 5mg. Review in 6 weeks. post meal,Medication Titration,yes
+Pt: Medicines continue rakhein aur 14 din me OPD me dikha dein. post meal,General Follow-Up,yes
+"Pt: पट्टी रोज बदलें, ६ हफ्ते बाद डॉक्टर को दिखाएं। empty stomach",Surgical Dressing,yes
+"Known diabetic, इंसुलिन की मात्रा 12 यूनिट की गई। अगले हफ्ते बाद आकर मिलें। review with slip",Medication Titration,yes
+"R/o Reports normal hain, abhi test repeat nahi karna.",Lab Review,no
+इंसुलिन की मात्रा 12 यूनिट की गई। दो हफ्ते बाद आकर मिलें। empty stomach,Medication Titration,yes
+"Stitches cut chuke hain, healing complete hai. empty stomach",Surgical Dressing,no
+"OPD Slip: घाव पूरी तरह सूख चुका है, टांके कट चुके हैं। अब ड्रेसिंग की जरूरत नहीं। pls",Surgical Dressing,no
+Routine review after festivals or next month. post meal,General Follow-Up,yes
+"Imp: सभी जांच रिपोर्ट सामान्य हैं, अब जांच की जरूरत नहीं।",Lab Review,no
+OPD Slip: शुगर की दवा की खुराक बदली है। ७ दिन बाद शुगर नाप कर दिखाएं।,Medication Titration,yes
+"Pt: Labs normal, no further testing needed. empty stomach",Lab Review,no
+"Adv: घाव ठीक हो गया है, पट्टी हटा दी गई है।",Surgical Dressing,no
+"Known diabetic, Dose stable hai, koi change ki zaroorat nahi. review with slip",Medication Titration,no
+"K/C/O HTN, Abhi sab control me hai, jab zaroorat lage tabhi aana. strictly",General Follow-Up,no
+"Sterile dressing kar di hai, kal me fresh dressing karwayen.",Surgical Dressing,yes
+खून की रिपोर्ट नॉर्मल है। 1 महीने बाद दोबारा रूटीन जांच कराएं।,Lab Review,yes
+R/o Come back if fever or abdominal pain recurs. SOS,General Follow-Up,yes
+Imp: यदि घाव से मवाद या खून निकले तो तुरंत आएं।,Surgical Dressing,yes
+"K/C/O HTN, घाव साफ है, १ महीने बाद टांके चेक करवाएं। pls",Surgical Dressing,yes
+"OPD Slip: Steroid dose taper kar rahe hain, 2 hafte me review karein.",Medication Titration,yes
+Pus discharge reduced. Suture line review in 4 weeks. post meal,Surgical Dressing,yes
+"Adv: BP ki goli dose badha di hai, kal baad BP check karwane aana. pls",Medication Titration,yes
+Adv: अगर बुखार या पेट दर्द दोबारा हो तो तुरंत अस्पताल आएं।,General Follow-Up,yes
+"Imp: मरीज पूरी तरह स्वस्थ है, आगे दिखाने की आवश्यकता नहीं है। strictly",General Follow-Up,no
+"Known diabetic, Insulin dose adjusted to 14 units SC before dinner. Review after 6 weeks. pls",Medication Titration,yes
+Imp: Pus discharge reduced. Suture line review in 14 days. post meal,Surgical Dressing,yes
+"Repeat CBC, LFT, KFT after 4 weeks. Review with reports. strictly",Lab Review,yes
+"Adv: Sugar test fasting and PP karwao, report lekar 1 mahine baad aana. strictly",Lab Review,yes
+"Stitches dry hain, 2 mahine baad removal hoga. review with slip",Surgical Dressing,yes
+Adv: Post-op wound healthy. Clean dressing in 3 days. review with slip,Surgical Dressing,yes
+"K/C/O HTN, घाव साफ है, ३ दिन बाद टांके चेक करवाएं। empty stomach",Surgical Dressing,yes
+Imp: शुगर की दवा की खुराक बदली है। ५ दिन बाद शुगर नाप कर दिखाएं।,Medication Titration,yes
+"Pt: अब कोई परेशानी नहीं है, फॉलो-अप समाप्त। empty stomach",General Follow-Up,no
+R/o Daily sterile dressing advised. Review in OPD after 7 days.,Surgical Dressing,yes
+"Known diabetic, Insulin units badhayi hain, sugar chart ke sath 4 hafte me dikhana. empty stomach",Medication Titration,yes
+Tab Telmisartan 40mg changed to 80mg. Check BP after tomorrow. post meal,Medication Titration,yes
+Pt: Suture removal (stitches out) scheduled after 5 days. post meal,Surgical Dressing,yes
+"Pt: Stitches cut chuke hain, healing complete hai. pls",Surgical Dressing,no
+"K/C/O HTN, Tab Thyronorm dose hiked to 75mcg. Repeat TSH & review in 7 days.",Medication Titration,yes
+"Known diabetic, Review in OPD after 7 days if not fully relieved.",General Follow-Up,yes
+Pt: Dose adjusted today. Review soon if any giddiness or side effects. review with slip,Medication Titration,yes
+Blood sugar fasting and PP to be done. Show reports after 2 months. post meal,Lab Review,yes
+"बीपी कंट्रोल में है, दवा की खुराक यथावत रहेगी।",Medication Titration,no
+"K/C/O HTN, If BP remains > 150/90, increase dose and report back. pls",Medication Titration,yes
+"घाव ठीक हो गया है, पट्टी हटा दी गई है। strictly",Surgical Dressing,no
+Tanke cutwane ke liye 1 mahine baad surgery OPD me aana. post meal,Surgical Dressing,yes
+"Dressing review soon, avoid soaking in water. empty stomach",Surgical Dressing,yes
+"R/o Condition bilkul normal hai, follow up zaroori nahi. review with slip",General Follow-Up,no
+Imp: जांच रिपोर्ट आते ही तुरंत दिखाएं। strictly,Lab Review,yes
+"OPD Slip: Abhi sab control me hai, jab zaroorat lage tabhi aana.",General Follow-Up,no
+OPD Slip: Dose well tolerated. Continue current prescription. review with slip,Medication Titration,no
+"Known diabetic, Medicines continue rakhein aur 3 hafte me OPD me dikha dein.",General Follow-Up,yes
+Imp: Agar test me infection aaye to turant aana. strictly,Lab Review,yes
+"मरीज पूरी तरह स्वस्थ है, आगे दिखाने की आवश्यकता नहीं है। SOS",General Follow-Up,no
+"Known diabetic, शुगर की जांच (Fasting/PP) कराकर ७ दिन बाद रिपोर्ट लेकर आएं। review with slip",Lab Review,yes
+Chest congestion improved. Re-consult after 2 weeks if cough continues. post meal,General Follow-Up,yes
+R/o Ghav ki patti 1 mahine baad change karwane aana. Paani mat lagne dena.,Surgical Dressing,yes
+OPD Slip: अगर बुखार या पेट दर्द दोबारा हो तो तुरंत अस्पताल आएं। empty stomach,General Follow-Up,yes
+"दवा कम की जा रही है, अगले हफ्ते बाद आकर दिखाएं। empty stomach",Medication Titration,yes
+Pt: जांच रिपोर्ट आते ही तुरंत दिखाएं। post meal,Lab Review,yes
+"Imp: दवा सही असर कर रही है, खुराक जारी रखें। pls",Medication Titration,no
+"K/C/O HTN, दवा सही असर कर रही है, खुराक जारी रखें। review with slip",Medication Titration,no
+"Medicines theek chal rahi hain, continue karein.",Medication Titration,no
+सर्जरी के बाद का घाव ठीक हो रहा है। एक हफ्ते बाद ड्रेसिंग कराएं।,Surgical Dressing,yes
+"OPD Slip: सभी जांच रिपोर्ट सामान्य हैं, अब जांच की जरूरत नहीं। post meal",Lab Review,no
+"K/C/O HTN, खांसी और जुकाम में आराम है, ६ हफ्ते बाद फॉलो-अप करें। SOS",General Follow-Up,yes
+"दवाइयां जारी रखें, कल बाद आकर मिलें। review with slip",General Follow-Up,yes
+"Adv: पट्टी रोज बदलें, १ महीने बाद डॉक्टर को दिखाएं।",Surgical Dressing,yes
+Adv: Joint pain persisting. Clinical re-assessment after 3 days.,General Follow-Up,yes
+"K/C/O HTN, शुगर की दवा की खुराक बदली है। अगले हफ्ते बाद शुगर नाप कर दिखाएं।",Medication Titration,yes
+"K/C/O HTN, खांसी और जुकाम में आराम है, ७ दिन बाद फॉलो-अप करें। empty stomach",General Follow-Up,yes
+"K/C/O HTN, Blood reports pending. Show as soon as available.",Lab Review,yes
+"Known diabetic, बीपी कंट्रोल में है, दवा की खुराक यथावत रहेगी। SOS",Medication Titration,no
+"घाव साफ है, तीन हफ्ते बाद टांके चेक करवाएं। SOS",Surgical Dressing,yes
+Adv: घाव की पट्टी ६ हफ्ते बाद बदलवाने आएं। पट्टी को सूखा रखें।,Surgical Dressing,yes
+"Adv: BP ki goli dose badha di hai, 3 hafte baad BP check karwane aana.",Medication Titration,yes
+"K/C/O HTN, Tab Thyronorm dose hiked to 75mcg. Repeat TSH & review in 2 weeks. post meal",Medication Titration,yes
+"R/o सभी जांच रिपोर्ट सामान्य हैं, अब जांच की जरूरत नहीं। strictly",Lab Review,no
+"K/C/O HTN, Wound healing well. Remove stitches in next week. empty stomach",Surgical Dressing,yes
+Imp: पेशाब की जांच की रिपोर्ट तीन हफ्ते बाद दिखाएं। review with slip,Lab Review,yes
+"OPD Slip: खांसी और जुकाम में आराम है, ७ दिन बाद फॉलो-अप करें। SOS",General Follow-Up,yes
+"R/o Sugar medicine dose adjust ki hai, 1 mahine baad fasting sugar check karayein. strictly",Medication Titration,yes
+"Stitches cut chuke hain, healing complete hai.",Surgical Dressing,no
+अगर बुखार या पेट दर्द दोबारा हो तो तुरंत अस्पताल आएं।,General Follow-Up,yes
+"Sab theek chal raha hai, general checkup ke liye 5 din me aana.",General Follow-Up,yes
+"R/o दवा कम की जा रही है, एक हफ्ते बाद आकर दिखाएं।",Medication Titration,yes
+Adv: खून की रिपोर्ट नॉर्मल है। 1 महीने बाद दोबारा रूटीन जांच कराएं। review with slip,Lab Review,yes
+OPD Slip: Follow up after 1 month to monitor overall recovery.,General Follow-Up,yes
+"R/o पट्टी रोज बदलें, तीन हफ्ते बाद डॉक्टर को दिखाएं।",Surgical Dressing,yes
+"Urine culture report 10 din me aayegi, tab dikha dena. post meal",Lab Review,yes
+Inhaler Budecort 200mcg puff twice daily. Assess asthma control in next week. review with slip,Medication Titration,yes
+Pt: Tanke cutwane ke liye kal baad surgery OPD me aana. strictly,Surgical Dressing,yes
+"Abscess drained, sterile dressing done. Change dressing in 3 weeks. strictly",Surgical Dressing,yes
+"OPD Slip: मरीज पूरी तरह स्वस्थ है, आगे दिखाने की आवश्यकता नहीं है। SOS",General Follow-Up,no
+यदि घाव से मवाद या खून निकले तो तुरंत आएं। post meal,Surgical Dressing,yes
+Daily sterile dressing advised. Review in OPD after tomorrow. SOS,Surgical Dressing,yes
+"Imp: खून की जांच (CBC, LFT) करवाएं। १० दिन बाद रिपोर्ट दिखाएं।",Lab Review,yes
+"Pt: दवा सही असर कर रही है, खुराक जारी रखें। review with slip",Medication Titration,no
+घाव की पट्टी दो हफ्ते बाद बदलवाने आएं। पट्टी को सूखा रखें। empty stomach,Surgical Dressing,yes
+"Sugar test fasting and PP karwao, report lekar 3 din baad aana. SOS",Lab Review,yes
+Pt: CBC reports reviewed. Mild anaemia. Recheck Hb in 10 days.,Lab Review,yes
+Pt: Tab Atorvastatin dose increased. Re-evaluate lipid levels in 10 days.,Medication Titration,yes
+All baseline investigations satisfactory. Continue same rx. pls,Lab Review,no
+"Insulin units badhayi hain, sugar chart ke sath 6 hafte me dikhana. review with slip",Medication Titration,yes
+"OPD Slip: Reports normal hain, abhi test repeat nahi karna.",Lab Review,no
+R/o अल्ट्रासाउंड (USG) रिपोर्ट आने पर १ महीने बाद दिखाएं। review with slip,Lab Review,yes
+R/o Come back if fever or abdominal pain recurs. strictly,General Follow-Up,yes
+Continue current treatment. Routine visit in 6 weeks.,General Follow-Up,yes
+"R/o दवा कम की जा रही है, चार हफ्ते बाद आकर दिखाएं। SOS",Medication Titration,yes
+"Known diabetic, BP ki goli dose badha di hai, agale hafte baad BP check karwane aana.",Medication Titration,yes
+"Pt: Dose change kiya hai, agar weakness lage to turant contact karein. strictly",Medication Titration,yes
+"Imp: Repeat CBC, LFT, KFT after next week. Review with reports. review with slip",Lab Review,yes
+OPD Slip: Dose adjusted today. Review soon if any giddiness or side effects. SOS,Medication Titration,yes
+"Known diabetic, Tanke cutwane ke liye 14 din baad surgery OPD me aana. post meal",Surgical Dressing,yes
+OPD Slip: बीपी की दवा (Amlodipine) की खुराक बढ़ा दी है। १४ दिन बाद बीपी जांच कराएं। empty stomach,Medication Titration,yes
+"K/C/O HTN, Steroid dose taper kar rahe hain, 1 week me review karein. post meal",Medication Titration,yes
+"खांसी और जुकाम में आराम है, कल बाद फॉलो-अप करें। post meal",General Follow-Up,yes
+Imp: CBC reports reviewed. Mild anaemia. Recheck Hb in 2 months.,Lab Review,yes
+"K/C/O HTN, Stitches dry hain, 3 hafte baad removal hoga. pls",Surgical Dressing,yes
+Tab Pantocid 40mg added. Adjust dose if symptoms persist after 7 days. strictly,Medication Titration,yes
+"Known diabetic, दवाइयां जारी रखें, अगले हफ्ते बाद आकर मिलें। review with slip",General Follow-Up,yes
+Review blood test reports 2 months. Fasting sugar pending. post meal,Lab Review,yes
+"Known diabetic, Child active, appetite improved. Routine paediatric check in 1 month.",General Follow-Up,yes
+Medication titrated as discussed. No follow-up needed if stable. review with slip,Medication Titration,no
+"Patti utaar di hai, ghav poora bhar gaya hai.",Surgical Dressing,no
+Imp: Platelet count low. Repeat test tomorrow morning and review.,Lab Review,yes
+"Known diabetic, Creatinine aur urea test repeat karna hai after 2 hafte. pls",Lab Review,yes
+OPD Slip: सामान्य जांच के लिए ६ हफ्ते बाद दोबारा दिखाएं। post meal,General Follow-Up,yes
+"Sugar test fasting and PP karwao, report lekar 4 hafte baad aana.",Lab Review,yes
+"R/o HbA1c test karwana hai, agale hafte me report ke sath milna. review with slip",Lab Review,yes
+Imp: Inhaler Budecort 200mcg puff twice daily. Assess asthma control in 7 days. SOS,Medication Titration,yes
+Tab Thyronorm dose hiked to 75mcg. Repeat TSH & review in 14 days. post meal,Medication Titration,yes
+"Dose stable hai, koi change ki zaroorat nahi. strictly",Medication Titration,no
+अगर बुखार या पेट दर्द दोबारा हो तो तुरंत अस्पताल आएं। pls,General Follow-Up,yes
+"R/o Abscess drained, sterile dressing done. Change dressing in 3 days.",Surgical Dressing,yes
+"Adv: Sab theek chal raha hai, general checkup ke liye kal me aana.",General Follow-Up,yes
+"Known diabetic, Patti utaar di hai, ghav poora bhar gaya hai. pls",Surgical Dressing,no
+Adv: बीपी की दवा (Amlodipine) की खुराक बढ़ा दी है। १० दिन बाद बीपी जांच कराएं। review with slip,Medication Titration,yes
+Pt: सर्जरी के बाद का घाव ठीक हो रहा है। तीन हफ्ते बाद ड्रेसिंग कराएं।,Surgical Dressing,yes
+Adv: जांच रिपोर्ट आते ही तुरंत दिखाएं। post meal,Lab Review,yes
+Imp: Tanke cutwane ke liye 5 din baad surgery OPD me aana. review with slip,Surgical Dressing,yes
+"K/C/O HTN, Platelet count low. Repeat test tomorrow morning and review. SOS",Lab Review,yes
+"मरीज पूरी तरह स्वस्थ है, आगे दिखाने की आवश्यकता नहीं है।",General Follow-Up,no
+"Known diabetic, अब कोई परेशानी नहीं है, फॉलो-अप समाप्त। post meal",General Follow-Up,no
+यदि घाव से मवाद या खून निकले तो तुरंत आएं। SOS,Surgical Dressing,yes
+"Condition stable. Continue lifestyle modifications, no fixed review.",General Follow-Up,no
+"Known diabetic, टांके अगले हफ्ते बाद कटवाने अस्पताल आएं।",Surgical Dressing,yes
+अगर बुखार या पेट दर्द दोबारा हो तो तुरंत अस्पताल आएं। post meal,General Follow-Up,yes
+"Known diabetic, Review after 1 month for routine consultation. pls",General Follow-Up,yes
+"OPD Slip: Recovery achhi hai, 7 din baad ek baar review karwa lena. strictly",General Follow-Up,yes
+"Pt: खांसी और जुकाम में आराम है, अगले हफ्ते बाद फॉलो-अप करें।",General Follow-Up,yes
+Thyroid report aane par kal me review karein. SOS,Lab Review,yes
+"Known diabetic, Sterile dressing kar di hai, 2 mahine me fresh dressing karwayen. pls",Surgical Dressing,yes
+"Imp: घाव साफ है, १४ दिन बाद टांके चेक करवाएं। post meal",Surgical Dressing,yes
+"Known diabetic, अगर दवा से चक्कर आए तो तुरंत आएं। review with slip",Medication Titration,yes
+OPD Slip: Joint pain persisting. Clinical re-assessment after 2 weeks.,General Follow-Up,yes
+"R/o Patti utaar di hai, ghav poora bhar gaya hai.",Surgical Dressing,no
+R/o Review in OPD after 6 weeks if not fully relieved. empty stomach,General Follow-Up,yes
+"K/C/O HTN, Blood test (CBC/KFT) karwa lena, reports ke sath 6 hafte baad dikhana. post meal",Lab Review,yes
+Imp: Follow up after 2 weeks to monitor overall recovery. SOS,General Follow-Up,yes
+OPD Slip: Review after 14 days for routine consultation. SOS,General Follow-Up,yes
+Adv: Review soon or if symptoms worsen. empty stomach,General Follow-Up,yes
+Platelet count low. Repeat test tomorrow morning and review. empty stomach,Lab Review,yes
+"Known diabetic, Agar test me infection aaye to turant aana.",Lab Review,yes
+Agar test me infection aaye to turant aana. empty stomach,Lab Review,yes
+"घाव पूरी तरह सूख चुका है, टांके कट चुके हैं। अब ड्रेसिंग की जरूरत नहीं।",Surgical Dressing,no
+"K/C/O HTN, Wound dressing change after 5 days. Keep area dry and clean. strictly",Surgical Dressing,yes
+"Known diabetic, Tanke cutwane ke liye 6 hafte baad surgery OPD me aana. review with slip",Surgical Dressing,yes
+Pt: Medicine titration done. Check response in 5 din.,Medication Titration,yes
+R/o टांके एक हफ्ते बाद कटवाने अस्पताल आएं। SOS,Surgical Dressing,yes
+Agar bandage geeli ho jaye ya dard badhe to turant aana. review with slip,Surgical Dressing,yes
+"OPD Slip: Sugar test fasting and PP karwao, report lekar agale hafte baad aana. SOS",Lab Review,yes
+"Imp: घाव ठीक हो गया है, पट्टी हटा दी गई है। SOS",Surgical Dressing,no
+"Urine culture report 1 mahine me aayegi, tab dikha dena. post meal",Lab Review,yes
+Pt: Creatinine aur urea test repeat karna hai after 6 hafte. pls,Lab Review,yes
+Adv: Post-op wound healthy. Clean dressing in 10 days.,Surgical Dressing,yes
+"Pt: घाव ठीक हो गया है, पट्टी हटा दी गई है।",Surgical Dressing,no
+Medicine titration done. Check response in 4 hafte.,Medication Titration,yes
+"Adv: घाव ठीक हो गया है, पट्टी हटा दी गई है।",Surgical Dressing,no
+Antihypertensive dosage titrated. Come for BP check after 2 weeks. pls,Medication Titration,yes
+"OPD Slip: घाव ठीक हो गया है, पट्टी हटा दी गई है। SOS",Surgical Dressing,no
+Pt: Tanke cutwane ke liye 14 din baad surgery OPD me aana. pls,Surgical Dressing,yes
+"R/o घाव ठीक हो गया है, पट्टी हटा दी गई है।",Surgical Dressing,no
+"Sab theek chal raha hai, general checkup ke liye 3 din me aana. SOS",General Follow-Up,yes
+"R/o Steroid dose taper kar rahe hain, agale hafte me review karein. pls",Medication Titration,yes
+"K/C/O HTN, दवा कम की जा रही है, दो हफ्ते बाद आकर दिखाएं।",Medication Titration,yes
+"Adv: Recovery achhi hai, 6 hafte baad ek baar review karwa lena.",General Follow-Up,yes
+"R/o Stitches dry hain, 7 din baad removal hoga. SOS",Surgical Dressing,yes
+"R/o Condition bilkul normal hai, follow up zaroori nahi.",General Follow-Up,no
+Review in OPD after 7 days if not fully relieved. review with slip,General Follow-Up,yes
+Thyroid panel (TSH/T3/T4) ordered. Review 10 days. post meal,Lab Review,yes
+Adv: यदि खून की जांच में प्लेटलेट्स कम हों तो तुरंत आएं। post meal,Lab Review,yes
+"K/C/O HTN, कमजोरी और भूख न लगने की समीक्षा १४ दिन बाद की जाएगी। post meal",General Follow-Up,yes
+OPD Slip: Joint pain persisting. Clinical re-assessment after 3 weeks. review with slip,General Follow-Up,yes
+Pt: Dose adjusted today. Review soon if any giddiness or side effects. post meal,Medication Titration,yes
+Pt: All baseline investigations satisfactory. Continue same rx. strictly,Lab Review,no
+"Known diabetic, Dose change kiya hai, agar weakness lage to turant contact karein. review with slip",Medication Titration,yes
+Chest congestion improved. Re-consult after 1 week if cough continues.,General Follow-Up,yes
+Review in OPD after 3 weeks if not fully relieved. SOS,General Follow-Up,yes
+"R/o Skin healed well. Clean with soap water, dressing discontinued. strictly",Surgical Dressing,no
+R/o Sputum for AFB sent. Collect report and show after 4 weeks. empty stomach,Lab Review,yes
+"Known diabetic, पेशाब की जांच की रिपोर्ट ७ दिन बाद दिखाएं। empty stomach",Lab Review,yes
+"दवाइयां जारी रखें, ७ दिन बाद आकर मिलें। review with slip",General Follow-Up,yes
+"K/C/O HTN, Staples removal due after 1 week. Inspect incision site. strictly",Surgical Dressing,yes
+"Known diabetic, Reports aate hi dikha dena. empty stomach",Lab Review,yes
+"K/C/O HTN, Creatinine aur urea test repeat karna hai after agale hafte. post meal",Lab Review,yes
+Thyroid panel (TSH/T3/T4) ordered. Review 5 days. review with slip,Lab Review,yes
+OPD Slip: छाती का एक्स-रे करवा कर १० दिन में दिखाएं। post meal,Lab Review,yes
+OPD Slip: Urine routine & microscopy sent. Follow up in 10 days.,Lab Review,yes
+Imp: Cured. No further visit required. strictly,General Follow-Up,no
+"Pt: BP ki goli dose badha di hai, 10 din baad BP check karwane aana.",Medication Titration,yes
+OPD Slip: Staples removal due after 2 weeks. Inspect incision site.,Surgical Dressing,yes
+"Pt: पट्टी रोज बदलें, १४ दिन बाद डॉक्टर को दिखाएं। SOS",Surgical Dressing,yes
+R/o दवा की खुराक में बदलाव किया गया है। ३ दिन बाद पुनरावलोकन करें। post meal,Medication Titration,yes
+"K/C/O HTN, HbA1c and lipid profile advised. Come with report in 3 weeks. strictly",Lab Review,yes
+R/o HbA1c and lipid profile advised. Come with report in 6 weeks.,Lab Review,yes
+R/o Daily sterile dressing advised. Review in OPD after 5 days. empty stomach,Surgical Dressing,yes
+Adv: यदि खून की जांच में प्लेटलेट्स कम हों तो तुरंत आएं।,Lab Review,yes
+"Pt: Insulin units badhayi hain, sugar chart ke sath 1 mahine me dikhana. post meal",Medication Titration,yes
+"K/C/O HTN, Wound dressing 1 mahine me repeat karein. Swelling check karni hai.",Surgical Dressing,yes
+Imp: Wound healing well. Remove stitches in 7 days. review with slip,Surgical Dressing,yes
+"R/o Stitches cut chuke hain, healing complete hai. pls",Surgical Dressing,no
+R/o Patient symptom free. Advice given. Discharge on SOS basis. strictly,General Follow-Up,no
+"Adv: दवाइयां जारी रखें, तीन हफ्ते बाद आकर मिलें। post meal",General Follow-Up,yes
+"अब कोई परेशानी नहीं है, फॉलो-अप समाप्त। strictly",General Follow-Up,no
+Inhaler Budecort 200mcg puff twice daily. Assess asthma control in 1 week.,Medication Titration,yes
+"Known diabetic, Wound healing well. Remove stitches in 4 weeks. pls",Surgical Dressing,yes
+"R/o मरीज पूरी तरह स्वस्थ है, आगे दिखाने की आवश्यकता नहीं है। empty stomach",General Follow-Up,no
+"Adv: Sugar medicine dose adjust ki hai, 5 din baad fasting sugar check karayein. post meal",Medication Titration,yes
+"Known diabetic, Recovery achhi hai, 2 mahine baad ek baar review karwa lena.",General Follow-Up,yes
+"K/C/O HTN, दवाइयां जारी रखें, तीन हफ्ते बाद आकर मिलें।",General Follow-Up,yes
+"Sugar medicine dose adjust ki hai, 6 hafte baad fasting sugar check karayein. strictly",Medication Titration,yes
+R/o Wound dressing 4 hafte me repeat karein. Swelling check karni hai. empty stomach,Surgical Dressing,yes
+R/o Wound dressing 1 week me repeat karein. Swelling check karni hai. empty stomach,Surgical Dressing,yes
+थायरॉइड की गोली 50mcg से 75mcg की। ५ दिन बाद जांच और फॉलो-अप। SOS,Medication Titration,yes
+OPD Slip: यदि खून की जांच में प्लेटलेट्स कम हों तो तुरंत आएं।,Lab Review,yes
+"Stitches dry hain, 3 hafte baad removal hoga. pls",Surgical Dressing,yes
+"Known diabetic, अब कोई परेशानी नहीं है, फॉलो-अप समाप्त। empty stomach",General Follow-Up,no
+"Dose change kiya hai, agar weakness lage to turant contact karein. strictly",Medication Titration,yes
+Imp: Antihypertensive dosage titrated. Come for BP check after 3 days. post meal,Medication Titration,yes
+OPD Slip: Tab Thyronorm dose hiked to 75mcg. Repeat TSH & review in 1 month. post meal,Medication Titration,yes
+"दवा कम की जा रही है, कल बाद आकर दिखाएं।",Medication Titration,yes
+OPD Slip: Creatinine aur urea test repeat karna hai after 2 mahine. review with slip,Lab Review,yes
+शुगर की जांच (Fasting/PP) कराकर दो महीने बाद रिपोर्ट लेकर आएं।,Lab Review,yes
+Thyroid report aane par 2 mahine me review karein. empty stomach,Lab Review,yes
+OPD Slip: Continue current treatment. Routine visit in 3 weeks. post meal,General Follow-Up,yes
+"Known diabetic, Recovery achhi hai, 2 hafte baad ek baar review karwa lena.",General Follow-Up,yes
+Imp: Tanke cutwane ke liye 10 din baad surgery OPD me aana.,Surgical Dressing,yes
+"Abscess drained, sterile dressing done. Change dressing in 10 days.",Surgical Dressing,yes
+"K/C/O HTN, Reports normal hain, abhi test repeat nahi karna. empty stomach",Lab Review,no
+"Pt: Urine culture report 2 hafte me aayegi, tab dikha dena. SOS",Lab Review,yes
+"K/C/O HTN, सभी जांच रिपोर्ट सामान्य हैं, अब जांच की जरूरत नहीं।",Lab Review,no
+"Adv: Condition bilkul normal hai, follow up zaroori nahi. SOS",General Follow-Up,no
+Review after 5 days for routine consultation. strictly,General Follow-Up,yes
+"Known diabetic, Post-op wound healthy. Clean dressing in 7 days. empty stomach",Surgical Dressing,yes
+"Known diabetic, टांके ६ हफ्ते बाद कटवाने अस्पताल आएं।",Surgical Dressing,yes
+Ghav ki patti 7 din baad change karwane aana. Paani mat lagne dena. review with slip,Surgical Dressing,yes
+"Adv: If reports show infection, review immediately. pls",Lab Review,yes
+"Known diabetic, Follow up after 3 weeks to monitor overall recovery. post meal",General Follow-Up,yes
+"Adv: घाव साफ है, एक हफ्ते बाद टांके चेक करवाएं। SOS",Surgical Dressing,yes
+Imp: Joint pain persisting. Clinical re-assessment after 4 weeks. pls,General Follow-Up,yes
+Agar test me infection aaye to turant aana.,Lab Review,yes
+"K/C/O HTN, HbA1c and lipid profile advised. Come with report in 1 week. SOS",Lab Review,yes
+Adv: टांके १४ दिन बाद कटवाने अस्पताल आएं।,Surgical Dressing,yes
+Pt: Chest congestion improved. Re-consult after 7 days if cough continues. strictly,General Follow-Up,yes
+Pt: Pus discharge reduced. Suture line review in 2 weeks. strictly,Surgical Dressing,yes
+OPD Slip: Sonography karwa ke report ke sath 3 din me aao. review with slip,Lab Review,yes
+"Steroid dose taper kar rahe hain, 6 hafte me review karein.",Medication Titration,yes
+टांके ३ दिन बाद कटवाने अस्पताल आएं। post meal,Surgical Dressing,yes
+"Pt: BP ki goli dose badha di hai, 3 hafte baad BP check karwane aana. pls",Medication Titration,yes
+Pus discharge reduced. Suture line review in 3 weeks. review with slip,Surgical Dressing,yes
+"खांसी और जुकाम में आराम है, तीन हफ्ते बाद फॉलो-अप करें। empty stomach",General Follow-Up,yes
+इंसुलिन की मात्रा 12 यूनिट की गई। १ महीने बाद आकर मिलें। empty stomach,Medication Titration,yes
+"Imp: पट्टी रोज बदलें, ३ दिन बाद डॉक्टर को दिखाएं। review with slip",Surgical Dressing,yes
+Adv: General follow up after 10 days. Review symptoms and progress. post meal,General Follow-Up,yes
+Medication titrated as discussed. No follow-up needed if stable.,Medication Titration,no
+"Known diabetic, अब कोई परेशानी नहीं है, फॉलो-अप समाप्त। strictly",General Follow-Up,no
+"जले का घाव है, ३ दिन बाद नई पट्टी करवाने आएं। review with slip",Surgical Dressing,yes
+शुगर की दवा की खुराक बदली है। ६ हफ्ते बाद शुगर नाप कर दिखाएं। pls,Medication Titration,yes
+OPD Slip: Agar bandage geeli ho jaye ya dard badhe to turant aana. SOS,Surgical Dressing,yes
+"Known diabetic, Thyroid panel (TSH/T3/T4) ordered. Review 14 days. review with slip",Lab Review,yes
+"Known diabetic, Stitches cut chuke hain, healing complete hai.",Surgical Dressing,no
+"Medicines theek chal rahi hain, continue karein.",Medication Titration,no
+"K/C/O HTN, खून की जांच (CBC, LFT) करवाएं। ७ दिन बाद रिपोर्ट दिखाएं। pls",Lab Review,yes
+"Pt: Blood test (CBC/KFT) karwa lena, reports ke sath 6 hafte baad dikhana. SOS",Lab Review,yes
+"Known diabetic, Condition bilkul normal hai, follow up zaroori nahi. post meal",General Follow-Up,no
+Pt: अगर बुखार या पेट दर्द दोबारा हो तो तुरंत अस्पताल आएं। SOS,General Follow-Up,yes
+Tab Telmisartan 40mg changed to 80mg. Check BP after 1 month. pls,Medication Titration,yes
+Review soon or if symptoms worsen. review with slip,General Follow-Up,yes
+"R/o Dose stable hai, koi change ki zaroorat nahi. review with slip",Medication Titration,no
+Agar bandage geeli ho jaye ya dard badhe to turant aana. post meal,Surgical Dressing,yes
+R/o यदि खून की जांच में प्लेटलेट्स कम हों तो तुरंत आएं। empty stomach,Lab Review,yes
+"Known diabetic, Post-op wound healthy. Clean dressing in 5 days.",Surgical Dressing,yes
+Adv: यदि खून की जांच में प्लेटलेट्स कम हों तो तुरंत आएं। post meal,Lab Review,yes
+Pt: यदि घाव से मवाद या खून निकले तो तुरंत आएं।,Surgical Dressing,yes
+जांच रिपोर्ट आते ही तुरंत दिखाएं। empty stomach,Lab Review,yes
+"Medicines theek chal rahi hain, continue karein. pls",Medication Titration,no
