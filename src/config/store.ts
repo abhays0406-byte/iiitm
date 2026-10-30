@@ -34,17 +34,6 @@ const DEFAULT_CONFIG: Omit<
     { pattern: '\\btomorrow\\b', kind: 'fixed', days: 1 },
     { pattern: '\\bday after tomorrow\\b', kind: 'fixed', days: 2 },
     { pattern: '\\b(?:a\\s+)?fortnight\\b', kind: 'fixed', days: 14 },
-    // Hinglish fixed
-    { pattern: '\\bagle\\s+saal(?:\\s+baad)?\\b', kind: 'fixed', days: 365 },
-    { pattern: '\\bagle\\s+hafte\\b', kind: 'fixed', days: 7 },
-    { pattern: '\\bagla\\s+hafta\\b', kind: 'fixed', days: 7 },
-    { pattern: '\\bdo\\s+din(?:\\s+baad)?\\b', kind: 'fixed', days: 2 },
-    { pattern: '\\bteen\\s+din(?:\\s+baad)?\\b', kind: 'fixed', days: 3 },
-    { pattern: '\\bek\\s+mahine(?:\\s+baad)?\\b', kind: 'fixed', days: 30 },
-    { pattern: '\\bteen\\s+hafte(?:\\s+baad)?\\b', kind: 'fixed', days: 21 },
-    { pattern: '\\bdo\\s+hafte(?:\\s+baad)?\\b', kind: 'fixed', days: 14 },
-    { pattern: '\\bek\\s+hafte(?:\\s+baad)?\\b', kind: 'fixed', days: 7 },
-    { pattern: '\\bchaar\\s+hafte(?:\\s+baad)?\\b', kind: 'fixed', days: 28 },
     // Hindi fixed
     { pattern: 'अगले\\s*साल(?:\\s*बाद)?', kind: 'fixed', days: 365 },
     { pattern: 'अगले\\s*ह[फ़फ]्ते', kind: 'fixed', days: 7 },
@@ -73,12 +62,8 @@ const DEFAULT_CONFIG: Omit<
     { pattern: '(\\d+)\\s*days?\\b', kind: 'multiplier', unitDays: 1 },
     { pattern: '(\\d+)\\s*months?\\b', kind: 'multiplier', unitDays: 30 },
     { pattern: '(\\d+)\\s*years?\\b', kind: 'multiplier', unitDays: 365 },
-    // Hinglish number + unit
-    { pattern: '(\\d+)\\s*hafte\\b', kind: 'multiplier', unitDays: 7 },
-    { pattern: '(\\d+)\\s*din\\b', kind: 'multiplier', unitDays: 1 },
-    { pattern: '(\\d+)\\s*mahine\\b', kind: 'multiplier', unitDays: 30 },
     // Vague quantity
-    { pattern: '\\b(some days|a few days|a few weeks|few days|couple of days|several days|kuch din|कुछ दिन)\\b', kind: 'vague_quantity' },
+    { pattern: '\\b(some days|a few days|a few weeks|few days|couple of days|several days|कुछ दिन)\\b', kind: 'vague_quantity' },
   ],
   defaultPriority: 'Routine' as const,
   workingDays: [1, 2, 3, 4, 5, 6],

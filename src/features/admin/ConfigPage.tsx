@@ -9,6 +9,20 @@ import { Table, TableHead, TableRow, TableCell, TableBody } from '@/ui/Table';
 
 const DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
+function formatPattern(pattern: string): string {
+  return pattern
+    .replace(/\\b/g, '')
+    .replace(/\\s\+/g, ' ')
+    .replace(/\\s\*/g, ' ')
+    .replace(/\(\?:\\s\+baad\)\?/g, '')
+    .replace(/\(\?:\\s\*बाद\)\?/g, '')
+    .replace(/\\s\*ह\[फ़फ\]्ते/g, ' हफ्ते')
+    .replace(/\(\?:a\\s\+\)\?/g, '')
+    .replace(/\(\\d\+\)/g, '#')
+    .replace(/\(\?:\\s\|\$\|\\b\)/g, '')
+    .trim();
+}
+
 export function ConfigPage() {
   const cfg = useConfigStore(useShallow((s) => ({
     reasonCategories: s.reasonCategories,
@@ -91,8 +105,16 @@ export function ConfigPage() {
             </div>
             <div className="card-body" style={{ borderBottom: '1px solid var(--border)' }}>
               <div className="toolbar">
-                <input value={newPattern} onChange={(e) => setNewPattern(e.target.value)} placeholder="Regex pattern, e.g. \bdo hafte\b"
-                  aria-label="New pattern" style={{ flex: 1, minWidth: 180, height: 36, fontFamily: 'var(--mono)' }} />
+                <input
+                  value={newPattern}
+                  onChange={(e) => setNewPattern(e.target.value)}
+                  placeholder="Regex pattern (e.g. 2 weeks / 10 days)"
+                  aria-label="New pattern"
+                  spellCheck={false}
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  style={{ flex: 1, minWidth: 180, height: 36, fontFamily: 'var(--mono)' }}
+                />
                 <select value={newKind} onChange={(e) => setNewKind(e.target.value as 'fixed' | 'multiplier' | 'vague_quantity')} aria-label="Pattern kind" style={{ height: 36 }}>
                   <option value="fixed">fixed days</option>
                   <option value="multiplier">number × unit</option>
@@ -102,7 +124,7 @@ export function ConfigPage() {
                 <Button variant="primary" icon="plus" onClick={addPattern}>Add pattern</Button>
               </div>
             </div>
-            <div style={{ maxHeight: 320, overflow: 'auto' }}>
+            <div style={{ maxHeight: 320, overflow: 'auto' }} translate="no" spellCheck={false}>
               <Table>
                 <TableHead>
                   <TableRow>
@@ -112,7 +134,11 @@ export function ConfigPage() {
                 <TableBody>
                   {cfg.timePhrasePatterns.map((p, i) => (
                     <TableRow key={i}>
-                      <TableCell className="mono" style={{ fontSize: 12 }}>{p.pattern}</TableCell>
+                      <TableCell className="mono" style={{ fontSize: 12 }}>
+                        <code translate="no" spellCheck={false} className="notranslate" lang="und">
+                          {formatPattern(p.pattern)}
+                        </code>
+                      </TableCell>
                       <TableCell><Chip variant={p.kind === 'fixed' ? 'outline' : p.kind === 'multiplier' ? 'accent' : 'hold'}>{p.kind}</Chip></TableCell>
                       <TableCell className="mono" style={{ textAlign: 'right' }}>{(p as { days?: number; unitDays?: number }).days ?? (p as { days?: number; unitDays?: number }).unitDays ?? '—'}</TableCell>
                     </TableRow>
